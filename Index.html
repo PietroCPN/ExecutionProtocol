@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Execution Protocol</title>
+<style>
+:root{--bg:#080a0e;--s:#11151c;--s2:#171c25;--s3:#1d2430;--b:#2a3342;--t:#f5f7fb;--m:#98a2b3;--a:#9ec5ff;--g:#79d99d;--y:#f2c96d;--r:#ff8f98;--shadow:0 24px 80px rgba(0,0,0,.42)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 80% -10%,rgba(80,115,170,.14),transparent 36%),linear-gradient(180deg,#090b10,#07090c);color:var(--t);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.shell{display:flex;min-height:100vh}.side{position:fixed;inset:0 auto 0 0;width:230px;padding:26px 16px;background:rgba(7,9,13,.94);border-right:1px solid var(--b);backdrop-filter:blur(16px);z-index:30}.brand{padding:0 12px 30px;font-size:18px;font-weight:850}.brand span{display:block;margin-top:5px;color:var(--m);font-size:10px;letter-spacing:2.2px}.nav button{width:100%;border:0;background:transparent;color:var(--m);text-align:left;padding:12px 14px;margin-bottom:5px;border-radius:9px}.nav button:hover,.nav button.active{background:var(--s2);color:var(--t)}.main{margin-left:230px;width:calc(100% - 230px);padding:34px 42px 70px}.page{max-width:1360px;margin:0 auto}
+.gate{min-height:calc(100vh - 70px);display:flex;align-items:center;justify-content:center;text-align:center}.gate-inner{max-width:900px}.kicker{color:var(--m);letter-spacing:2.8px;font-size:11px;font-weight:800;margin-bottom:18px}.gate-line{font-size:clamp(31px,5vw,70px);font-weight:900;line-height:1.02;letter-spacing:-2.2px}.magic-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:26px}.magic{position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:min(650px,88vw);padding:22px 44px 27px;border:2px solid rgba(158,197,255,.78);border-radius:22px;color:#07101c;background:linear-gradient(180deg,#d9ebff 0%,#9ec5ff 58%,#75a6e9 100%);font-size:clamp(46px,8vw,102px);font-weight:950;letter-spacing:-3px;box-shadow:0 18px 60px rgba(58,112,190,.32),inset 0 2px 0 rgba(255,255,255,.72),inset 0 -7px 0 rgba(36,78,139,.34);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;animation:magicPulse 2.2s ease-in-out infinite}.magic:after{content:'CLICCA PER INIZIARE';position:absolute;left:50%;bottom:-35px;transform:translateX(-50%);width:max-content;color:var(--m);font-size:11px;font-weight:850;letter-spacing:2px}.magic:hover{transform:translateY(-3px) scale(1.018);filter:brightness(1.06);box-shadow:0 25px 80px rgba(70,133,225,.46),inset 0 2px 0 rgba(255,255,255,.8),inset 0 -7px 0 rgba(36,78,139,.3)}.magic:active{transform:translateY(4px) scale(.988);box-shadow:0 8px 28px rgba(58,112,190,.25),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -3px 0 rgba(36,78,139,.28)}.magic-hint{margin-top:31px;color:var(--m);font-size:12px}.magic-hint .keycap{margin:0 5px}@keyframes magicPulse{0%,100%{box-shadow:0 18px 60px rgba(58,112,190,.30),inset 0 2px 0 rgba(255,255,255,.7),inset 0 -7px 0 rgba(36,78,139,.34)}50%{box-shadow:0 24px 84px rgba(70,133,225,.48),0 0 0 8px rgba(158,197,255,.055),inset 0 2px 0 rgba(255,255,255,.75),inset 0 -7px 0 rgba(36,78,139,.3)}}
+.reveal{animation:reveal .45s ease both}@keyframes reveal{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}.session{max-width:980px;margin:0 auto;padding:35px 0 80px}.sec{font-size:11px;letter-spacing:2px;color:var(--a);font-weight:850;margin-bottom:18px}.card{background:linear-gradient(180deg,rgba(19,24,32,.96),rgba(14,18,24,.96));border:1px solid var(--b);border-radius:16px;box-shadow:0 18px 60px rgba(0,0,0,.18);padding:24px}.check-stage{position:relative;min-height:410px;overflow:hidden;display:flex;align-items:center;justify-content:center}.stack{position:absolute;inset:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;pointer-events:none;opacity:.62}.stack-item{padding:10px 14px;border-radius:8px;background:#0e1514;border:1px solid rgba(121,217,157,.25);color:var(--g);font-size:12px;animation:stackIn .34s ease both}@keyframes stackIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}.current-check{position:relative;z-index:2;width:min(760px,90%);min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:28px;text-align:center;border-radius:14px;border:1px solid #3b485c;background:linear-gradient(180deg,#1d2632,#121820);box-shadow:var(--shadow)}.current-check h2{margin:0;font-size:clamp(24px,4vw,46px);line-height:1.1}.current-check{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent}.current-check:focus-visible{outline:3px solid rgba(158,197,255,.45);outline-offset:4px}.mobile-hint{display:none}.space-hint{display:flex;align-items:center;gap:8px;color:var(--m);font-size:12px;letter-spacing:.8px;text-transform:uppercase}.keycap{border:1px solid #475367;border-bottom-width:3px;border-radius:6px;padding:5px 18px;color:var(--t);background:#0e131a}.knock{animation:knock .42s cubic-bezier(.65,-.1,.8,.45) both}@keyframes knock{to{transform:translateY(250px) rotate(5deg);opacity:0}}.progress{height:4px;border-radius:99px;background:#202735;overflow:hidden;margin-top:16px}.progress span{display:block;height:100%;background:var(--a);width:0;transition:width .3s}.session-bottom{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-top:18px}
+.field label,.label{display:block;font-size:13px;font-weight:760;margin-bottom:9px}.helper{color:var(--m);font-size:11px;font-weight:500}.input{width:100%;border:1px solid var(--b);background:#0b0f15;color:var(--t);border-radius:9px;padding:11px 12px;outline:none}.input:focus{border-color:var(--a);box-shadow:0 0 0 3px rgba(158,197,255,.1)}.btn{border:1px solid var(--b);background:var(--s2);color:var(--t);padding:11px 16px;border-radius:9px;font-weight:750}.btn:hover{transform:translateY(-1px);border-color:#4d5c72}.btn.primary{background:var(--a);border-color:var(--a);color:#0a0e14}.btn.success{background:#173126;border-color:#3c8b5d;color:var(--g)}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:24px}.top h1{margin:0;font-size:29px}.sub{margin-top:5px;color:var(--m);font-size:13px}.protocol-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}.sections{display:grid;gap:18px}.sticky{position:sticky;top:22px;display:grid;gap:14px}.poster{padding:26px;border-radius:16px;border:1px solid #3d4f68;background:radial-gradient(circle at 80% 0,rgba(158,197,255,.15),transparent 42%),linear-gradient(180deg,#192230,#10151d);box-shadow:var(--shadow)}.poster .lead{font-size:clamp(28px,3vw,43px);line-height:.98;font-weight:950;letter-spacing:-1.5px;margin:0 0 22px}.poster .lead strong{color:var(--a)}.poster p{font-size:14px;color:#d8dfeb;line-height:1.55}.poster b{color:#fff}.reframe-ticker{position:relative;overflow:hidden;border:1px solid rgba(158,197,255,.28);border-radius:10px;background:#0a1018;box-shadow:inset 0 0 24px rgba(0,0,0,.34)}.reframe-ticker::before,.reframe-ticker::after{content:"";position:absolute;top:0;bottom:0;width:38px;z-index:2;pointer-events:none}.reframe-ticker::before{left:0;background:linear-gradient(90deg,#0a1018,transparent)}.reframe-ticker::after{right:0;background:linear-gradient(-90deg,#0a1018,transparent)}.ticker-track{display:flex;width:max-content;animation:reframeScroll 22s linear infinite;will-change:transform}.ticker-sequence{display:flex;align-items:center;white-space:nowrap;padding:13px 0}.ticker-item{display:inline-flex;align-items:center;gap:9px;padding:0 18px;color:#e7edf7;font-size:14px;font-weight:760;letter-spacing:.5px}.ticker-item strong{color:#fff;font-size:16px}.ticker-dot{color:var(--a);font-size:17px}.reframe-ticker:hover .ticker-track{animation-play-state:paused}@keyframes reframeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media(prefers-reduced-motion:reduce){.ticker-track{animation:none;flex-wrap:wrap}.ticker-sequence:nth-child(2){display:none}.reframe-ticker{overflow:visible}.ticker-sequence{white-space:normal;flex-wrap:wrap;padding:8px}}.score-card{padding:19px;border-radius:14px;border:1px solid var(--b);background:var(--s)}.score-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end;padding:12px 0;border-bottom:1px solid #242c39}.score-row:last-child{border-bottom:0}.score-name{font-size:10px;letter-spacing:1.4px;color:var(--m);font-weight:850}.score-value{font-size:25px;font-weight:900}.total .score-value{font-size:38px;color:var(--a)}.bar{grid-column:1/-1;height:5px;background:#202735;border-radius:999px;overflow:hidden}.bar span{display:block;height:100%;background:var(--a);transition:width .25s}
+.block-title{font-size:11px;letter-spacing:1.6px;color:var(--a);font-weight:850;margin-bottom:20px}.field-block{margin-bottom:22px}.field-block:last-child{margin-bottom:0}.options{display:flex;flex-wrap:wrap;gap:8px}.option{border:1px solid var(--b);background:var(--s2);color:#cbd3df;border-radius:8px;padding:9px 12px;font-size:12px}.option:hover{border-color:#526176}.option.selected{border-color:var(--a);background:#26364b;color:#fff}.option.yes.selected{border-color:var(--g);background:#173126;color:var(--g)}.option.no.selected{border-color:var(--r);background:#3a2025;color:var(--r)}.option.tempted.selected{border-color:var(--y);background:#3a321b;color:var(--y)}.rr{display:flex;align-items:center;gap:8px}.rr .input{width:62px;text-align:center;font-weight:850;font-size:17px}.colon{font-size:20px;color:var(--m);font-weight:800}.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}.process{border:1px solid var(--b);background:#0f131a;border-radius:12px;padding:16px;margin-top:12px}.process h3{margin:0 0 12px;font-size:11px;color:var(--m);letter-spacing:1.4px}.prow{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid #222a36}.prow:last-child{border-bottom:0}.plabel{font-size:13px;line-height:1.35}.pactions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.pactions .option{padding:7px 9px;font-size:11px}.emotions{display:flex;flex-wrap:wrap;gap:8px}.emotion{position:relative}.emotion:after{content:"";position:absolute;right:6px;top:6px;width:5px;height:5px;border-radius:50%}.emotion[data-state="GREEN"]:after{background:var(--g)}.emotion[data-state="YELLOW"]:after{background:var(--y)}.emotion[data-state="RED"]:after{background:var(--r)}.state-result{margin-top:16px;border:1px solid var(--b);border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:space-between}.state-result strong{font-size:20px}.state-result.green strong{color:var(--g)}.state-result.yellow strong{color:var(--y)}.state-result.red strong{color:var(--r)}.outcomes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}.outcomes .option{padding:14px 8px;font-weight:800}.textarea{min-height:110px;resize:vertical}.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.tile{border:1px solid var(--b);background:#0d1117;border-radius:12px;padding:18px;text-align:center}.tile span{display:block;color:var(--m);font-size:10px;letter-spacing:1.2px;font-weight:850}.tile strong{display:block;margin-top:8px;font-size:30px}.tile.total strong{color:var(--a)}.complete{text-align:right;margin-top:18px}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.84);backdrop-filter:blur(6px);z-index:100}.modal-card{width:min(780px,96vw);max-height:90vh;overflow:auto;padding:28px;border:1px solid #40516b;border-radius:18px;background:#11161e;box-shadow:var(--shadow)}.modal-title{font-size:clamp(28px,5vw,58px);font-weight:950;line-height:1.02;text-align:center;letter-spacing:-1.5px;margin:10px 0 30px}.modal-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.report{width:100%;min-height:420px;margin-top:16px}.records{display:grid;gap:10px}.record{width:100%;display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px;border:1px solid var(--b);border-radius:12px;background:var(--s);color:var(--t)}.record h3{margin:0 0 5px;font-size:14px}.record p{margin:0;color:var(--m);font-size:12px}.record-score{font-size:25px;font-weight:900;color:var(--a)}.empty{color:var(--m);text-align:center;padding:38px}.toast{position:fixed;right:24px;bottom:24px;display:none;z-index:120;background:#183226;color:var(--g);border:1px solid #3d8a5d;border-radius:9px;padding:12px 16px}
+@media(max-width:1000px){.side{width:190px}.main{margin-left:190px;width:calc(100% - 190px);padding:26px}.protocol-grid{grid-template-columns:1fr}.sticky{position:static;grid-template-columns:1fr 1fr}}@media(max-width:720px){.desktop-hint{display:none}.mobile-hint{display:inline}.current-check{min-height:175px}.shell{display:block}.side{position:static;width:100%;border-right:0;border-bottom:1px solid var(--b)}.main{margin:0;width:100%;padding:18px}.protocol-grid,.split,.sticky,.summary{grid-template-columns:1fr}.session-bottom{grid-template-columns:1fr}.outcomes{grid-template-columns:repeat(2,1fr)}.prow{display:block}.pactions{justify-content:flex-start;margin-top:10px}}
+
+.compact-poster{
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.compact-poster .lead{
+  margin:0;
+  max-width:280px;
+}
+.journal-ticker-wrap{
+  position:sticky;
+  top:0;
+  z-index:24;
+  margin:-4px 0 18px;
+  padding:8px 0;
+  background:linear-gradient(180deg,rgba(8,10,14,.97) 0%,rgba(8,10,14,.92) 72%,rgba(8,10,14,0) 100%);
+  backdrop-filter:blur(8px);
+}
+.journal-ticker{
+  height:48px;
+  display:flex;
+  align-items:center;
+  border-color:rgba(158,197,255,.36);
+  box-shadow:0 10px 32px rgba(0,0,0,.22),inset 0 0 24px rgba(0,0,0,.34);
+}
+.journal-ticker .ticker-sequence{padding:0}
+.journal-ticker .ticker-item{font-size:13px;padding:0 16px}
+.journal-ticker .ticker-item strong{font-size:14px}
+@media(max-width:720px){
+  .journal-ticker-wrap{
+    top:0;
+    margin:0 -18px 14px;
+    padding:7px 18px 10px;
+  }
+  .journal-ticker{
+    height:42px;
+    border-radius:8px;
+  }
+  .journal-ticker .ticker-item{
+    font-size:11px;
+    padding:0 12px;
+    letter-spacing:.25px;
+  }
+  .journal-ticker .ticker-item strong{font-size:12px}
+  .journal-ticker .ticker-dot{font-size:12px}
+  .compact-poster{min-height:145px}
+  .compact-poster .lead{font-size:30px;max-width:250px}
+}
+
+
+.journal-ticker-wrap{
+  position:sticky;
+  top:0;
+  z-index:45;
+  display:block;
+  width:100%;
+  margin:0 0 18px;
+  padding:7px 0 10px;
+  background:linear-gradient(180deg,rgba(8,10,14,.99) 0%,rgba(8,10,14,.94) 76%,rgba(8,10,14,0) 100%);
+}
+.journal-ticker{
+  position:relative;
+  display:block;
+  width:100%;
+  height:48px;
+  overflow:hidden;
+  border:1px solid rgba(158,197,255,.42);
+  border-radius:10px;
+  background:#0a1018;
+  box-shadow:0 10px 32px rgba(0,0,0,.28),inset 0 0 24px rgba(0,0,0,.38);
+}
+.journal-ticker .ticker-track{
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  display:flex;
+  align-items:center;
+  width:max-content;
+  animation:reframeScroll 24s linear infinite;
+  will-change:transform;
+}
+.journal-ticker .ticker-sequence{
+  display:flex;
+  align-items:center;
+  flex-shrink:0;
+  height:100%;
+  padding:0;
+  white-space:nowrap;
+}
+.journal-ticker .ticker-item{
+  display:inline-flex;
+  align-items:center;
+  height:100%;
+  padding:0 16px;
+  color:#e7edf7;
+  font-size:13px;
+  font-weight:760;
+  letter-spacing:.45px;
+}
+.journal-ticker .ticker-item strong{color:#fff;font-size:14px}
+.journal-ticker .ticker-dot{color:var(--accent);font-size:14px;flex:0 0 auto}
+@keyframes reframeScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media(max-width:720px){
+  .journal-ticker-wrap{
+    width:calc(100% + 36px);
+    margin:0 -18px 14px;
+    padding:6px 18px 9px;
+  }
+  .journal-ticker{height:42px;border-radius:8px}
+  .journal-ticker .ticker-item{padding:0 12px;font-size:11px;letter-spacing:.2px}
+  .journal-ticker .ticker-item strong{font-size:12px}
+  .journal-ticker .ticker-dot{font-size:11px}
+}
+
+
+.mobile-menu-button{
+  display:none;
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:90;
+  width:42px;
+  height:42px;
+  padding:0;
+  border:1px solid rgba(158,197,255,.34);
+  border-radius:11px;
+  background:rgba(12,17,24,.9);
+  color:var(--text);
+  font-size:21px;
+  line-height:1;
+  box-shadow:0 8px 26px rgba(0,0,0,.3);
+  backdrop-filter:blur(12px);
+}
+.mobile-menu-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:69;
+  background:rgba(0,0,0,.58);
+  backdrop-filter:blur(2px);
+}
+.journal-reframe-poster{
+  margin:0 0 18px;
+  min-height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.journal-reframe-poster .lead{
+  margin:0;
+  max-width:760px;
+  font-size:clamp(38px,5vw,72px);
+  line-height:.95;
+}
+.final-analysis-card .summary{margin-top:0}
+.final-analysis-card .complete{margin-top:20px}
+
+@media(max-width:720px){
+  .mobile-menu-button{display:flex;align-items:center;justify-content:center}
+  .mobile-menu-overlay:not(.hidden){display:block}
+  .side{
+    position:fixed!important;
+    top:0;
+    right:0;
+    bottom:0;
+    left:auto!important;
+    width:min(290px,82vw)!important;
+    height:100vh;
+    z-index:80;
+    padding-top:72px!important;
+    border-left:1px solid var(--border);
+    border-right:0!important;
+    transform:translateX(105%);
+    transition:transform .24s ease;
+    box-shadow:-18px 0 60px rgba(0,0,0,.42);
+  }
+  .side.mobile-open{transform:translateX(0)}
+  .shell{display:block}
+  .main{
+    margin-left:0!important;
+    width:100%!important;
+    min-height:100vh;
+    padding:18px!important;
+  }
+  .start-gate,.gate{
+    min-height:calc(100vh - 36px)!important;
+    padding:52px 0 30px;
+  }
+  .journal-ticker-wrap{
+    padding-right:52px!important;
+  }
+  .journal-reframe-poster{
+    min-height:155px;
+    margin:0 0 14px;
+    padding:20px 16px;
+  }
+  .journal-reframe-poster .lead{
+    max-width:330px;
+    font-size:clamp(34px,10vw,52px);
+    line-height:.96;
+  }
+  .sticky{display:none!important}
+  .top{padding-right:48px}
+  .summary{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<button id="mobileMenuButton" class="mobile-menu-button" type="button" aria-label="Apri navigazione" onclick="toggleMobileMenu()">☰</button>
+<div id="mobileMenuOverlay" class="mobile-menu-overlay hidden" onclick="closeMobileMenu()"></div>
+<div class="shell">
+<aside id="mainSidebar" class="side"><div class="brand">EXECUTION PROTOCOL<span>PROCESS BEFORE OUTCOME</span></div><nav class="nav"><button class="active" data-nav="start" onclick="newSession(this)">◉ Start Protocol</button><button data-nav="journal" onclick="showPage('journal',this)">＋ Current Protocol</button><button data-nav="records" onclick="showPage('records',this)">◷ Records</button></nav></aside>
+<main class="main">
+<section id="start" class="page">
+<div id="gate" class="gate"><div class="gate-inner"><div class="kicker">EXECUTION PROTOCOL</div><div class="gate-line">L'ESITO DI QUESTO SPECIFICO TRADE È</div><div class="magic-wrap"><button id="casualeButton" class="magic" type="button" onclick="unlockSession()" aria-label="Clicca CASUALE per iniziare" autofocus>CASUALE</button><div class="magic-hint">oppure premi <span class="keycap">INVIO</span></div></div></div></div>
+<div id="sessionFlow" class="session hidden"><div class="sec">PRE-TRADING CHECKLIST</div><div class="card check-stage"><div id="completedStack" class="stack"></div><div id="currentCheck" class="current-check" role="button" tabindex="0" onclick="knockItem()"><h2 id="checkText"></h2><div class="space-hint"><span class="desktop-hint">Premi <span class="keycap">SPAZIO</span></span><span class="mobile-hint">TOCCA LA SCHEDA</span> per abbattere la voce</div></div></div><div class="progress"><span id="checkProgress"></span></div><div id="sessionReady" class="hidden reveal"><div class="session-bottom"><div class="field"><label for="journalDate">JOURNAL DATE</label><input id="journalDate" class="input" type="date"><div id="tradeHint" class="helper" style="margin-top:8px"></div></div><button class="btn primary" onclick="askReentry()">START JOURNALING →</button></div></div></div>
+</section>
+<section id="journal" class="page hidden">
+<div class="top"><div><h1>Execution Protocol</h1><div id="journalMeta" class="sub"></div></div><button class="btn" onclick="newSession(document.querySelector('[data-nav=start]'))">New session</button></div>
+
+<div class="journal-ticker-wrap" id="journalTickerWrap">
+  <div class="reframe-ticker journal-ticker" aria-label="Probabilistic reframe messages">
+    <div class="ticker-track">
+      <div class="ticker-sequence">
+        <span class="ticker-item"><strong>ACCETTA IL RISCHIO.</strong></span>
+        <span class="ticker-dot">◆</span>
+        <span class="ticker-item"><strong>ESEGUI IL PROCESSO.</strong></span>
+        <span class="ticker-dot">◆</span>
+        <span class="ticker-item">IL RISULTATO APPARTIENE ALLA <strong>DISTRIBUZIONE.</strong></span>
+        <span class="ticker-dot">◆</span>
+        <span class="ticker-item"><strong>IL RESTO NON È TUA RESPONSABILITÀ.</strong></span>
+        <span class="ticker-dot">◆</span>
+      </div>
+      <div class="ticker-sequence" aria-hidden="true">
+        <span class="ticker-item"><strong>ACCETTA IL RISCHIO.</strong></span>
+        <span class="ticker-dot">◆</span>
+        <span class="ticker-item"><strong>ESEGUI IL PROCESSO.</strong></span>
+        <span class="ticker-dot">◆</span>
+        <span class="ticker-item">IL RISULTATO APPARTIENE ALLA <strong>DISTRIBUZIONE.</strong></span>
+        <span class="ticker-dot">◆</span>
+        <span class="ticker-item"><strong>IL RESTO NON È TUA RESPONSABILITÀ.</strong></span>
+        <span class="ticker-dot">◆</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="poster compact-poster journal-reframe-poster"><p class="lead"><strong>NON DEVI PREVEDERE IL RISULTATO.</strong></p></div>
+<div class="protocol-grid"><div class="sections">
+<div class="card"><div class="block-title">01 / STAGE IDENTIFICATION</div><div class="label">Pre-trade state <span class="helper">Select every emotion that is present</span></div><div id="emotionOptions" class="emotions" data-group="emotions"></div><div id="stateResult" class="state-result"><div><span>Detected state</span><small id="stateBreakdown" class="helper" style="display:block;margin-top:4px">No emotion selected</small></div><strong>NOT SET</strong></div></div>
+<div class="card"><div class="block-title">02 / TECHNICAL JOURNALING</div>
+<div class="field-block"><div class="label">Context / Bias</div><div class="options" data-group="bias"><button class="option" onclick="selectOne(this)">LONG</button><button class="option" onclick="selectOne(this)">SHORT</button><button class="option" onclick="selectOne(this)">UNDEFINED</button></div></div>
+<div class="field-block"><div class="label">Conviction</div><div class="options" data-group="conviction"><button class="option" onclick="selectOne(this)">Inside VWAP 1st dev.</button><button class="option" onclick="selectOne(this)">Outside VWAP 1st dev.</button></div></div>
+<div class="field-block"><div class="label">Location <span class="helper">Multiple selection</span></div><div class="options" data-group="location"><button class="option" onclick="selectMany(this)">IB High</button><button class="option" onclick="selectMany(this)">IB Low</button><button class="option" onclick="selectMany(this)">LVN</button><button class="option" onclick="selectMany(this)">HVN</button><button class="option" onclick="selectMany(this)">VPOC</button><button class="option" onclick="selectMany(this)">PD High</button><button class="option" onclick="selectMany(this)">PD Low</button><button class="option" onclick="selectMany(this)">High OI</button><button class="option" onclick="selectMany(this)">Round Number</button><button class="option" onclick="selectMany(this)">FVG</button><button class="option" onclick="selectMany(this)">Double Top</button><button class="option" onclick="selectMany(this)">Double Bottom</button><button class="option" onclick="toggleOther(this,'locationOtherWrap')">OTHER</button></div><div id="locationOtherWrap" class="hidden" style="margin-top:10px"><input id="locationOther" class="input" placeholder="Describe the location"></div></div>
+<div class="field-block"><div class="label">Trigger <span class="helper">Multiple selection</span></div><div class="options" data-group="trigger"><button class="option" onclick="selectMany(this)">Pinbar</button><button class="option" onclick="selectMany(this)">Engulfing</button><button class="option" onclick="selectMany(this)">3-Bar Reversal</button><button class="option" onclick="selectMany(this)">UNDEFINED</button><button class="option" onclick="toggleOther(this,'triggerOtherWrap')">OTHER</button></div><div id="triggerOtherWrap" class="hidden" style="margin-top:10px"><input id="triggerOther" class="input" placeholder="Describe the trigger"></div></div>
+<div class="split"><div class="field-block"><div class="label">Volume &gt; 20MA</div><div class="options" data-group="volume"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div><div class="field-block"><div class="label">Risk / Reward</div><div class="rr"><input id="rrRisk" class="input" type="number" min="0" max="9" step="1" value="1"><span class="colon">:</span><input id="rrReward" class="input" type="number" min="0" max="9" step="1" value="1"><button id="rrOtherButton" class="option" onclick="toggleRROther()">OTHER</button></div><div id="rrOtherWrap" class="hidden" style="margin-top:10px"><input id="rrOther" class="input" placeholder="Describe the adopted criterion"></div></div></div></div>
+<div class="card"><div class="block-title">03 / PROCESS JOURNALING</div>
+<div class="process"><h3>DIRECTIONAL ALIGNMENT</h3><div class="prow"><div class="plabel">The trade was taken</div><div class="pactions" data-group="trend"><button class="option yes" onclick="selectOne(this)">TREND</button><button class="option no" onclick="selectOne(this)">COUNTER TREND</button></div></div></div>
+<div class="process"><h3>STOP LOSS</h3><div class="prow"><div class="plabel">Moved away <span class="helper">(more room / gambling)</span></div><div class="pactions" data-group="slAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">Moved closer <span class="helper">(tighten / loss of confidence)</span></div><div class="pactions" data-group="slCloser"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
+<div class="process"><h3>BREAKEVEN</h3><div class="prow"><div class="plabel">Moved to breakeven <span class="helper">(fear of losing)</span></div><div class="pactions" data-group="breakeven"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
+<div class="process"><h3>TAKE PROFIT</h3><div class="prow"><div class="plabel">Taken early <span class="helper">(haste and fear)</span></div><div class="pactions" data-group="tpEarly"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">Moved farther away <span class="helper">(let it run / overconfidence / hope)</span></div><div class="pactions" data-group="tpAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
+<div class="process"><h3>OUTCOME OF THE PROCESS</h3><div class="prow"><div class="plabel">I executed my plan without sabotaging it</div><div class="pactions" data-group="plan"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div><div id="planNoteWrap" class="hidden" style="margin-top:12px"><textarea id="planNote" class="input textarea" placeholder="What did you sabotage? What happened?"></textarea></div></div></div>
+<div class="card"><div class="block-title">04 / POST-TRADE RESPONSE</div><div class="label">What emerged after the trade? <span class="helper">Multiple selection</span></div><div id="responseOptions" class="options" data-group="response"></div><div id="responseOtherWrap" class="hidden" style="margin-top:10px"><input id="responseOther" class="input" placeholder="Describe the other response"></div></div>
+<div class="card"><div class="block-title">05 / TRADE OUTCOME</div><div class="field-block"><div class="label">Outcome $</div><div class="outcomes" data-group="tradeOutcome"><button class="option no" onclick="selectOne(this)">SL</button><button class="option no" onclick="selectOne(this)">EARLY STOP</button><button class="option" onclick="selectOne(this)">BE</button><button class="option tempted" onclick="selectOne(this)">EARLY TP</button><button class="option yes" onclick="selectOne(this)">TP</button></div></div>
+
+<div class="field-block" style="margin-top:24px"><div class="label">Intuizioni di giornata</div><textarea id="insights" class="input textarea" placeholder="Cosa hai osservato oggi su di te, sul mercato o sul processo?"></textarea></div><div class="field-block"><div class="label">Nota libera</div><textarea id="freeNote" class="input textarea" placeholder="Se una perdita ti fa sentire stupido o come se non appartenessi a questo mondo, scrivilo qui. Cosa è realmente successo dentro di te?"></textarea></div></div>
+<div class="card final-analysis-card">
+  <div class="block-title">06 / EXECUTION ANALYSIS</div>
+  <div class="summary"><div class="tile"><span>SETUP QUALITY</span><strong id="setupSummary">0 / 40</strong></div><div class="tile"><span>PROCESS QUALITY</span><strong id="processSummary">60 / 60</strong></div><div class="tile total"><span>EXECUTION SCORE</span><strong id="executionSummary">60 / 100</strong></div></div>
+  <div class="complete"><button class="btn primary" onclick="completeProtocol()">COMPLETE PROTOCOL</button></div>
+</div>
+</div><aside class="sticky"><div class="score-card"><div class="score-row"><div class="score-name">SETUP QUALITY</div><div id="setupScore" class="score-value">0 / 40</div><div class="bar"><span id="setupBar"></span></div></div><div class="score-row"><div class="score-name">PROCESS QUALITY</div><div id="processScore" class="score-value">60 / 60</div><div class="bar"><span id="processBar"></span></div></div><div class="score-row total"><div class="score-name">EXECUTION SCORE</div><div id="executionScore" class="score-value">60</div><div class="bar"><span id="executionBar"></span></div></div></div></aside></div>
+</section>
+<section id="records" class="page hidden"><div class="top"><div><h1>Protocol Records</h1><div class="sub">Saved locally in this browser.</div></div><button class="btn primary" onclick="newSession(document.querySelector('[data-nav=start]'))">New protocol</button></div><div id="recordsList" class="records"></div></section>
+</main></div>
+<div id="reentryModal" class="modal hidden"><div class="modal-card"><div class="modal-title">È UNA RE-ENTRY PRIMA DI 20’?</div><div class="modal-actions"><button class="btn primary" onclick="setReentry('YES')">YES</button><button class="btn" onclick="setReentry('NO')">NO</button></div></div></div>
+<div id="reportModal" class="modal hidden"><div class="modal-card"><div class="block-title">COMPLETED PROTOCOL</div><div class="summary"><div class="tile"><span>SETUP QUALITY</span><strong id="modalSetup"></strong></div><div class="tile"><span>PROCESS QUALITY</span><strong id="modalProcess"></strong></div><div class="tile total"><span>EXECUTION SCORE</span><strong id="modalExecution"></strong></div></div><textarea id="reportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copyReport()">COPY FOR AI</button><button class="btn success" onclick="emailReport()">OPEN EMAIL DRAFT</button><button class="btn" onclick="closeReport()">CLOSE</button></div></div></div>
+<div id="recordModal" class="modal hidden"><div class="modal-card"><div class="block-title">SAVED PROTOCOL</div><textarea id="savedReportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copySavedReport()">COPY FOR AI</button><button class="btn" onclick="closeRecord()">CLOSE</button></div></div></div><div id="toast" class="toast"></div>
+<script>
+document.addEventListener('keydown', function(event){
+  const activeTag = document.activeElement?.tagName;
+  const isTyping = ['INPUT','TEXTAREA','SELECT'].includes(activeTag);
+  const gate = document.getElementById('gate');
+  const flow = document.getElementById('sessionFlow');
+  const ready = document.getElementById('sessionReady');
+  const gateVisible = gate && !gate.classList.contains('hidden');
+  const flowVisible = flow && !flow.classList.contains('hidden');
+  const checklistFinished = ready && !ready.classList.contains('hidden');
+
+  if ((event.key === 'Enter' || event.keyCode === 13) && gateVisible && !isTyping) {
+    event.preventDefault();
+    unlockSession();
+    return;
+  }
+
+  if ((event.key === ' ' || event.code === 'Space') && flowVisible && !checklistFinished && !isTyping) {
+    event.preventDefault();
+    knockItem();
+  }
+}, true);
+
+window.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('casualeButton')?.focus();
+});
+
+const KEY='executionProtocolRecordsV1';
+const checklistItems=['Yesterday journal and note','ForexFactory','Watchlist','Higher timeframe','Levels','Monitor heart rate and practice diaphragmatic breathing','ATR'];
+const emotions=[{label:'Mente libera',state:'GREEN'},{label:'Curiosità',state:'GREEN'},{label:'Tensione',state:'YELLOW'},{label:'Condizionamento dai risultati precedenti',state:'YELLOW'},{label:'Desiderio di recuperare',state:'YELLOW'},{label:'FOMO',state:'YELLOW'},{label:'Disperazione',state:'RED'},{label:'Urgenza',state:'RED'},{label:'Bisogno di sentirmi meglio',state:'RED'}];
+const responses=["Sento l'urgenza di rientrare",'Dubbio sulla propria strategia','Rimpianto: avrei dovuto uscire prima / avrei dovuto aspettare',"Tentazione di aumentare subito l'esposizione",'OTHER'];
+let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,planAuto=false;
+const today=new Date().toISOString().slice(0,10);document.getElementById('journalDate').value=today;document.getElementById('journalDate').addEventListener('change',updateTradeHint);
+
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
+function showPage(id,b){closeMobileMenu();document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');if(id==='records')renderRecords();if(id==='start')setTimeout(()=>document.getElementById('casualeButton')?.focus(),0);scrollTo({top:0,behavior:'smooth'})}
+function toggleMobileMenu(){
+  const sidebar=document.getElementById('mainSidebar');
+  const overlay=document.getElementById('mobileMenuOverlay');
+  const button=document.getElementById('mobileMenuButton');
+  const open=sidebar.classList.toggle('mobile-open');
+  overlay.classList.toggle('hidden',!open);
+  button.textContent=open?'×':'☰';
+  button.setAttribute('aria-label',open?'Chiudi navigazione':'Apri navigazione');
+}
+function closeMobileMenu(){
+  const sidebar=document.getElementById('mainSidebar');
+  const overlay=document.getElementById('mobileMenuOverlay');
+  const button=document.getElementById('mobileMenuButton');
+  if(sidebar) sidebar.classList.remove('mobile-open');
+  if(overlay) overlay.classList.add('hidden');
+  if(button){button.textContent='☰';button.setAttribute('aria-label','Apri navigazione');}
+}
+function newSession(b){document.getElementById('gate').classList.remove('hidden');document.getElementById('sessionFlow').classList.add('hidden');reentry=null;showPage('start',b)}
+function unlockSession(){document.getElementById('gate').classList.add('hidden');document.getElementById('sessionFlow').classList.remove('hidden');resetChecklist()}
+function resetChecklist(){checkIndex=0;completed=[];document.getElementById('completedStack').innerHTML='';document.getElementById('sessionReady').classList.add('hidden');renderCheck()}
+function renderCheck(){const cur=document.getElementById('currentCheck');cur.classList.remove('knock');if(checkIndex>=checklistItems.length){cur.classList.add('hidden');document.getElementById('checkProgress').style.width='100%';document.getElementById('sessionReady').classList.remove('hidden');updateTradeHint();return}cur.classList.remove('hidden');document.getElementById('checkText').textContent=checklistItems[checkIndex];document.getElementById('checkProgress').style.width=`${checkIndex/checklistItems.length*100}%`}
+let knocking=false;function knockItem(){if(checkIndex>=checklistItems.length||knocking)return;knocking=true;const cur=document.getElementById('currentCheck');cur.classList.add('knock');setTimeout(()=>{const item=checklistItems[checkIndex];completed.push(item);const div=document.createElement('div');div.className='stack-item';div.textContent=`✓ ${item}`;document.getElementById('completedStack').appendChild(div);checkIndex++;knocking=false;renderCheck()},390)}
+function updateTradeHint(){const d=document.getElementById('journalDate').value||today;tradeNumber=records.filter(x=>x.date===d).length+1;document.getElementById('tradeHint').textContent=`This will be Trade ${tradeNumber} for ${d}.`}
+function askReentry(){currentDate=document.getElementById('journalDate').value||today;updateTradeHint();document.getElementById('reentryModal').classList.remove('hidden')}
+function setReentry(v){reentry=v;document.getElementById('reentryModal').classList.add('hidden');initProtocol();showPage('journal',document.querySelector('[data-nav=journal]'))}
+function initProtocol(){clearProtocol();renderEmotions();renderResponses();tradeNumber=records.filter(x=>x.date===currentDate).length+1;document.getElementById('journalMeta').textContent=`${currentDate} · Trade ${tradeNumber} · Re-entry <20': ${reentry}`;calcScores()}
+function clearProtocol(){planAuto=false;document.querySelectorAll('#journal .option.selected').forEach(x=>x.classList.remove('selected'));['locationOther','triggerOther','rrOther','planNote','responseOther','insights','freeNote'].forEach(id=>{const x=document.getElementById(id);if(x)x.value=''});['locationOtherWrap','triggerOtherWrap','rrOtherWrap','planNoteWrap','responseOtherWrap'].forEach(id=>document.getElementById(id).classList.add('hidden'));document.getElementById('rrOtherButton').classList.remove('selected');document.getElementById('rrRisk').value='1';document.getElementById('rrReward').value='1'}
+function renderEmotions(){document.getElementById('emotionOptions').innerHTML=shuffle(emotions).map(x=>`<button class="option emotion" data-state="${x.state}" onclick="selectMany(this)">${x.label}</button>`).join('');updateState()}
+function renderResponses(){document.getElementById('responseOptions').innerHTML=shuffle(responses).map(x=>`<button class="option" onclick="${x==='OTHER'?"toggleResponseOther(this)":"selectMany(this)"}">${x}</button>`).join('')}
+function selectProcess(b){const was=b.classList.contains('selected');[...b.parentElement.children].forEach(x=>x.classList.remove('selected'));if(!was)b.classList.add('selected');autoPlan();calcScores()}
+function selectOne(b){const g=b.parentElement.dataset.group;if(g==='plan'&&b.textContent.trim()==='YES'&&hasDeviation()){const no=b.parentElement.querySelector('.no');[...b.parentElement.children].forEach(x=>x.classList.remove('selected'));no.classList.add('selected');document.getElementById('planNoteWrap').classList.remove('hidden');calcScores();return}[...b.parentElement.children].forEach(x=>x.classList.remove('selected'));b.classList.add('selected');if(['slAway','slCloser','breakeven','tpEarly','tpAway','trend'].includes(g))autoPlan();if(g==='plan'){planAuto=false;document.getElementById('planNoteWrap').classList.toggle('hidden',b.textContent.trim()!=='NO')}calcScores()}
+function selectMany(b){b.classList.toggle('selected');if(b.closest('[data-group="emotions"]'))updateState();calcScores()}
+function toggleOther(b,id){b.classList.toggle('selected');document.getElementById(id).classList.toggle('hidden',!b.classList.contains('selected'));calcScores()}
+function toggleRROther(){const b=document.getElementById('rrOtherButton');b.classList.toggle('selected');document.getElementById('rrOtherWrap').classList.toggle('hidden',!b.classList.contains('selected'))}
+function toggleResponseOther(b){b.classList.toggle('selected');document.getElementById('responseOtherWrap').classList.toggle('hidden',!b.classList.contains('selected'))}
+function selected(g){const c=document.querySelector(`[data-group="${g}"]`);return c?[...c.querySelectorAll('.selected')].map(x=>x.textContent.trim()):[]}function single(g){return selected(g)[0]||null}
+function hasDeviation(){return single('trend')==='COUNTER TREND'||['slAway','slCloser','breakeven','tpEarly','tpAway'].some(g=>single(g)==='YES')}
+function autoPlan(){const dev=hasDeviation(),p=document.querySelector('[data-group="plan"]');if(dev){[...p.children].forEach(x=>x.classList.remove('selected'));p.querySelector('.no').classList.add('selected');document.getElementById('planNoteWrap').classList.remove('hidden');planAuto=true}else if(planAuto){[...p.children].forEach(x=>x.classList.remove('selected'));document.getElementById('planNoteWrap').classList.add('hidden');document.getElementById('planNote').value='';planAuto=false}}
+function updateState(){const s=[...document.querySelectorAll('#emotionOptions .selected')],r=document.getElementById('stateResult'),b=document.getElementById('stateBreakdown');r.className='state-result';if(!s.length){r.querySelector('strong').textContent='NOT SET';b.textContent='No emotion selected';return}const a=s.map(x=>x.dataset.state),counts={GREEN:a.filter(x=>x==='GREEN').length,YELLOW:a.filter(x=>x==='YELLOW').length,RED:a.filter(x=>x==='RED').length},d=counts.RED?'RED':counts.YELLOW?'YELLOW':'GREEN',parts=[];if(counts.GREEN)parts.push(`${counts.GREEN} green`);if(counts.YELLOW)parts.push(`${counts.YELLOW} yellow`);if(counts.RED)parts.push(`${counts.RED} red`);r.classList.add(d.toLowerCase());r.querySelector('strong').textContent=d;b.textContent=`Dominant severity · ${parts.join(' · ')}`}
+function setupScore(){let s=0,b=single('bias'),c=single('conviction'),l=selected('location'),t=selected('trigger'),v=single('volume');if(b&&b!=='UNDEFINED')s+=8;if(c==='Outside VWAP 1st dev.')s+=8;else if(c==='Inside VWAP 1st dev.')s+=4;if(l.length&&l.every(x=>x!=='OTHER'))s+=8;if(t.length&&t.every(x=>!['UNDEFINED','OTHER'].includes(x)))s+=8;if(v==='YES')s+=8;return s}
+function processScore(){let s=60;if(reentry==='YES')s-=15;if(single('trend')==='COUNTER TREND')s-=15;if(single('slAway')==='YES')s-=15;if(single('slCloser')==='YES')s-=10;if(single('breakeven')==='YES')s-=10;if(single('tpEarly')==='YES')s-=10;if(single('tpAway')==='YES')s-=10;if(single('plan')==='NO')s-=20;return Math.max(0,s)}
+function calcScores(){const a=setupScore(),p=processScore(),e=a+p;document.getElementById('setupScore').textContent=`${a} / 40`;document.getElementById('processScore').textContent=`${p} / 60`;document.getElementById('executionScore').textContent=e;document.getElementById('setupBar').style.width=`${a/40*100}%`;document.getElementById('processBar').style.width=`${p/60*100}%`;document.getElementById('executionBar').style.width=`${e}%`;document.getElementById('setupSummary').textContent=`${a} / 40`;document.getElementById('processSummary').textContent=`${p} / 60`;document.getElementById('executionSummary').textContent=`${e} / 100`;return{setup:a,process:p,execution:e}}
+function state(){const s=[...document.querySelectorAll('#emotionOptions .selected')];if(!s.length)return'NOT SET';const a=s.map(x=>x.dataset.state);return a.includes('RED')?'RED':a.includes('YELLOW')?'YELLOW':'GREEN'}
+function collect(){const sc=calcScores();return{id:Date.now(),date:currentDate,tradeNumber,reentry,bias:single('bias'),conviction:single('conviction'),location:selected('location'),locationOther:document.getElementById('locationOther').value.trim(),trigger:selected('trigger'),triggerOther:document.getElementById('triggerOther').value.trim(),volume:single('volume'),rrRisk:document.getElementById('rrRisk').value,rrReward:document.getElementById('rrReward').value,rrOther:document.getElementById('rrOther').value.trim(),emotions:selected('emotions'),detectedState:state(),trend:single('trend'),slAway:single('slAway'),slCloser:single('slCloser'),breakeven:single('breakeven'),tpEarly:single('tpEarly'),tpAway:single('tpAway'),plan:single('plan'),planNote:document.getElementById('planNote').value.trim(),response:selected('response'),responseOther:document.getElementById('responseOther').value.trim(),tradeOutcome:single('tradeOutcome'),insights:document.getElementById('insights').value.trim(),freeNote:document.getElementById('freeNote').value.trim(),setupScore:sc.setup,processScore:sc.process,executionScore:sc.execution}}
+function behavior(v,yes,tempted){return v==='YES'?yes:v==='TEMPTED TO'?tempted:null}
+function report(r){const x=[];x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — TRADE ${r.tradeNumber}`,'','TECHNICAL JOURNALING',`The directional bias was ${r.bias||'not selected'}.`);if(r.conviction)x.push(`Conviction was classified as ${r.conviction}.`);const l=(r.location||[]).filter(i=>i!=='OTHER');if(l.length)x.push(`The trade location was ${l.join(', ')}.`);if(r.location.includes('OTHER')&&r.locationOther)x.push(`Additional location context: ${r.locationOther}.`);const t=(r.trigger||[]).filter(i=>i!=='OTHER');if(t.length)x.push(`The entry trigger was ${t.join(', ')}.`);if(r.trigger.includes('OTHER')&&r.triggerOther)x.push(`Additional trigger context: ${r.triggerOther}.`);if(r.volume==='YES')x.push('Volume was above its 20-period moving average.');if(r.volume==='NO')x.push('Volume was not above its 20-period moving average.');x.push(r.rrOther?`The risk criterion used was: ${r.rrOther}.`:`The planned risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`,'','PRE-TRADE STATE',r.emotions.length?`Selected states: ${r.emotions.join(', ')}.`:'No pre-trade emotion was selected.',`Overall detected state: ${r.detectedState}.`,'','PROCESS JOURNALING',r.reentry==='YES'?"This trade was an impulsive re-entry within 20 minutes.":"This trade was not an impulsive re-entry within 20 minutes.");if(r.trend==='TREND')x.push('The trade was taken in trend.');if(r.trend==='COUNTER TREND')x.push('The trade was taken counter trend.');[behavior(r.slAway,'The stop loss was moved farther away from its original level.','I felt tempted to move the stop loss farther away, but did not execute it.'),behavior(r.slCloser,'The stop loss was moved closer to price.','I felt tempted to tighten the stop loss, but did not execute it.'),behavior(r.breakeven,'The stop loss was moved to breakeven.','I felt tempted to move the stop loss to breakeven, but did not execute it.'),behavior(r.tpEarly,'The take profit was taken early.','I felt tempted to take profit early, but did not execute it.'),behavior(r.tpAway,'The take profit was moved farther away.','I felt tempted to move the take profit farther away, but did not execute it.')].filter(Boolean).forEach(s=>x.push(s));if(r.plan==='YES')x.push('The original trading plan was executed without sabotage.');if(r.plan==='NO')x.push('The original trading plan was not fully respected.');if(r.planNote)x.push(`Process comment: ${r.planNote}`);x.push('','POST-TRADE RESPONSE');const rr=r.response.filter(i=>i!=='OTHER');if(rr.length)rr.forEach(i=>x.push(`- ${i}`));if(r.response.includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);if(!rr.length&&!r.responseOther)x.push('No post-trade response was selected.');x.push('','TRADE OUTCOME',`The financial outcome category was ${r.tradeOutcome||'not selected'}.`,'','EXECUTION ANALYSIS',`Setup Quality: ${r.setupScore} / 40.`,`Process Quality: ${r.processScore} / 60.`,`Execution Score: ${r.executionScore} / 100.`,'','INSIGHTS OF THE DAY',r.insights||'—','','FREE NOTES',r.freeNote||'—');return x.join('\n')}
+function completeProtocol(){const r=collect();r.report=report(r);records.unshift(r);persist();document.getElementById('modalSetup').textContent=`${r.setupScore} / 40`;document.getElementById('modalProcess').textContent=`${r.processScore} / 60`;document.getElementById('modalExecution').textContent=`${r.executionScore} / 100`;document.getElementById('reportText').value=r.report;document.getElementById('reportModal').classList.remove('hidden');renderRecords()}
+function copyText(t){if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(t);const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();return Promise.resolve()}
+function copyReport(){copyText(document.getElementById('reportText').value).then(()=>toast('Protocol copied for AI'))}function emailReport(){const r=records[0],s=encodeURIComponent(`Execution Protocol — ${r?.date||''} — Trade ${r?.tradeNumber||''}`),b=encodeURIComponent(document.getElementById('reportText').value);location.href=`mailto:?subject=${s}&body=${b}`}function closeReport(){document.getElementById('reportModal').classList.add('hidden');showPage('records',document.querySelector('[data-nav=records]'))}
+function renderRecords(){const c=document.getElementById('recordsList');if(!records.length){c.innerHTML='<div class="card empty">No protocol has been completed yet.</div>';return}c.innerHTML=records.map(r=>`<button class="record" onclick="openRecord(${r.id})"><div style="text-align:left"><h3>${r.date} · Trade ${r.tradeNumber}</h3><p>${r.bias||'No bias'} · ${r.tradeOutcome||'No outcome'} · Setup ${r.setupScore}/40 · Process ${r.processScore}/60</p></div><div class="record-score">${r.executionScore}</div></button>`).join('')}
+function openRecord(id){const r=records.find(x=>x.id===id);if(!r)return;document.getElementById('savedReportText').value=r.report;document.getElementById('recordModal').classList.remove('hidden')}function copySavedReport(){copyText(document.getElementById('savedReportText').value).then(()=>toast('Saved protocol copied'))}function closeRecord(){document.getElementById('recordModal').classList.add('hidden')}function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+updateTradeHint();renderRecords();
+</script>
+</body>
+</html>
