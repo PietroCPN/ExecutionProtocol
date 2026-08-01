@@ -229,6 +229,87 @@
   .summary{grid-template-columns:1fr}
 }
 
+
+@media(min-width:721px){
+  .sticky{
+    top:78px!important;
+    z-index:12;
+  }
+}
+
+.probability-reminder{
+  position:relative;
+  overflow:hidden;
+  padding:26px 28px;
+  border:1px solid rgba(255,100,112,.58);
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 50% -40%,rgba(255,95,108,.22),transparent 54%),
+    linear-gradient(180deg,rgba(58,18,24,.94),rgba(25,12,16,.97));
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.25),
+    inset 0 0 32px rgba(255,90,104,.06);
+  text-align:center;
+}
+.probability-reminder::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.035) 50%,transparent 80%);
+}
+.probability-main{
+  position:relative;
+  color:#ff9aa3;
+  font-size:clamp(22px,3vw,38px);
+  line-height:1.05;
+  font-weight:950;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+  text-shadow:0 0 28px rgba(255,84,100,.18);
+}
+.probability-divider{
+  position:relative;
+  width:82px;
+  height:2px;
+  margin:20px auto;
+  border-radius:99px;
+  background:rgba(255,143,152,.65);
+}
+.probability-confidence{
+  position:relative;
+  max-width:820px;
+  margin:0 auto;
+  color:#f7d9dc;
+  font-size:clamp(15px,1.7vw,19px);
+  line-height:1.5;
+  font-weight:650;
+}
+.probability-confidence span{
+  display:block;
+  margin-bottom:7px;
+  color:#ff8f98;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+@media(max-width:720px){
+  .probability-reminder{
+    padding:22px 17px;
+    border-radius:14px;
+  }
+  .probability-main{
+    font-size:25px;
+    line-height:1.08;
+    letter-spacing:.15px;
+  }
+  .probability-divider{margin:17px auto}
+  .probability-confidence{
+    font-size:15px;
+    line-height:1.48;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -289,6 +370,16 @@
 <div class="card"><div class="block-title">05 / TRADE OUTCOME</div><div class="field-block"><div class="label">Outcome $</div><div class="outcomes" data-group="tradeOutcome"><button class="option no" onclick="selectOne(this)">SL</button><button class="option no" onclick="selectOne(this)">EARLY STOP</button><button class="option" onclick="selectOne(this)">BE</button><button class="option tempted" onclick="selectOne(this)">EARLY TP</button><button class="option yes" onclick="selectOne(this)">TP</button></div></div>
 
 <div class="field-block" style="margin-top:24px"><div class="label">Intuizioni di giornata</div><textarea id="insights" class="input textarea" placeholder="Cosa hai osservato oggi su di te, sul mercato o sul processo?"></textarea></div><div class="field-block"><div class="label">Nota libera</div><textarea id="freeNote" class="input textarea" placeholder="Se una perdita ti fa sentire stupido o come se non appartenessi a questo mondo, scrivilo qui. Cosa è realmente successo dentro di te?"></textarea></div></div>
+
+<div class="probability-reminder" role="note" aria-label="Probability and confidence reminder">
+  <div class="probability-main">THIS IS A GAME OF PROBABILITY NOT CERTAINTY.</div>
+  <div class="probability-divider"></div>
+  <div class="probability-confidence">
+    <span>LA FIDUCIA VERA</span>
+    “Sto attraversando un drawdown, eppure continuo a eseguire il mio piano.”
+  </div>
+</div>
+
 <div class="card final-analysis-card">
   <div class="block-title">06 / EXECUTION ANALYSIS</div>
   <div class="summary"><div class="tile"><span>SETUP QUALITY</span><strong id="setupSummary">0 / 40</strong></div><div class="tile"><span>PROCESS QUALITY</span><strong id="processSummary">60 / 60</strong></div><div class="tile total"><span>EXECUTION SCORE</span><strong id="executionSummary">60 / 100</strong></div></div>
