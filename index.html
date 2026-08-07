@@ -768,6 +768,102 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   .breathing-orb{transition:none!important}
 }
 
+
+.pulse-frame{
+  animation:reframeImpulseStrong 2.35s cubic-bezier(.4,0,.2,1) infinite!important;
+}
+.distribution-strip.pulse-frame{
+  animation-delay:1.15s!important;
+}
+@keyframes reframeImpulseStrong{
+  0%,58%,100%{
+    border-color:rgba(158,197,255,.26);
+    background:linear-gradient(180deg,rgba(12,18,27,.96),rgba(6,10,16,.99));
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.22),
+      inset 0 0 18px rgba(158,197,255,.015);
+    filter:brightness(.82);
+    opacity:.78;
+  }
+  64%{
+    border-color:rgba(225,240,255,1);
+    background:linear-gradient(180deg,rgba(47,72,105,.98),rgba(12,24,41,1));
+    box-shadow:
+      0 0 12px rgba(194,224,255,.8),
+      0 0 34px rgba(158,197,255,.55),
+      0 0 66px rgba(158,197,255,.28),
+      inset 0 0 34px rgba(225,240,255,.2);
+    filter:brightness(1.65);
+    opacity:1;
+  }
+  70%{
+    border-color:rgba(158,197,255,.32);
+    background:linear-gradient(180deg,rgba(14,20,30,.97),rgba(7,11,17,.99));
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.22),
+      inset 0 0 18px rgba(158,197,255,.02);
+    filter:brightness(.9);
+    opacity:.82;
+  }
+  76%{
+    border-color:rgba(240,248,255,1);
+    background:linear-gradient(180deg,rgba(57,84,120,.99),rgba(15,29,48,1));
+    box-shadow:
+      0 0 16px rgba(216,236,255,.95),
+      0 0 42px rgba(158,197,255,.7),
+      0 0 82px rgba(158,197,255,.34),
+      inset 0 0 40px rgba(225,240,255,.26);
+    filter:brightness(1.9);
+    opacity:1;
+  }
+  84%{
+    border-color:rgba(158,197,255,.34);
+    background:linear-gradient(180deg,rgba(13,19,28,.97),rgba(7,11,17,.99));
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.22),
+      inset 0 0 18px rgba(158,197,255,.02);
+    filter:brightness(.92);
+    opacity:.84;
+  }
+}
+.pulse-frame strong{
+  animation:reframeTextFlash 2.35s cubic-bezier(.4,0,.2,1) infinite!important;
+}
+.distribution-strip.pulse-frame strong{
+  animation-delay:1.15s!important;
+}
+@keyframes reframeTextFlash{
+  0%,58%,100%{
+    color:#aeb9c7;
+    text-shadow:none;
+  }
+  64%{
+    color:#ffffff;
+    text-shadow:
+      0 0 10px rgba(255,255,255,.85),
+      0 0 24px rgba(158,197,255,.72),
+      0 0 48px rgba(158,197,255,.4);
+  }
+  70%{
+    color:#bac6d5;
+    text-shadow:none;
+  }
+  76%{
+    color:#ffffff;
+    text-shadow:
+      0 0 12px rgba(255,255,255,1),
+      0 0 28px rgba(183,218,255,.9),
+      0 0 58px rgba(158,197,255,.5);
+  }
+  84%{
+    color:#c0cbd8;
+    text-shadow:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .pulse-frame,.pulse-frame strong{animation:none!important}
+}
+
 </style>
 </head>
 <body>
