@@ -413,6 +413,100 @@
 
 
 body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
+
+.ticker-major{
+  padding-left:26px!important;
+  padding-right:26px!important;
+}
+.ticker-major strong{
+  font-size:15px!important;
+  font-weight:950!important;
+  letter-spacing:1.05px!important;
+  text-shadow:0 0 18px rgba(158,197,255,.24);
+}
+.journal-ticker{
+  border-color:rgba(158,197,255,.5)!important;
+  box-shadow:
+    0 10px 32px rgba(0,0,0,.28),
+    0 0 22px rgba(106,158,232,.08),
+    inset 0 0 24px rgba(0,0,0,.38)!important;
+}
+.journal-ticker .ticker-dot{
+  opacity:.72;
+}
+.distribution-strip{
+  position:relative;
+  overflow:hidden;
+  margin:-6px 0 18px;
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(158,197,255,.24);
+  border-radius:10px;
+  background:
+    linear-gradient(180deg,rgba(16,22,31,.92),rgba(8,12,18,.96));
+  box-shadow:
+    inset 0 0 26px rgba(158,197,255,.04),
+    0 10px 28px rgba(0,0,0,.16);
+}
+.distribution-glow{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  gap:34px;
+  padding:11px 18px;
+  white-space:nowrap;
+}
+.distribution-glow span{
+  color:#dce9fb;
+  font-size:12px;
+  font-weight:950;
+  letter-spacing:1.15px;
+  opacity:.28;
+  text-shadow:0 0 0 rgba(158,197,255,0);
+  animation:distributionPulse 3.2s ease-in-out infinite;
+}
+.distribution-glow span:nth-child(2){animation-delay:1.05s}
+.distribution-glow span:nth-child(3){animation-delay:2.1s}
+@keyframes distributionPulse{
+  0%,100%{
+    opacity:.22;
+    filter:brightness(.82);
+    text-shadow:0 0 0 rgba(158,197,255,0);
+  }
+  38%,62%{
+    opacity:1;
+    filter:brightness(1.18);
+    text-shadow:
+      0 0 12px rgba(158,197,255,.32),
+      0 0 28px rgba(158,197,255,.14);
+  }
+}
+@media(max-width:720px){
+  .ticker-major{padding-left:18px!important;padding-right:18px!important}
+  .ticker-major strong{
+    font-size:12px!important;
+    letter-spacing:.65px!important;
+  }
+  .distribution-strip{
+    margin:-4px 0 14px;
+    min-height:40px;
+  }
+  .distribution-glow{
+    justify-content:flex-start;
+    gap:28px;
+    padding:10px 14px;
+    overflow:hidden;
+  }
+  .distribution-glow span{
+    flex:0 0 auto;
+    font-size:10px;
+    letter-spacing:.7px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -429,32 +523,30 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
 <div class="top"><div><h1>Execution Protocol</h1><div id="journalMeta" class="sub"></div></div><button class="btn" onclick="newSession(document.querySelector('[data-nav=start]'))">NEW SESSION</button></div>
 
 <div class="journal-ticker-wrap" id="journalTickerWrap">
-  <div class="reframe-ticker journal-ticker" aria-label="Probabilistic reframe messages">
+  <div class="reframe-ticker journal-ticker" aria-label="Execution reminders">
     <div class="ticker-track">
       <div class="ticker-sequence">
-        <span class="ticker-item"><strong>ACCEPT THE RISK.</strong></span>
+        <span class="ticker-item ticker-major"><strong>ACCEPT THE RISK.</strong></span>
         <span class="ticker-dot">◆</span>
-        <span class="ticker-item"><strong>EXECUTE THE PROCESS.</strong></span>
-        <span class="ticker-dot">◆</span>
-        <span class="ticker-item">THE OUTCOME BELONGS TO THE <strong>DISTRIBUTION.</strong></span>
-        <span class="ticker-dot">◆</span>
-        <span class="ticker-item"><strong>THE REST IS NOT YOUR RESPONSIBILITY.</strong></span>
+        <span class="ticker-item ticker-major"><strong>EXECUTE THE PROCESS.</strong></span>
         <span class="ticker-dot">◆</span>
       </div>
       <div class="ticker-sequence" aria-hidden="true">
-        <span class="ticker-item"><strong>ACCEPT THE RISK.</strong></span>
+        <span class="ticker-item ticker-major"><strong>ACCEPT THE RISK.</strong></span>
         <span class="ticker-dot">◆</span>
-        <span class="ticker-item"><strong>EXECUTE THE PROCESS.</strong></span>
-        <span class="ticker-dot">◆</span>
-        <span class="ticker-item">THE OUTCOME BELONGS TO THE <strong>DISTRIBUTION.</strong></span>
-        <span class="ticker-dot">◆</span>
-        <span class="ticker-item"><strong>THE REST IS NOT YOUR RESPONSIBILITY.</strong></span>
+        <span class="ticker-item ticker-major"><strong>EXECUTE THE PROCESS.</strong></span>
         <span class="ticker-dot">◆</span>
       </div>
     </div>
   </div>
 </div>
-<div class="poster compact-poster journal-reframe-poster"><p class="lead"><strong>YOU DO NOT HAVE TO PREDICT THE OUTCOME.</strong></p></div>
+<div class="poster compact-poster journal-reframe-poster"><p class="lead"><strong>YOU DO NOT HAVE TO PREDICT THE OUTCOME.</strong></p></div><div class="distribution-strip" aria-label="Distribution reminder">
+  <div class="distribution-glow">
+    <span>THE OUTCOME BELONGS TO THE DISTRIBUTION.</span>
+    <span aria-hidden="true">THE OUTCOME BELONGS TO THE DISTRIBUTION.</span>
+    <span aria-hidden="true">THE OUTCOME BELONGS TO THE DISTRIBUTION.</span>
+  </div>
+</div>
 <div class="protocol-grid"><div class="sections">
 <div class="card"><div class="block-title">01 / STAGE IDENTIFICATION</div><div class="label">Pre-trade state <span class="helper">Select every emotion that is present</span></div><div id="emotionOptions" class="emotions" data-group="emotions"></div><div id="stateResult" class="state-result"><div><span>Detected state</span><small id="stateBreakdown" class="helper" style="display:block;margin-top:4px">No emotion selected</small></div><strong>NOT SET</strong></div></div>
 <div class="card"><div class="block-title">02 / TECHNICAL JOURNALING</div>
@@ -558,7 +650,7 @@ window.addEventListener('DOMContentLoaded', function(){
 });
 
 const KEY='executionProtocolRecordsV1';
-const checklistItems=['YESTERDAY JOURNAL AND NOTE','FOREXFACTORY','WATCHLIST','HIGHER TIMEFRAME','LEVELS','MONITOR HEART RATE AND PRACTICE DIAPHRAGMATIC BREATHING','ATR'];
+const checklistItems=['PHISICAL ACTIVITIES','HIGHER TIMEFRAME','LEVELS','FOREXFACTORY','YESTERDAY JOURNAL AND NOTE','WATCHLIST','ATR','MONITOR HEART RATE AND PRACTICE DIAPHRAGMATIC BREATHING'];
 const emotions=[{label:'CLEAR MIND',state:'GREEN'},{label:'TENSION',state:'YELLOW'},{label:'URGENCY / FOMO',state:'RED'}];
 const responses=['CALM','URGE TO RE-ENTER','DOUBT ABOUT MY STRATEGY','REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED','TEMPTATION TO INCREASE EXPOSURE IMMEDIATELY','OTHER'];
 let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,checklistDate=null;
