@@ -1082,6 +1082,179 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   .lockout-clock{letter-spacing:-2px}
 }
 
+
+/* =========================================================
+   V2.5 — FINAL REFRAME SIGNAL PLATES
+   ========================================================= */
+
+/* Neutralize previous decorative rails/pseudo-elements */
+.static-reframe-bar::before,
+.static-reframe-bar::after,
+.distribution-strip::before,
+.distribution-strip::after{
+  display:none!important;
+}
+
+/* TOP SIGNAL PLATE */
+.static-reframe-bar{
+  position:relative!important;
+  min-height:58px!important;
+  padding:8px!important;
+  gap:8px!important;
+  overflow:visible!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:0!important;
+  clip-path:polygon(
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px),
+    0 12px
+  );
+  background:
+    linear-gradient(180deg,rgba(22,27,35,.99),rgba(7,10,15,.995))!important;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.34),
+    inset 0 1px 0 rgba(255,255,255,.045),
+    inset 0 -1px 0 rgba(0,0,0,.7)!important;
+}
+
+/* Each statement becomes its own illuminated instrument */
+.static-reframe-bar strong{
+  flex:1 1 0!important;
+  min-height:40px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  padding:8px 15px!important;
+  border-radius:5px!important;
+  font-size:clamp(12px,1.2vw,15px)!important;
+  font-weight:950!important;
+  letter-spacing:1.15px!important;
+  text-align:center!important;
+  text-shadow:none!important;
+  white-space:nowrap!important;
+}
+
+.static-reframe-bar strong:nth-of-type(1){
+  color:#ffe8a3!important;
+  border:1px solid rgba(255,194,77,.72)!important;
+  background:
+    linear-gradient(180deg,rgba(117,75,11,.46),rgba(48,30,5,.64))!important;
+  box-shadow:
+    inset 0 0 18px rgba(255,190,65,.12),
+    0 0 14px rgba(255,177,44,.10)!important;
+}
+
+.static-reframe-bar strong:nth-of-type(2){
+  color:#bcecff!important;
+  border:1px solid rgba(78,196,255,.72)!important;
+  background:
+    linear-gradient(180deg,rgba(10,75,111,.48),rgba(4,31,49,.68))!important;
+  box-shadow:
+    inset 0 0 18px rgba(64,191,255,.12),
+    0 0 14px rgba(59,181,255,.10)!important;
+}
+
+.static-divider{
+  flex:0 0 auto!important;
+  padding:0 4px!important;
+  color:#68778b!important;
+  opacity:1!important;
+  font-size:10px!important;
+}
+
+/* LOWER DISTRIBUTION SIGNAL */
+.distribution-strip{
+  position:relative!important;
+  min-height:58px!important;
+  padding:8px 20px!important;
+  border:1px solid rgba(150,112,255,.68)!important;
+  border-radius:0!important;
+  clip-path:polygon(
+    18px 0,
+    calc(100% - 18px) 0,
+    100% 50%,
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0 50%
+  );
+  background:
+    radial-gradient(circle at 50% 50%,rgba(101,68,183,.25),transparent 52%),
+    linear-gradient(180deg,rgba(34,25,58,.98),rgba(12,9,23,.995))!important;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.28),
+    inset 0 0 28px rgba(127,88,255,.10)!important;
+}
+
+.distribution-strip strong{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:38px!important;
+  padding:7px 24px!important;
+  border-top:1px solid rgba(185,160,255,.34)!important;
+  border-bottom:1px solid rgba(185,160,255,.34)!important;
+  color:#eee7ff!important;
+  font-size:clamp(11px,1.2vw,14px)!important;
+  font-weight:950!important;
+  letter-spacing:1.25px!important;
+  text-shadow:
+    0 0 10px rgba(196,179,255,.24),
+    0 0 22px rgba(133,94,255,.12)!important;
+}
+
+/* Small visual hierarchy link with the central reframe poster */
+.journal-reframe-poster{
+  border-color:rgba(255,255,255,.14)!important;
+  background:
+    radial-gradient(circle at 50% -20%,rgba(255,255,255,.055),transparent 46%),
+    linear-gradient(180deg,#171d27,#0d1219)!important;
+  box-shadow:
+    0 16px 38px rgba(0,0,0,.27),
+    inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+
+@media(max-width:720px){
+  .static-reframe-bar{
+    min-height:50px!important;
+    padding:6px!important;
+    gap:5px!important;
+  }
+  .static-reframe-bar strong{
+    min-height:36px!important;
+    padding:6px 7px!important;
+    font-size:9.5px!important;
+    letter-spacing:.35px!important;
+  }
+  .static-divider{
+    padding:0 1px!important;
+    font-size:7px!important;
+  }
+  .distribution-strip{
+    min-height:50px!important;
+    padding:7px 14px!important;
+  }
+  .distribution-strip strong{
+    min-height:34px!important;
+    padding:5px 9px!important;
+    font-size:9.5px!important;
+    letter-spacing:.45px!important;
+  }
+}
+
+/* Absolutely no animation on the reframe bars */
+.static-reframe-bar,
+.static-reframe-bar *,
+.distribution-strip,
+.distribution-strip *{
+  animation:none!important;
+  transition:none!important;
+}
+
 </style>
 </head>
 <body>
