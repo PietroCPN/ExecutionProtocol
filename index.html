@@ -1552,6 +1552,67 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   }
 }
 
+
+/* =========================================================
+   V2.11 — ROBUST IPHONE RECORDS VIEW
+   ========================================================= */
+body.records-open{
+  overflow:hidden!important;
+}
+@media(max-width:720px){
+  #records:not(.hidden){
+    position:fixed!important;
+    inset:0!important;
+    z-index:65!important;
+    display:block!important;
+    width:100vw!important;
+    height:100dvh!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:18px!important;
+    padding-top:max(18px,env(safe-area-inset-top))!important;
+    padding-bottom:max(24px,env(safe-area-inset-bottom))!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+    background:
+      radial-gradient(circle at 80% -10%,rgba(80,115,170,.14),transparent 36%),
+      linear-gradient(180deg,#090b10,#07090c);
+    box-sizing:border-box!important;
+  }
+  #records .top{
+    position:relative!important;
+    top:auto!important;
+    margin:0 0 14px!important;
+    padding:0 48px 0 0!important;
+  }
+  #records .records-subtitle:first-of-type{
+    margin-top:14px!important;
+  }
+}
+
+/* Entry-abort discrimination */
+.abort-block{
+  border-top:1px solid #222a36;
+}
+.objective-error-wrap{
+  padding:12px 0 2px;
+}
+.objective-error-wrap .input{
+  width:100%;
+  box-sizing:border-box;
+}
+.objective-error-rule{
+  margin-top:7px;
+  line-height:1.4;
+  color:#9da8b6!important;
+}
+.objective-error-wrap.required-missing .input{
+  border-color:rgba(255,143,152,.70)!important;
+  box-shadow:0 0 0 3px rgba(255,143,152,.07)!important;
+}
+
 </style>
 </head>
 <body>
@@ -1709,7 +1770,24 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   <div class="block-title">04 / TRADE MANAGEMENT</div>
   <div class="field-block"><div class="label">RISK / REWARD</div><div class="options rr-mode-options" data-group="rrMode"><button class="option selected" onclick="selectRRMode(this,'SET')">SET</button><button class="option" onclick="selectRRMode(this,'DYNAMIC')">DYNAMIC</button></div><div class="rr" style="margin-top:10px"><input id="rrRisk" class="input" type="number" min="0" max="9" step="1" value="1" oninput="updateOutcomeAvailability()"><span class="colon">:</span><input id="rrReward" class="input" type="number" min="0" max="9" step="1" value="1" oninput="updateOutcomeAvailability()"></div><div id="rrModeHint" class="helper" style="margin-top:9px">SET: PLANNED RISK-TO-REWARD RATIO.</div></div>
   <div class="process"><h3>STOP LOSS</h3><div class="prow"><div class="plabel">MOVED AWAY <span class="helper">(MORE ROOM / GAMBLING)</span></div><div class="pactions" data-group="slAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">MOVED CLOSER <span class="helper">(TIGHTEN / LOSS OF CONFIDENCE)</span></div><div class="pactions" data-group="slCloser"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
-  <div class="process"><h3>EXIT</h3><div class="prow"><div class="plabel">MOVED TO BREAKEVEN <span class="helper">(FEAR OF LOSING)</span></div><div class="pactions" data-group="breakeven"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">TRADE ABORTED <span class="helper">(CORRECTIVE ACTION / ENTRY ERROR)</span></div><div class="pactions" data-group="tradeAborted"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
+  <div class="process"><h3>EXIT</h3><div class="prow"><div class="plabel">MOVED TO BREAKEVEN <span class="helper">(FEAR OF LOSING)</span></div><div class="pactions" data-group="breakeven"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="abort-block">
+  <div class="prow">
+    <div class="plabel">ENTRY ABORTED</div>
+    <div class="pactions" data-group="entryAborted">
+      <button class="option yes" onclick="selectProcess(this)">YES</button>
+      <button class="option no" onclick="selectProcess(this)">NO</button>
+    </div>
+  </div>
+  <div id="objectiveEntryErrorWrap" class="objective-error-wrap hidden">
+    <div class="label">OBJECTIVE ENTRY ERROR</div>
+    <input id="objectiveEntryError" class="input" type="text"
+      placeholder="E.G. CLICKED BEFORE RETEST COMPLETION"
+      oninput="updateProtocolStatuses();calcScores()">
+    <div class="helper objective-error-rule">
+      DESCRIBE ONLY THE OBJECTIVE EXECUTION ERROR — NO PRICE MOVEMENT, P&amp;L OR EMOTIONAL JUSTIFICATION.
+    </div>
+  </div>
+</div></div>
   <div class="process"><h3>TAKE PROFIT</h3><div class="prow"><div class="plabel">TAKEN EARLY <span class="helper">(HASTE AND FEAR)</span></div><div class="pactions" data-group="tpEarly"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">MOVED FARTHER AWAY <span class="helper">(LET IT RUN / OVERCONFIDENCE / HOPE)</span></div><div class="pactions" data-group="tpAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
 </div>
 <div class="eligibility-panel protocol-status-panel sabotage-panel" id="sabotagePanel"><div><span>SELF-SABOTAGE DETECTED?</span><small id="sabotageReason">AVAILABLE ONLY FOR ELIGIBLE TRADES.</small></div><strong id="sabotageStatus">N/A</strong></div>
@@ -2148,7 +2226,7 @@ function closeDailyPrepView(){
 }
 
 const KEY='executionProtocolRecordsV1';
-const checklistItems=['PHYSICAL ACTIVITY','LVN LEVELS IN AREA PROFILE IDENTIFIED (ON MARKET PROFILE JIGSAW)','DESIANO PRE MARKET ES NARRATIVE NOTED (ON MARKET PROFILE JIGSAW)','DESIANO PRE MARKET SPY NARRATIVE NOTED (ON TASTY)','YESTERDAY JOURNAL AND NOTE','FOREXFACTORY CHECKED','FINANCIAL JUICE OPENED','TASTY 5MIN SPX SET','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPS & VOL PROFILE SET','TOPSTEPX SET TO 1 MIN WITH FVG','WATCH JIGSAW MARKET PROFILE','HEART RATE MONITORING ACTIVATED'];
+const checklistItems=['PHYSICAL ACTIVITY DONE','LVN LEVELS MARKED ON JIGSAW MARKET PROFILE','DESIANO /ES LEVELS MARKED ON JIGSAW MARKET PROFILE','DESIANO SPY LEVELS MARKED ON TASTY','YESTERDAY JOURNAL AND PRE MARKET NOTE READ','FOREXFACTORY NEWS CHECKED','FINANCIAL JUICE OPENED','TASTY 5MIN SPX SET','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPs & SESSION VOL PROFILE SET ON TOPSTEPX','TOPSTEPX SET TO 1 MIN WITH FVG','WATCH JIGSAW MARKET PROFILE','HEART RATE MONITORING ACTIVATED'];
 const emotions=[{label:'CLEAR MIND',state:'GREEN'},{label:'TENSION',state:'YELLOW'},{label:'URGENCY / FOMO',state:'RED'}];
 const responses=['CALM','URGE TO RE-ENTER','DOUBT ABOUT MY STRATEGY','REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED','TEMPTATION TO INCREASE EXPOSURE IMMEDIATELY','OTHER'];
 let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,checklistDate=null;
@@ -2159,27 +2237,26 @@ function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{ret
 function showPage(id,b){
   closeMobileMenu();
 
-  // Reset scroll before revealing the new page. This is intentionally
-  // non-smooth because iOS Safari can retain the previous page offset.
-  window.scrollTo(0,0);
-  document.documentElement.scrollTop=0;
-  document.body.scrollTop=0;
-
+  document.body.classList.toggle('records-open',id==='records');
   document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+
   const page=document.getElementById(id);
   page.classList.remove('hidden');
 
   document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
   if(b)b.classList.add('active');
 
-  if(id==='records')renderRecords();
-  if(id==='start')setTimeout(()=>document.getElementById('casualeButton')?.focus(),0);
-
-  requestAnimationFrame(()=>{
+  if(id==='records'){
+    renderRecords();
+    page.scrollTop=0;
+    requestAnimationFrame(()=>{page.scrollTop=0;});
+  }else{
     window.scrollTo(0,0);
     document.documentElement.scrollTop=0;
     document.body.scrollTop=0;
-  });
+  }
+
+  if(id==='start')setTimeout(()=>document.getElementById('casualeButton')?.focus(),0);
 }
 function toggleMobileMenu(){
   const sidebar=document.getElementById('mainSidebar');
@@ -2198,7 +2275,7 @@ function closeMobileMenu(){
   if(overlay) overlay.classList.add('hidden');
   if(button){button.textContent='☰';button.setAttribute('aria-label','OPEN NAVIGATION');}
 }
-function newSession(b){document.getElementById('gate').classList.remove('hidden');document.getElementById('sessionFlow').classList.add('hidden');reentry=null;showPage('start',b)}
+function newSession(b){document.body.classList.remove('records-open');document.getElementById('gate').classList.remove('hidden');document.getElementById('sessionFlow').classList.add('hidden');reentry=null;showPage('start',b)}
 function checklistAlreadyCompleted(d){return Boolean(getDailyPrep(d)?.checklistCompleted)||records.some(x=>x.date===d)}
 function showChecklistCompleted(d){
   checkIndex=checklistItems.length;
@@ -2252,8 +2329,8 @@ function initProtocol(){
 }
 function clearProtocol(){
   document.querySelectorAll('#journal .option.selected').forEach(x=>x.classList.remove('selected'));
-  ['responseOther','insights','freeNote'].forEach(id=>{const x=document.getElementById(id);if(x)x.value=''});
-  document.getElementById('responseOtherWrap')?.classList.add('hidden');
+  ['responseOther','insights','freeNote','objectiveEntryError'].forEach(id=>{const x=document.getElementById(id);if(x)x.value=''});
+  document.getElementById('responseOtherWrap')?.classList.add('hidden');document.getElementById('objectiveEntryErrorWrap')?.classList.add('hidden');
   document.getElementById('breakRetestCriteria')?.classList.add('hidden');
   document.getElementById('rejectionCriteria')?.classList.add('hidden');
   const setButton=document.querySelector('[data-group="rrMode"] .option');if(setButton)setButton.classList.add('selected');
@@ -2381,6 +2458,7 @@ function sabotageInfo(){
   if(!eligibility.valid)return{status:'N/A',detected:null,reasons:[],detail:'AVAILABLE ONLY FOR ELIGIBLE TRADES.'};
 
   const reasons=[];
+
   if(rrMode()==='SET'){
     if(single('slAway')==='YES')reasons.push('STOP LOSS WAS MOVED FARTHER AWAY');
     if(single('slCloser')==='YES')reasons.push('STOP LOSS WAS MOVED CLOSER');
@@ -2388,6 +2466,16 @@ function sabotageInfo(){
     if(single('tpEarly')==='YES')reasons.push('TAKE PROFIT WAS TAKEN EARLY');
     if(single('tpAway')==='YES')reasons.push('TAKE PROFIT WAS MOVED FARTHER AWAY');
   }
+
+  const entryAborted=single('entryAborted');
+  const objectiveError=(document.getElementById('objectiveEntryError')?.value||'').trim();
+
+  if(entryAborted==='YES'&&!objectiveError){
+    reasons.push('ENTRY WAS ABORTED WITHOUT A DOCUMENTED OBJECTIVE ENTRY ERROR');
+  }
+
+  const wrap=document.getElementById('objectiveEntryErrorWrap');
+  if(wrap)wrap.classList.toggle('required-missing',entryAborted==='YES'&&!objectiveError);
 
   return reasons.length
     ?{status:'YES',detected:true,reasons,detail:reasons.join(' · ')}
@@ -2446,7 +2534,34 @@ function updateProtocolStatuses(){
   updateSetupPanels();
   updateSabotagePanel();
 }
-function selectProcess(button){const was=button.classList.contains('selected');[...button.parentElement.children].forEach(x=>x.classList.remove('selected'));if(!was)button.classList.add('selected');updateProtocolStatuses();calcScores()}
+function selectProcess(button){
+  const was=button.classList.contains('selected');
+  [...button.parentElement.children].forEach(x=>x.classList.remove('selected'));
+  if(!was)button.classList.add('selected');
+
+  if(button.parentElement.dataset.group==='entryAborted'){
+    updateEntryAbortUI();
+  }
+
+  updateProtocolStatuses();
+  calcScores();
+}
+function updateEntryAbortUI(){
+  const wrap=document.getElementById('objectiveEntryErrorWrap');
+  const input=document.getElementById('objectiveEntryError');
+  if(!wrap||!input)return;
+
+  const aborted=single('entryAborted');
+  const show=aborted==='YES';
+  wrap.classList.toggle('hidden',!show);
+
+  if(!show){
+    wrap.classList.remove('required-missing');
+    input.value='';
+  }else{
+    wrap.classList.toggle('required-missing',!input.value.trim());
+  }
+}
 function selectOne(button){[...button.parentElement.children].forEach(x=>x.classList.remove('selected'));button.classList.add('selected');updateProtocolStatuses();calcScores()}
 function selectMany(button){button.classList.toggle('selected');if(button.closest('[data-group="emotions"]'))updateState();updateProtocolStatuses();calcScores()}
 function toggleOther(button,id){button.classList.toggle('selected');document.getElementById(id).classList.toggle('hidden',!button.classList.contains('selected'));updateProtocolStatuses();calcScores()}
@@ -2507,7 +2622,7 @@ function collect(){
     brFvg:single('brFvg'),brExactEntry:single('brExactEntry'),brFractalStop:single('brFractalStop'),
     rejectionTrigger:single('rejectionTrigger'),rejEntryBreak:single('rejEntryBreak'),rejFractalStop:single('rejFractalStop'),
     rrMode:rrMode(),rrRisk:document.getElementById('rrRisk').value,rrReward:document.getElementById('rrReward').value,
-    slAway:single('slAway'),slCloser:single('slCloser'),breakeven:single('breakeven'),tradeAborted:single('tradeAborted'),tpEarly:single('tpEarly'),tpAway:single('tpAway'),
+    slAway:single('slAway'),slCloser:single('slCloser'),breakeven:single('breakeven'),entryAborted:single('entryAborted'),objectiveEntryError:(document.getElementById('objectiveEntryError')?.value||'').trim(),tpEarly:single('tpEarly'),tpAway:single('tpAway'),
     setupGrade:eligible&&analysis.quality.status==='READY'?analysis.quality.grade:null,
     setupVariables:eligible&&analysis.quality.status==='READY'?analysis.quality.count:null,
     sabotageDetected:eligible?analysis.sabotage.detected:null,
@@ -2527,7 +2642,16 @@ function report(r){
   if(r.strategy==='REJECTION'){x.push(`Trigger: ${r.rejectionTrigger||'not selected'}.`,`Entry on break of trigger H/L: ${r.rejEntryBreak||'not selected'}.`,`Stop beyond last fractal-swing: ${r.rejFractalStop||'not selected'}.`)}
   x.push('','TRADE ELIGIBILITY',`Trade eligibility: ${r.eligibility}.`);if(r.eligibility==='INVALID')x.push(`Reason(s): ${(r.eligibilityReasons||[]).join('; ')}.`);else x.push('This trade belongs to the eligible sample of the edge.');
   x.push('','04 / TRADE MANAGEMENT');if(r.rrMode==='DYNAMIC')x.push(`Risk management was DYNAMIC. The recorded realized risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);else x.push(`Risk management was SET. The planned risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);
-  [behavior(r.slAway,'The stop loss was moved farther away from its original level.','I felt tempted to move the stop loss farther away, but did not execute it.'),behavior(r.slCloser,'The stop loss was moved closer to price.','I felt tempted to tighten the stop loss, but did not execute it.'),behavior(r.breakeven,'The stop loss was moved to breakeven.','I felt tempted to move the stop loss to breakeven, but did not execute it.'),behavior(r.tradeAborted,'The trade was aborted immediately after recognizing an entry error.','I felt tempted to abort the trade after recognizing an entry error, but did not execute it.'),behavior(r.tpEarly,'The take profit was taken early.','I felt tempted to take profit early, but did not execute it.'),behavior(r.tpAway,'The take profit was moved farther away.','I felt tempted to move the take profit farther away, but did not execute it.')].filter(Boolean).forEach(line=>x.push(line));
+  [behavior(r.slAway,'The stop loss was moved farther away from its original level.','I felt tempted to move the stop loss farther away, but did not execute it.'),behavior(r.slCloser,'The stop loss was moved closer to price.','I felt tempted to tighten the stop loss, but did not execute it.'),behavior(r.breakeven,'The stop loss was moved to breakeven.','I felt tempted to move the stop loss to breakeven, but did not execute it.'),behavior(r.tpEarly,'The take profit was taken early.','I felt tempted to take profit early, but did not execute it.'),behavior(r.tpAway,'The take profit was moved farther away.','I felt tempted to move the take profit farther away, but did not execute it.')].filter(Boolean).forEach(line=>x.push(line));
+  if(r.entryAborted==='YES'){
+    x.push('Entry aborted: YES.');
+    if(r.objectiveEntryError)x.push(`Objective entry error: ${r.objectiveEntryError}.`);
+    else x.push('Objective entry error: NOT DOCUMENTED.');
+  }else if(r.entryAborted==='NO'){
+    x.push('Entry aborted: NO.');
+  }else if(r.tradeAborted==='YES'){
+    x.push('Entry aborted: YES (legacy record).');
+  }
   if(r.rrMode==='DYNAMIC')x.push('Under DYNAMIC risk management, stop-loss, breakeven and take-profit adjustments were not scored as process violations.');
   x.push('','05 / EMOTIONAL STATE — POST-TRADE');if(r.postState)x.push(`Post-trade state: ${r.postState}.`);(r.postExtras||[]).filter(i=>i!=='OTHER').forEach(i=>x.push(`- ${i}`));if((r.postExtras||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
   x.push('','06 / TRADE OUTCOME',`The financial outcome category was ${r.tradeOutcome||'not selected'}.`,'','07 / EXECUTION ANALYSIS');if(r.eligibility==='VALID'){x.push(`Setup Grade: ${r.setupGrade||'PENDING'}${r.setupVariables!==null?` (${r.setupVariables}/3)`:''}.`);x.push(`Self-sabotage detected: ${r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'N/A'}.`);if((r.sabotageReasons||[]).length)x.push(`Self-sabotage reason(s): ${r.sabotageReasons.join('; ')}.`)}else x.push('Setup Grade and Self-Sabotage analysis were not assigned because the trade was INVALID.');
