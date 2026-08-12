@@ -1255,6 +1255,60 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   transition:none!important;
 }
 
+
+.start-date-wrap{width:min(420px,92vw);margin:18px auto 0;padding:14px;border:1px solid rgba(158,197,255,.18);border-radius:12px;background:rgba(11,16,23,.78)}
+.start-date-wrap label{display:block;margin-bottom:7px;color:var(--muted);font-size:10px;font-weight:900;letter-spacing:1.1px}
+.daily-prep-card{max-width:980px;margin:0 auto}.daily-prep-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.daily-narratives{display:grid;grid-template-columns:1fr 1fr;gap:14px}.daily-prep-actions{display:flex;justify-content:flex-end;margin-top:16px}.daily-prep-card.readonly textarea{opacity:.86;background:#0a0f16}.daily-prep-card.readonly textarea[readonly]{cursor:default}
+.journal-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 18px}.journal-tool{min-height:56px;display:flex;align-items:center;justify-content:center;gap:10px;padding:9px 11px;border:1px solid rgba(158,197,255,.2);border-radius:10px;background:linear-gradient(180deg,rgba(18,25,36,.88),rgba(9,13,20,.94));color:var(--text);cursor:pointer}.journal-tool-icon{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(158,197,255,.22);border-radius:8px;background:rgba(158,197,255,.04)}.journal-tool-icon svg{width:18px;height:18px;fill:none;stroke:#b8d5f8;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.journal-tool span:last-child{display:flex;flex-direction:column;align-items:flex-start}.journal-tool strong{font-size:12px;font-weight:950}.journal-tool small{margin-top:2px;color:var(--muted);font-size:8px;font-weight:850;letter-spacing:.5px}
+.level-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px}.level-group{padding:12px;border:1px solid var(--border);border-radius:10px;background:#0c1118}.level-group-title{margin-bottom:9px;color:var(--a);font-size:10px;font-weight:950;letter-spacing:1.2px}.strategy-criteria{margin-top:14px;padding:14px;border:1px solid rgba(158,197,255,.18);border-radius:12px;background:#0c1118}.strategy-criteria-title{margin-bottom:10px;color:#fff;font-size:11px;font-weight:950;letter-spacing:1px}.setup-status-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.setup-quality-panel strong{font-size:18px}.post-green.selected{border-color:rgba(121,217,157,.7)!important;background:rgba(20,55,39,.7)!important;color:var(--green)!important}.post-yellow.selected{border-color:rgba(242,201,109,.7)!important;background:rgba(55,46,22,.7)!important;color:var(--yellow)!important}.post-red.selected{border-color:rgba(255,143,152,.7)!important;background:rgba(62,27,32,.72)!important;color:var(--red)!important}
+.records-subtitle{margin:20px 0 10px;color:var(--muted);font-size:10px;font-weight:950;letter-spacing:1.25px}.daily-prep-archive{display:grid;gap:8px}.daily-prep-record{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 15px;border:1px solid var(--border);border-radius:11px;background:#0d1219;color:var(--text);cursor:pointer;text-align:left}.daily-prep-record strong{font-size:12px}.daily-prep-record span{display:block;margin-top:4px;color:var(--muted);font-size:10px}.daily-prep-view-card{width:min(760px,94vw)!important}.daily-prep-view-section{margin-top:14px;padding:14px;border:1px solid var(--border);border-radius:10px;background:#0c1118}.daily-prep-view-section span{display:block;color:var(--a);font-size:9px;font-weight:950;letter-spacing:1px}.daily-prep-view-section p{margin:7px 0 0;color:#e6edf7;line-height:1.55;text-transform:none;white-space:pre-wrap}
+@media(max-width:720px){.daily-narratives,.level-groups,.setup-status-grid{grid-template-columns:1fr}.journal-tools{gap:6px}.journal-tool{min-height:52px;padding:7px 5px;gap:6px}.journal-tool-icon{width:26px;height:26px}.journal-tool-icon svg{width:16px;height:16px}.journal-tool strong{font-size:10px}.journal-tool small{font-size:7px;letter-spacing:.2px}}
+
+
+.level-type-options{margin-bottom:12px}
+.level-reference-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.level-reference{padding:11px 12px;border:1px solid rgba(158,197,255,.14);border-radius:10px;background:#0b1017}
+.level-reference-title{margin-bottom:8px;color:var(--muted);font-size:9px;font-weight:950;letter-spacing:1.1px}
+.level-reference-chips{display:flex;flex-wrap:wrap;gap:6px}
+.level-reference-chips span{
+  padding:6px 8px;border:1px solid rgba(158,197,255,.12);border-radius:7px;
+  background:rgba(158,197,255,.035);color:#8794a5;font-size:9px;font-weight:800;
+  letter-spacing:.25px;cursor:default;user-select:none
+}
+.post-state-options .post-green{
+  border-color:rgba(121,217,157,.32)!important;background:rgba(20,55,39,.30)!important;color:#a7e7be!important
+}
+.post-state-options .post-yellow{
+  border-color:rgba(242,201,109,.32)!important;background:rgba(55,46,22,.32)!important;color:#edd58c!important
+}
+.post-state-options .post-red{
+  border-color:rgba(255,143,152,.32)!important;background:rgba(62,27,32,.32)!important;color:#f2a8ae!important
+}
+.post-state-options .post-green.selected{
+  border-color:rgba(121,217,157,.84)!important;background:rgba(20,72,45,.80)!important;color:#d9f8e4!important;box-shadow:0 0 18px rgba(121,217,157,.10)
+}
+.post-state-options .post-yellow.selected{
+  border-color:rgba(242,201,109,.84)!important;background:rgba(77,61,18,.82)!important;color:#fff0b0!important;box-shadow:0 0 18px rgba(242,201,109,.10)
+}
+.post-state-options .post-red.selected{
+  border-color:rgba(255,143,152,.84)!important;background:rgba(87,30,38,.84)!important;color:#ffd8dc!important;box-shadow:0 0 18px rgba(255,143,152,.10)
+}
+@media(max-width:720px){.level-reference-grid{grid-template-columns:1fr}}
+
+
+.simple-analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.analysis-status-card{min-height:118px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:18px;border:1px solid var(--border);border-radius:12px;background:#0d1219;text-align:center}
+.analysis-status-card span{color:var(--muted);font-size:10px;font-weight:950;letter-spacing:1.2px}
+.analysis-status-card strong{margin-top:7px;color:#fff;font-size:38px;line-height:1;font-weight:950}
+.analysis-status-card small{margin-top:8px;color:var(--muted);font-size:9px;font-weight:800;line-height:1.35}
+.simple-score-card{padding:15px!important}
+.simple-score-row{padding:13px 0;border-bottom:1px solid #242c39}.simple-score-row:last-child{border-bottom:0}
+.simple-score-row .score-name{margin-bottom:5px}.simple-score-row .simple-grade{font-size:30px;line-height:1}
+.simple-score-row small{display:block;margin-top:6px;color:var(--muted);font-size:8px;font-weight:800;line-height:1.35}
+.sabotage-panel.valid strong{color:var(--green)!important}.sabotage-panel.invalid strong{color:var(--red)!important}
+.simple-modal-summary{grid-template-columns:1fr 1fr!important}
+@media(max-width:720px){.simple-analysis-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1271,7 +1325,7 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
       <svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9v4l2.6 1.8"></path><path d="M9 3h6"></path><path d="M12 3v2.5"></path></svg>
     </span>
     <strong id="startLockoutLabel">20:00</strong>
-    <small>20 MIN LOCKOUT</small>
+    <small>20 MIN STOP</small>
   </button>
 
   <button class="start-tool" type="button" onclick="openBreathing()" aria-label="Open box breathing">
@@ -1287,10 +1341,40 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
       <svg viewBox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M7 15l3-4 3 2 4-6"></path><path d="M17 7h3v3"></path></svg>
     </span>
     <strong>EDGE</strong>
-    <small>IDEAL SETUP</small>
+    <small>PICTURE REFRAME</small>
   </button>
-</div></div></div></div>
-<div id="sessionFlow" class="session hidden"><div class="sec">PRE-TRADING CHECKLIST</div><div class="card check-stage"><div id="completedStack" class="stack"></div><div id="currentCheck" class="current-check" role="button" tabindex="0" onclick="knockItem()"><h2 id="checkText"></h2><div class="space-hint"><span class="desktop-hint">PRESS <span class="keycap">SPACE</span></span><span class="mobile-hint">TAP THE CARD</span> TO COMPLETE THE ITEM</div></div></div><div class="progress"><span id="checkProgress"></span></div><div id="sessionReady" class="hidden reveal"><div class="session-bottom"><div class="field"><label for="journalDate">JOURNAL DATE</label><input id="journalDate" class="input" type="date"><div id="tradeHint" class="helper" style="margin-top:8px"></div></div><button class="btn primary" onclick="askReentry()">START JOURNALING →</button></div></div></div>
+</div>
+<div class="start-date-wrap">
+  <div class="field">
+    <label for="journalDate">TRADING DATE</label>
+    <input id="journalDate" class="input" type="date">
+    <div id="tradeHint" class="helper" style="margin-top:8px"></div>
+  </div>
+</div>
+</div></div></div>
+<div id="sessionFlow" class="session hidden">
+  <div id="dailyPrepStage">
+    <div class="sec">DAILY PREPARATION</div>
+    <div class="card daily-prep-card">
+      <div class="daily-prep-head">
+        <div><div class="block-title">DAILY NOTES & NARRATIVES</div><div id="dailyPrepStatus" class="helper">ONE ENTRY PER TRADING DAY.</div></div>
+        <button id="dailyPrepEditButton" class="btn hidden" type="button" onclick="editDailyPrep()">EDIT</button>
+      </div>
+      <div class="field-block"><div class="label">DAILY NOTES</div><textarea id="dailyNotes" class="input textarea" placeholder="KEY INFORMATION, CONDITIONS, RISKS, OBSERVATIONS..."></textarea></div>
+      <div class="daily-narratives">
+        <div class="field-block"><div class="label">LONG NARRATIVE</div><textarea id="longNarrative" class="input textarea" placeholder="WHAT WOULD SUPPORT A LONG SCENARIO TODAY?"></textarea></div>
+        <div class="field-block"><div class="label">SHORT NARRATIVE</div><textarea id="shortNarrative" class="input textarea" placeholder="WHAT WOULD SUPPORT A SHORT SCENARIO TODAY?"></textarea></div>
+      </div>
+      <div class="daily-prep-actions"><button id="dailyPrepContinueButton" class="btn primary" type="button" onclick="saveDailyPrepAndContinue()">SAVE & CONTINUE</button></div>
+    </div>
+  </div>
+  <div id="checklistStage" class="hidden">
+    <div class="sec">PRE-TRADING CHECKLIST</div>
+    <div class="card check-stage"><div id="completedStack" class="stack"></div><div id="currentCheck" class="current-check" role="button" tabindex="0" onclick="knockItem()"><h2 id="checkText"></h2><div class="space-hint"><span class="desktop-hint">PRESS <span class="keycap">SPACE</span></span><span class="mobile-hint">TAP THE CARD</span> TO COMPLETE THE ITEM</div></div></div>
+    <div class="progress"><span id="checkProgress"></span></div>
+    <div id="sessionReady" class="hidden reveal"><div class="session-bottom"><button class="btn primary" onclick="askReentry()">START JOURNALING →</button></div></div>
+  </div>
+</div>
 </section>
 <section id="journal" class="page hidden">
 <div class="top"><div><h1>Execution Protocol</h1><div id="journalMeta" class="sub"></div></div><button class="btn" onclick="newSession(document.querySelector('[data-nav=start]'))">NEW SESSION</button></div>
@@ -1311,51 +1395,86 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   <strong>THE OUTCOME BELONGS TO THE DISTRIBUTION.</strong>
 </div>
 
-<div class="breathing-launch">
-  <button class="btn breathing-btn" type="button" onclick="openBreathing()">BOX BREATHING · 64S</button>
-  <span>4 · 4 · 4 · 4 × 4 CYCLES</span>
+<div class="journal-tools" aria-label="Journal tools">
+  <button class="journal-tool" type="button" onclick="openLockout()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9v4l2.6 1.8"></path><path d="M9 3h6"></path><path d="M12 3v2.5"></path></svg></span><span><strong id="journalLockoutLabel">20:00</strong><small>20 MIN STOP</small></span></button>
+  <button class="journal-tool" type="button" onclick="openBreathing()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12c0-3.9 2.3-7 5.2-7 1.4 0 1.8 1.2 1.8 2.5V12"></path><path d="M19 12c0-3.9-2.3-7-5.2-7-1.4 0-1.8 1.2-1.8 2.5V12"></path><path d="M12 12c-1.7 0-3 1.4-3 3.1V19"></path><path d="M12 12c1.7 0 3 1.4 3 3.1V19"></path><path d="M9 19h6"></path></svg></span><span><strong>64S</strong><small>BOX BREATHING</small></span></button>
+  <button class="journal-tool" type="button" onclick="openIdealSetup()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M7 15l3-4 3 2 4-6"></path><path d="M17 7h3v3"></path></svg></span><span><strong>EDGE</strong><small>PICTURE REFRAME</small></span></button>
 </div>
 <div class="protocol-grid"><div class="sections">
-<div class="card"><div class="block-title">01 / STAGE IDENTIFICATION</div><div class="label">Pre-trade state <span class="helper">Select every emotion that is present</span></div><div id="emotionOptions" class="emotions" data-group="emotions"></div><div id="stateResult" class="state-result"><div><span>Detected state</span><small id="stateBreakdown" class="helper" style="display:block;margin-top:4px">No emotion selected</small></div><strong>NOT SET</strong></div></div>
-<div class="card"><div class="block-title">02 / TECHNICAL JOURNALING</div>
-<div class="field-block"><div class="label">CONTEXT / BIAS</div><div class="options" data-group="bias"><button class="option" onclick="selectOne(this)">LONG</button><button class="option" onclick="selectOne(this)">SHORT</button><button class="option" onclick="selectOne(this)">UNDEFINED</button></div></div>
-<div class="field-block"><div class="label">CONVICTION</div><div class="options" data-group="conviction"><button class="option" onclick="selectOne(this)">Inside VWAP 1st dev.</button><button class="option" onclick="selectOne(this)">Outside VWAP 1st dev.</button></div></div>
-<div class="field-block"><div class="label">LOCATION <span class="helper">MULTIPLE SELECTION</span></div><div class="options" data-group="location"><button class="option" onclick="selectMany(this)">IB High</button><button class="option" onclick="selectMany(this)">IB Low</button><button class="option" onclick="selectMany(this)">LVN</button><button class="option" onclick="selectMany(this)">HVN</button><button class="option" onclick="selectMany(this)">VPOC</button><button class="option" onclick="selectMany(this)">PD High</button><button class="option" onclick="selectMany(this)">PD Low</button><button class="option" onclick="selectMany(this)">High OI</button><button class="option" onclick="selectMany(this)">Round Number</button><button class="option" onclick="selectMany(this)">FVG</button><button class="option" onclick="selectMany(this)">Double Top</button><button class="option" onclick="selectMany(this)">Double Bottom</button><button class="option" onclick="toggleOther(this,'locationOtherWrap')">OTHER</button></div><div id="locationOtherWrap" class="hidden" style="margin-top:10px"><input id="locationOther" class="input" placeholder="DESCRIBE THE LOCATION"></div></div>
-<div class="field-block"><div class="label">TRIGGER <span class="helper">MULTIPLE SELECTION</span></div><div class="options" data-group="trigger"><button class="option" onclick="selectMany(this)">Pinbar</button><button class="option" onclick="selectMany(this)">Engulfing</button><button class="option" onclick="selectMany(this)">3-Bar Reversal</button><button class="option" onclick="selectMany(this)">Prev Swing Broken</button><button class="option" onclick="selectMany(this)">UNDEFINED</button><button class="option" onclick="toggleOther(this,'triggerOtherWrap')">OTHER</button></div><div id="triggerOtherWrap" class="hidden" style="margin-top:10px"><input id="triggerOther" class="input" placeholder="DESCRIBE THE TRIGGER"></div></div>
-<div class="split"><div class="field-block"><div class="label">Volume &gt; 20MA</div><div class="options" data-group="volume"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div><div class="field-block"><div class="label">RISK / REWARD</div>
-<div class="options rr-mode-options" data-group="rrMode">
-  <button class="option selected" onclick="selectRRMode(this,'SET')">SET</button>
-  <button class="option" onclick="selectRRMode(this,'DYNAMIC')">DYNAMIC</button>
+
+<div class="card">
+  <div class="block-title">01 / CONTEXT</div>
+  <div class="field-block"><div class="label">BIAS</div><div class="options" data-group="bias"><button class="option" onclick="selectOne(this)">LONG</button><button class="option" onclick="selectOne(this)">SHORT</button><button class="option" onclick="selectOne(this)">UNDEFINED</button></div></div>
+  <div class="field-block"><div class="label">CONVICTION</div><div class="options" data-group="conviction"><button class="option" onclick="selectOne(this)">INSIDE VWAP 1ST DEV.</button><button class="option" onclick="selectOne(this)">OUTSIDE VWAP 1ST DEV.</button></div></div>
 </div>
-<div class="rr" style="margin-top:10px">
-  <input id="rrRisk" class="input" type="number" min="0" max="9" step="1" value="1" oninput="updateOutcomeAvailability()">
-  <span class="colon">:</span>
-  <input id="rrReward" class="input" type="number" min="0" max="9" step="1" value="1" oninput="updateOutcomeAvailability()">
+
+<div class="card">
+  <div class="block-title">02 / STAGE IDENTIFICATION</div>
+  <div class="label">PRE-TRADE STATE <span class="helper">SELECT EVERY STATE THAT IS PRESENT</span></div>
+  <div id="emotionOptions" class="emotions" data-group="emotions"></div>
+  <div id="stateResult" class="state-result"><div><span>DETECTED STATE</span><small id="stateBreakdown" class="helper" style="display:block;margin-top:4px">NO STATE SELECTED</small></div><strong>NOT SET</strong></div>
 </div>
-<div id="rrModeHint" class="helper" style="margin-top:9px">SET: planned risk-to-reward ratio.</div>
-</div></div></div>
-<div class="eligibility-panel protocol-status-panel" id="entryProtocolPanel"><div><span>ENTRY PROTOCOL RESPECTED?</span><small id="entryProtocolReason">COMPLETE THE ENTRY CRITERIA.</small></div><strong id="entryProtocolStatus">PENDING</strong></div>
-<div class="card"><div class="block-title">03 / PROCESS JOURNALING</div>
-<div class="process"><h3>TRADE DIRECTION</h3>
-<div class="prow"><div class="plabel">TRADE DIRECTION</div><div class="pactions" data-group="tradeDirection"><button class="option yes" onclick="selectOne(this)">LONG</button><button class="option no" onclick="selectOne(this)">SHORT</button></div></div>
-<div class="alignment-output" id="directionalAlignmentPanel"><span>DIRECTIONAL ALIGNMENT</span><strong id="directionalAlignmentStatus">NOT AVAILABLE</strong></div>
+
+<div class="card setup-card">
+  <div class="block-title">03 / SETUP</div>
+  <div class="field-block"><div class="label">TRADE DIRECTION</div><div class="options" data-group="tradeDirection"><button class="option" onclick="selectOne(this)">LONG</button><button class="option" onclick="selectOne(this)">SHORT</button></div><div class="alignment-output" id="directionalAlignmentPanel"><span>DIRECTIONAL ALIGNMENT</span><strong id="directionalAlignmentStatus">NOT AVAILABLE</strong></div></div>
+  <div class="field-block">
+    <div class="label">CHOSEN LEVEL</div>
+    <div id="levelOptions" class="options level-type-options" data-group="levelType">
+      <button class="option" onclick="selectOne(this)">STATIC</button>
+      <button class="option" onclick="selectOne(this)">DYNAMIC</button>
+    </div>
+
+    <div class="level-reference-grid">
+      <div class="level-reference">
+        <div class="level-reference-title">STATIC</div>
+        <div class="level-reference-chips">
+          <span>IB H/L</span><span>PD H/L</span><span>ON H/L</span><span>DOUBLE T/B</span>
+          <span>VIRGIN POC</span><span>ROUND N° 50</span><span>HIGH OI</span>
+        </div>
+      </div>
+      <div class="level-reference">
+        <div class="level-reference-title">DYNAMIC</div>
+        <div class="level-reference-chips">
+          <span>VWAP</span><span>VWAP 1ST DEV.</span><span>POC (BUILDING)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="field-block"><div class="label">CHOSEN STRATEGY</div><div class="options" data-group="strategy"><button class="option" onclick="selectOne(this)">BREAK & RETEST</button><button class="option" onclick="selectOne(this)">REJECTION</button></div></div>
+  <div id="breakRetestCriteria" class="strategy-criteria hidden">
+    <div class="strategy-criteria-title">BREAK & RETEST REQUIREMENTS</div>
+    <div class="prow"><div class="plabel">FVG PRESENT</div><div class="pactions" data-group="brFvg"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div>
+    <div class="prow"><div class="plabel">ENTRY ON EXACT LEVEL</div><div class="pactions" data-group="brExactEntry"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div>
+    <div class="prow"><div class="plabel">STOP BEYOND LAST FRACTAL-SWING</div><div class="pactions" data-group="brFractalStop"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div>
+  </div>
+  <div id="rejectionCriteria" class="strategy-criteria hidden">
+    <div class="strategy-criteria-title">REJECTION REQUIREMENTS</div>
+    <div class="field-block"><div class="label">TRIGGER</div><div class="options" data-group="rejectionTrigger"><button class="option" onclick="selectOne(this)">PINBAR</button><button class="option" onclick="selectOne(this)">ENGULFING</button><button class="option" onclick="selectOne(this)">3-BAR REVERSAL</button><button class="option no" onclick="selectOne(this)">NONE</button></div></div>
+    <div class="prow"><div class="plabel">ENTRY ON BREAK OF TRIGGER H/L</div><div class="pactions" data-group="rejEntryBreak"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div>
+    <div class="prow"><div class="plabel">STOP BEYOND LAST FRACTAL-SWING</div><div class="pactions" data-group="rejFractalStop"><button class="option yes" onclick="selectOne(this)">YES</button><button class="option no" onclick="selectOne(this)">NO</button></div></div>
+  </div>
 </div>
-<div class="process"><h3>STOP LOSS</h3>
-<div class="prow"><div class="plabel">MOVED AWAY <span class="helper">(MORE ROOM / GAMBLING)</span></div><div class="pactions" data-group="slAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div>
-<div class="prow"><div class="plabel">MOVED CLOSER <span class="helper">(TIGHTEN / LOSS OF CONFIDENCE)</span></div><div class="pactions" data-group="slCloser"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div>
+
+<div class="setup-status-grid">
+  <div class="eligibility-panel protocol-status-panel" id="setupEligibilityPanel"><div><span>ELIGIBILITY</span><small id="setupEligibilityReason">COMPLETE CONTEXT, STATE AND DIRECTION.</small></div><strong id="setupEligibilityStatus">PENDING</strong></div>
+  <div class="eligibility-panel setup-quality-panel" id="setupQualityPanel"><div><span>SETUP QUALITY</span><small id="setupQualityReason">SELECT A LEVEL, STRATEGY AND ITS REQUIREMENTS.</small></div><strong id="setupQualityStatus">PENDING</strong></div>
 </div>
-<div class="process"><h3>EXIT MANAGEMENT</h3>
-<div class="prow"><div class="plabel">MOVED TO BREAKEVEN <span class="helper">(FEAR OF LOSING)</span></div><div class="pactions" data-group="breakeven"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div>
-<div class="prow"><div class="plabel">TRADE ABORTED <span class="helper">(CORRECTIVE ACTION / ENTRY ERROR)</span></div><div class="pactions" data-group="tradeAborted"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div>
+
+<div class="card">
+  <div class="block-title">04 / TRADE MANAGEMENT</div>
+  <div class="field-block"><div class="label">RISK / REWARD</div><div class="options rr-mode-options" data-group="rrMode"><button class="option selected" onclick="selectRRMode(this,'SET')">SET</button><button class="option" onclick="selectRRMode(this,'DYNAMIC')">DYNAMIC</button></div><div class="rr" style="margin-top:10px"><input id="rrRisk" class="input" type="number" min="0" max="9" step="1" value="1" oninput="updateOutcomeAvailability()"><span class="colon">:</span><input id="rrReward" class="input" type="number" min="0" max="9" step="1" value="1" oninput="updateOutcomeAvailability()"></div><div id="rrModeHint" class="helper" style="margin-top:9px">SET: PLANNED RISK-TO-REWARD RATIO.</div></div>
+  <div class="process"><h3>STOP LOSS</h3><div class="prow"><div class="plabel">MOVED AWAY <span class="helper">(MORE ROOM / GAMBLING)</span></div><div class="pactions" data-group="slAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">MOVED CLOSER <span class="helper">(TIGHTEN / LOSS OF CONFIDENCE)</span></div><div class="pactions" data-group="slCloser"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
+  <div class="process"><h3>EXIT</h3><div class="prow"><div class="plabel">MOVED TO BREAKEVEN <span class="helper">(FEAR OF LOSING)</span></div><div class="pactions" data-group="breakeven"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">TRADE ABORTED <span class="helper">(CORRECTIVE ACTION / ENTRY ERROR)</span></div><div class="pactions" data-group="tradeAborted"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
+  <div class="process"><h3>TAKE PROFIT</h3><div class="prow"><div class="plabel">TAKEN EARLY <span class="helper">(HASTE AND FEAR)</span></div><div class="pactions" data-group="tpEarly"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">MOVED FARTHER AWAY <span class="helper">(LET IT RUN / OVERCONFIDENCE / HOPE)</span></div><div class="pactions" data-group="tpAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
 </div>
-<div class="process"><h3>TAKE PROFIT</h3>
-<div class="prow"><div class="plabel">TAKEN EARLY <span class="helper">(HASTE AND FEAR)</span></div><div class="pactions" data-group="tpEarly"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div>
-<div class="prow"><div class="plabel">MOVED FARTHER AWAY <span class="helper">(LET IT RUN / OVERCONFIDENCE / HOPE)</span></div><div class="pactions" data-group="tpAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div>
+<div class="eligibility-panel protocol-status-panel sabotage-panel" id="sabotagePanel"><div><span>SELF-SABOTAGE DETECTED?</span><small id="sabotageReason">AVAILABLE ONLY FOR ELIGIBLE TRADES.</small></div><strong id="sabotageStatus">N/A</strong></div>
+<div class="card">
+  <div class="block-title">05 / POST-TRADE RESPONSE</div>
+  <div class="field-block"><div class="label">POST-TRADE STATE <span class="helper">SINGLE SELECTION</span></div><div class="options post-state-options" data-group="postState"><button class="option post-green" onclick="selectOne(this)">CALM MIND</button><button class="option post-yellow" onclick="selectOne(this)">TENSION</button><button class="option post-red" onclick="selectOne(this)">URGENCY / FOMO</button></div></div>
+  <div class="field-block"><div class="label">OPTIONAL RESPONSE <span class="helper">MULTIPLE SELECTION</span></div><div class="options" data-group="postExtras"><button class="option" onclick="selectMany(this)">DOUBT ABOUT MY STRATEGY</button><button class="option" onclick="selectMany(this)">REGRET: I SHOULD HAVE...</button><button class="option" onclick="toggleOther(this,'responseOtherWrap')">OTHER</button></div><div id="responseOtherWrap" class="hidden" style="margin-top:10px"><input id="responseOther" class="input" placeholder="DESCRIBE THE OTHER RESPONSE"></div></div>
 </div>
-</div>
-<div class="eligibility-panel protocol-status-panel" id="managementProtocolPanel"><div><span>IN-TRADE MANAGEMENT RESPECTED?</span><small id="managementProtocolReason">COMPLETE THE PROCESS JOURNALING.</small></div><strong id="managementProtocolStatus">PENDING</strong></div>
-<div class="card"><div class="block-title">04 / POST-TRADE RESPONSE</div><div class="label">WHAT EMERGED AFTER THE TRADE? <span class="helper">MULTIPLE SELECTION</span></div><div id="responseOptions" class="options" data-group="response"></div><div id="responseOtherWrap" class="hidden" style="margin-top:10px"><input id="responseOther" class="input" placeholder="DESCRIBE THE OTHER RESPONSE"></div></div>
-<div class="card"><div class="block-title">05 / TRADE OUTCOME</div><div class="field-block"><div class="label">OUTCOME $</div><div class="outcomes" data-group="tradeOutcome">
+<div class="card"><div class="block-title">06 / TRADE OUTCOME</div><div class="field-block"><div class="label">OUTCOME $</div><div class="outcomes" data-group="tradeOutcome">
   <button class="option no" onclick="selectOne(this)">FULL LOSS</button>
   <button id="partialLossButton" class="option no" onclick="selectOne(this)">PARTIAL LOSS</button>
   <button class="option" onclick="selectOne(this)">BE</button>
@@ -1376,18 +1495,19 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
 </div>
 
 <div class="card final-analysis-card">
-  <div class="block-title">06 / EXECUTION ANALYSIS</div><div class="eligibility-panel" id="finalEligibilityPanel">
-  <div><span>TRADE ELIGIBILITY</span><small id="finalEligibilityReason">Complete the entry criteria.</small></div>
-  <strong id="finalEligibilityStatus">PENDING</strong>
-</div>
-
-  <div class="summary"><div class="tile"><span>SETUP QUALITY</span><strong id="setupSummary">0 / 40</strong></div><div class="tile"><span>PROCESS QUALITY</span><strong id="processSummary">60 / 60</strong></div><div class="tile total"><span>EXECUTION SCORE</span><strong id="executionSummary">60 / 100</strong></div></div>
+  <div class="block-title">07 / EXECUTION ANALYSIS</div>
+  <div class="simple-analysis-grid">
+    <div class="analysis-status-card"><span>SETUP GRADE</span><strong id="setupSummary">N/A</strong><small id="setupSummaryDetail">AVAILABLE ONLY FOR ELIGIBLE TRADES.</small></div>
+    <div class="analysis-status-card"><span>SELF-SABOTAGE</span><strong id="sabotageSummary">N/A</strong><small id="sabotageSummaryDetail">AVAILABLE ONLY FOR ELIGIBLE TRADES.</small></div>
+  </div>
   <div class="complete"><button class="btn primary" onclick="completeProtocol()">COMPLETE PROTOCOL</button></div>
-</div>
-</div><aside class="sticky"><div class="score-card">
-<div class="score-row"><div class="score-name">SETUP QUALITY</div><div id="setupScore" class="score-value">0 / 40</div><div class="bar"><span id="setupBar"></span></div></div><div class="score-row"><div class="score-name">PROCESS QUALITY</div><div id="processScore" class="score-value">60 / 60</div><div class="bar"><span id="processBar"></span></div></div><div class="score-row total"><div class="score-name">EXECUTION SCORE</div><div id="executionScore" class="score-value">60</div><div class="bar"><span id="executionBar"></span></div></div></div></aside></div>
+</div></div>
+</div><aside class="sticky"><div class="score-card simple-score-card">
+  <div class="simple-score-row"><div class="score-name">SETUP GRADE</div><div id="setupScore" class="score-value simple-grade">N/A</div><small id="setupScoreDetail">ELIGIBLE TRADES ONLY</small></div>
+  <div class="simple-score-row"><div class="score-name">SELF-SABOTAGE</div><div id="sabotageScore" class="score-value simple-grade">N/A</div><small id="sabotageScoreDetail">ELIGIBLE TRADES ONLY</small></div>
+</div></aside></div>
 </section>
-<section id="records" class="page hidden"><div class="top"><div><h1>PROTOCOL RECORDS</h1><div class="sub">SAVED LOCALLY IN THIS BROWSER.</div></div><button class="btn primary" onclick="newSession(document.querySelector('[data-nav=start]'))">NEW PROTOCOL</button></div><div id="recordsList" class="records"></div></section>
+<section id="records" class="page hidden"><div class="top"><div><h1>PROTOCOL RECORDS</h1><div class="sub">SAVED LOCALLY IN THIS BROWSER.</div></div><button class="btn primary" onclick="newSession(document.querySelector('[data-nav=start]'))">NEW PROTOCOL</button></div><div class="records-subtitle">DAILY PREPARATION ARCHIVE</div><div id="dailyPrepArchive" class="daily-prep-archive"></div><div class="records-subtitle">TRADE RECORDS</div><div id="recordsList" class="records"></div></section>
 </main></div>
 <div id="reentryModal" class="modal hidden"><div class="modal-card"><div class="modal-title">IS THIS A RE-ENTRY WITHIN 20 MINUTES?</div><div class="modal-actions"><button class="btn primary" onclick="setReentry('YES')">YES</button><button class="btn" onclick="setReentry('NO')">NO</button></div></div></div>
 <div id="breathingModal" class="modal hidden">
@@ -1458,8 +1578,9 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
     </div>
   </div>
 </div>
+<div id="dailyPrepViewModal" class="modal hidden"><div class="modal-card daily-prep-view-card"><div class="tool-modal-top"><div><div class="block-title">DAILY PREPARATION</div><div id="dailyPrepViewDate" class="sub"></div></div><button class="tool-close" type="button" onclick="closeDailyPrepView()" aria-label="Close daily prep">×</button></div><div class="daily-prep-view-section"><span>DAILY NOTES</span><p id="dailyPrepViewNotes"></p></div><div class="daily-prep-view-section"><span>LONG NARRATIVE</span><p id="dailyPrepViewLong"></p></div><div class="daily-prep-view-section"><span>SHORT NARRATIVE</span><p id="dailyPrepViewShort"></p></div><div class="modal-actions" style="margin-top:16px"><button class="btn" onclick="closeDailyPrepView()">CLOSE</button></div></div></div>
 <div id="reportModal" class="modal hidden"><div class="modal-card"><div class="block-title">COMPLETED PROTOCOL</div>
-<div class="summary"><div class="tile"><span>SETUP QUALITY</span><strong id="modalSetup"></strong></div><div class="tile"><span>PROCESS QUALITY</span><strong id="modalProcess"></strong></div><div class="tile total"><span>EXECUTION SCORE</span><strong id="modalExecution"></strong></div></div><textarea id="reportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copyReport()">COPY FOR AI</button><button class="btn success" onclick="emailReport()">OPEN EMAIL DRAFT</button><button class="btn" onclick="closeReport()">CLOSE</button></div></div></div>
+<div class="summary simple-modal-summary"><div class="tile"><span>SETUP GRADE</span><strong id="modalSetup"></strong></div><div class="tile total"><span>SELF-SABOTAGE</span><strong id="modalSabotage"></strong></div></div><textarea id="reportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copyReport()">COPY FOR AI</button><button class="btn success" onclick="emailReport()">OPEN EMAIL DRAFT</button><button class="btn" onclick="closeReport()">CLOSE</button></div></div></div>
 <div id="recordModal" class="modal hidden"><div class="modal-card"><div class="block-title">SAVED PROTOCOL</div><textarea id="savedReportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copySavedReport()">COPY FOR AI</button><button class="btn" onclick="closeRecord()">CLOSE</button></div></div></div><div id="toast" class="toast"></div>
 <script>
 document.addEventListener('keydown', function(event){
@@ -1589,6 +1710,7 @@ function updateLockoutUI(){
   const progress=document.getElementById('lockoutProgress');
   const startButton=document.getElementById('lockoutStartButton');
   const homeLabel=document.getElementById('startLockoutLabel');
+  const journalLabel=document.getElementById('journalLockoutLabel');
   const homeTool=homeLabel?.closest('.start-tool');
 
   if(remaining>0){
@@ -1598,6 +1720,7 @@ function updateLockoutUI(){
     if(progress)progress.style.width=`${Math.min(100,Math.max(0,elapsed/(20*60*1000)*100))}%`;
     if(startButton){startButton.textContent='RESTART 20:00';}
     if(homeLabel)homeLabel.textContent=formatLockout(remaining);
+    if(journalLabel)journalLabel.textContent=formatLockout(remaining);
     if(homeTool)homeTool.classList.add('lockout-active');
   }else{
     if(getLockoutEnd())localStorage.removeItem(LOCKOUT_KEY);
@@ -1606,6 +1729,7 @@ function updateLockoutUI(){
     if(progress)progress.style.width='0%';
     if(startButton)startButton.textContent='START 20:00';
     if(homeLabel)homeLabel.textContent='20:00';
+    if(journalLabel)journalLabel.textContent='20:00';
     if(homeTool)homeTool.classList.remove('lockout-active');
   }
 }
@@ -1637,8 +1761,25 @@ function closeIdealSetup(){
   document.getElementById('idealSetupModal').classList.add('hidden');
 }
 
+const DAILY_PREP_KEY='executionProtocolDailyPrepV1';
+function loadDailyPrepStore(){try{return JSON.parse(localStorage.getItem(DAILY_PREP_KEY)||'{}')}catch{return{}}}
+function saveDailyPrepStore(store){localStorage.setItem(DAILY_PREP_KEY,JSON.stringify(store))}
+function getDailyPrep(date){return loadDailyPrepStore()[date]||null}
+function setDailyPrep(date,data){const store=loadDailyPrepStore();store[date]={...(store[date]||{}),...data,updatedAt:Date.now()};saveDailyPrepStore(store)}
+function currentPrepDate(){return document.getElementById('journalDate').value||today}
+function setDailyPrepReadonly(readonly){['dailyNotes','longNarrative','shortNarrative'].forEach(id=>{const el=document.getElementById(id);if(el)el.readOnly=readonly});document.querySelector('.daily-prep-card')?.classList.toggle('readonly',readonly)}
+function loadDailyPrepForm(){const date=currentPrepDate(),prep=getDailyPrep(date);document.getElementById('dailyNotes').value=prep?.notes||'';document.getElementById('longNarrative').value=prep?.longNarrative||'';document.getElementById('shortNarrative').value=prep?.shortNarrative||'';if(prep){setDailyPrepReadonly(true);document.getElementById('dailyPrepStatus').textContent='DAILY PREPARATION ALREADY SAVED FOR THIS DATE.';document.getElementById('dailyPrepContinueButton').textContent='CONTINUE TO CHECKLIST';document.getElementById('dailyPrepEditButton').classList.remove('hidden')}else{setDailyPrepReadonly(false);document.getElementById('dailyPrepStatus').textContent='ONE ENTRY PER TRADING DAY.';document.getElementById('dailyPrepContinueButton').textContent='SAVE & CONTINUE';document.getElementById('dailyPrepEditButton').classList.add('hidden')}}
+function openDailyPrepStage(){document.getElementById('dailyPrepStage').classList.remove('hidden');document.getElementById('checklistStage').classList.add('hidden');loadDailyPrepForm()}
+function editDailyPrep(){setDailyPrepReadonly(false);document.getElementById('dailyPrepStatus').textContent='EDITING SAVED DAILY PREPARATION.';document.getElementById('dailyPrepContinueButton').textContent='SAVE CHANGES & CONTINUE';document.getElementById('dailyPrepEditButton').classList.add('hidden')}
+function saveDailyPrepAndContinue(){const date=currentPrepDate(),existing=getDailyPrep(date),readonly=document.getElementById('dailyNotes').readOnly;if(!existing||!readonly){setDailyPrep(date,{notes:document.getElementById('dailyNotes').value.trim(),longNarrative:document.getElementById('longNarrative').value.trim(),shortNarrative:document.getElementById('shortNarrative').value.trim()})}showChecklistForDate()}
+function showChecklistForDate(){const date=currentPrepDate();document.getElementById('dailyPrepStage').classList.add('hidden');document.getElementById('checklistStage').classList.remove('hidden');if(checklistAlreadyCompleted(date))showChecklistCompleted(date);else resetChecklist()}
+function markChecklistCompleted(date){const prep=getDailyPrep(date)||{notes:'',longNarrative:'',shortNarrative:''};setDailyPrep(date,{...prep,checklistCompleted:true})}
+function renderDailyPrepArchive(){const c=document.getElementById('dailyPrepArchive');if(!c)return;const store=loadDailyPrepStore(),dates=Object.keys(store).sort().reverse();if(!dates.length){c.innerHTML='<div class="card empty">NO DAILY PREPARATION HAS BEEN SAVED YET.</div>';return}c.innerHTML=dates.map(date=>{const p=store[date],summary=(p.longNarrative||p.shortNarrative||p.notes||'SAVED DAILY PREPARATION').slice(0,100);return `<button class="daily-prep-record" onclick="openDailyPrepView('${date}')"><div><strong>${date}</strong><span>${summary}</span></div><div>VIEW →</div></button>`}).join('')}
+function openDailyPrepView(date){const p=getDailyPrep(date);if(!p)return;document.getElementById('dailyPrepViewDate').textContent=date;document.getElementById('dailyPrepViewNotes').textContent=p.notes||'—';document.getElementById('dailyPrepViewLong').textContent=p.longNarrative||'—';document.getElementById('dailyPrepViewShort').textContent=p.shortNarrative||'—';document.getElementById('dailyPrepViewModal').classList.remove('hidden')}
+function closeDailyPrepView(){document.getElementById('dailyPrepViewModal').classList.add('hidden')}
+
 const KEY='executionProtocolRecordsV1';
-const checklistItems=['PHYSICAL ACTIVITY','HIGHER TIMEFRAME','LEVELS','FOREXFACTORY','YESTERDAY JOURNAL AND NOTE','WATCHLIST','ATR','MONITOR HEART RATE AND PRACTICE DIAPHRAGMATIC BREATHING'];
+const checklistItems=['PHYSICAL ACTIVITIES','JIGSAW MARKET PROFILE','HIGHER TIMEFRAME','LEVELS','FOREXFACTORY','YESTERDAY JOURNAL AND NOTE','WATCHLIST & IV RANK','VIX AWARENESS','MONITOR HEART RATE AND PRACTICE DIAPHRAGMATIC BREATHING'];
 const emotions=[{label:'CLEAR MIND',state:'GREEN'},{label:'TENSION',state:'YELLOW'},{label:'URGENCY / FOMO',state:'RED'}];
 const responses=['CALM','URGE TO RE-ENTER','DOUBT ABOUT MY STRATEGY','REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED','TEMPTATION TO INCREASE EXPOSURE IMMEDIATELY','OTHER'];
 let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,checklistDate=null;
@@ -1665,7 +1806,7 @@ function closeMobileMenu(){
   if(button){button.textContent='☰';button.setAttribute('aria-label','OPEN NAVIGATION');}
 }
 function newSession(b){document.getElementById('gate').classList.remove('hidden');document.getElementById('sessionFlow').classList.add('hidden');reentry=null;showPage('start',b)}
-function checklistAlreadyCompleted(d){return records.some(x=>x.date===d)}
+function checklistAlreadyCompleted(d){return Boolean(getDailyPrep(d)?.checklistCompleted)||records.some(x=>x.date===d)}
 function showChecklistCompleted(d){
   checkIndex=checklistItems.length;
   completed=[...checklistItems];
@@ -1677,12 +1818,7 @@ function showChecklistCompleted(d){
   document.getElementById('sessionReady').classList.remove('hidden');
   updateTradeHint();
 }
-function unlockSession(){
-  document.getElementById('gate').classList.add('hidden');
-  document.getElementById('sessionFlow').classList.remove('hidden');
-  const d=document.getElementById('journalDate').value||today;
-  if(checklistAlreadyCompleted(d))showChecklistCompleted(d);else resetChecklist();
-}
+function unlockSession(){document.getElementById('gate').classList.add('hidden');document.getElementById('sessionFlow').classList.remove('hidden');const date=currentPrepDate();if(getDailyPrep(date))showChecklistForDate();else openDailyPrepStage()}
 function resetChecklist(){
   checkIndex=0;
   completed=[];
@@ -1696,6 +1832,7 @@ function renderCheck(){
   cur.classList.remove('knock');
   if(checkIndex>=checklistItems.length){
     checklistDate=document.getElementById('journalDate').value||today;
+    markChecklistCompleted(checklistDate);
     cur.classList.add('hidden');
     document.getElementById('checkProgress').style.width='100%';
     document.getElementById('sessionReady').classList.remove('hidden');
@@ -1707,39 +1844,28 @@ function renderCheck(){
   document.getElementById('checkProgress').style.width=`${checkIndex/checklistItems.length*100}%`;
 }
 let knocking=false;function knockItem(){if(checkIndex>=checklistItems.length||knocking)return;knocking=true;const cur=document.getElementById('currentCheck');cur.classList.add('knock');setTimeout(()=>{const item=checklistItems[checkIndex];completed.push(item);const div=document.createElement('div');div.className='stack-item';div.textContent=`✓ ${item}`;document.getElementById('completedStack').appendChild(div);checkIndex++;knocking=false;renderCheck()},390)}
-function updateTradeHint(){const d=document.getElementById('journalDate').value||today;tradeNumber=records.filter(x=>x.date===d).length+1;document.getElementById('tradeHint').textContent=`THIS WILL BE TRADE ${tradeNumber} FOR ${d}.`}
-function handleJournalDateChange(){
-  const d=document.getElementById('journalDate').value||today;
-  updateTradeHint();
-  const flow=document.getElementById('sessionFlow');
-  if(flow.classList.contains('hidden'))return;
-  if(checklistAlreadyCompleted(d)){
-    showChecklistCompleted(d);
-  }else if(checklistDate!==d){
-    resetChecklist();
-  }
-}
+function updateTradeHint(){const d=document.getElementById('journalDate').value||today;tradeNumber=records.filter(x=>x.date===d).length+1;const prep=getDailyPrep(d);document.getElementById('tradeHint').textContent=`THIS WILL BE TRADE ${tradeNumber} FOR ${d}.${prep?' · DAILY PREP SAVED.':''}`}
+function handleJournalDateChange(){updateTradeHint()}
 function askReentry(){currentDate=document.getElementById('journalDate').value||today;updateTradeHint();document.getElementById('reentryModal').classList.remove('hidden')}
 function setReentry(v){reentry=v;document.getElementById('reentryModal').classList.add('hidden');initProtocol();showPage('journal',document.querySelector('[data-nav=journal]'))}
 function initProtocol(){
   clearProtocol();
   renderEmotions();
-  renderResponses();
   tradeNumber=records.filter(x=>x.date===currentDate).length+1;
   document.getElementById('journalMeta').textContent=`${currentDate} · TRADE ${tradeNumber} · RE-ENTRY <20': ${reentry}`;
+  updateStrategyCriteria();
   updateProtocolStatuses();
   calcScores();
 }
 function clearProtocol(){
   document.querySelectorAll('#journal .option.selected').forEach(x=>x.classList.remove('selected'));
-  ['locationOther','triggerOther','responseOther','insights','freeNote'].forEach(id=>{const x=document.getElementById(id);if(x)x.value=''});
-  ['locationOtherWrap','triggerOtherWrap','responseOtherWrap'].forEach(id=>document.getElementById(id).classList.add('hidden'));
-  const setButton=document.querySelector('[data-group="rrMode"] .option');
-  if(setButton)setButton.classList.add('selected');
-  document.getElementById('rrRisk').value='1';
-  document.getElementById('rrReward').value='1';
-  document.getElementById('rrModeHint').textContent='SET: PLANNED RISK-TO-REWARD RATIO.';
-  updateOutcomeAvailability();
+  ['responseOther','insights','freeNote'].forEach(id=>{const x=document.getElementById(id);if(x)x.value=''});
+  document.getElementById('responseOtherWrap')?.classList.add('hidden');
+  document.getElementById('breakRetestCriteria')?.classList.add('hidden');
+  document.getElementById('rejectionCriteria')?.classList.add('hidden');
+  const setButton=document.querySelector('[data-group="rrMode"] .option');if(setButton)setButton.classList.add('selected');
+  document.getElementById('rrRisk').value='1';document.getElementById('rrReward').value='1';
+  document.getElementById('rrModeHint').textContent='SET: PLANNED RISK-TO-REWARD RATIO.';updateOutcomeAvailability();
 }
 function renderEmotions(){
   document.getElementById('emotionOptions').innerHTML=emotions.map(x=>`<button class="option emotion" data-state="${x.state}" onclick="selectMany(this)">${x.label}</button>`).join('');
@@ -1749,11 +1875,7 @@ function renderEmotions(){
   }
   updateState();
 }
-function renderResponses(){
-  const regular=shuffle(responses.filter(x=>x!=='OTHER'));
-  const ordered=[...regular,'OTHER'];
-  document.getElementById('responseOptions').innerHTML=ordered.map(x=>`<button class="option" onclick="${x==='OTHER'?"toggleResponseOther(this)":"selectMany(this)"}">${x}</button>`).join('');
-}
+function renderResponses(){}
 function rrMode(){return single('rrMode')||'SET'}
 function selectRRMode(button,mode){
   [...button.parentElement.children].forEach(x=>x.classList.remove('selected'));
@@ -1786,27 +1908,6 @@ function updateOutcomeAvailability(){
     :'Partial Loss and Partial Profit are available only with SET 1:1.';
   calcScores();
 }
-function automaticEligibilityReasons(){
-  const reasons=[];
-  const detected=state();
-  const bias=single('bias');
-  const triggers=selected('trigger');
-  const locations=selected('location');
-
-  if(detected==='RED')reasons.push('PRE-TRADE STATE WAS RED');
-  if(reentry==='YES')reasons.push('RE-ENTRY OCCURRED WITHIN 20 MINUTES');
-  if(bias==='UNDEFINED')reasons.push('BIAS WAS UNDEFINED');
-  if(triggers.includes('UNDEFINED'))reasons.push('TRIGGER WAS UNDEFINED');
-  if(locations.includes('OTHER'))reasons.push('LOCATION WAS OUTSIDE THE PLAYBOOK');
-
-  return reasons;
-}
-function eligibilityInfo(finalMode=false){
-  const entry=entryProtocolInfo(finalMode);
-  if(entry.status==='NO')return{status:'INVALID',valid:false,reasons:entry.reasons,pending:[]};
-  if(entry.status==='PENDING')return{status:'PENDING',valid:false,reasons:[],pending:entry.pending};
-  return{status:'VALID',valid:true,reasons:[],pending:[]};
-}
 function directionalAlignment(){
   const bias=single('bias');
   const direction=single('tradeDirection');
@@ -1826,34 +1927,52 @@ function updateDirectionalAlignment(){
   else panel.classList.add('na');
   status.textContent=alignment;
 }
-function entryProtocolInfo(finalMode=false){
-  const reasons=automaticEligibilityReasons();
-  const pending=[];
-  const detected=state();
-  const bias=single('bias');
-  const triggers=selected('trigger');
-  const locations=selected('location');
-
-  if(detected==='NOT SET')pending.push('PRE-TRADE STATE');
-  if(!bias)pending.push('BIAS');
-  if(!triggers.length)pending.push('TRIGGER');
-  if(!locations.length)pending.push('LOCATION');
-
-  if(finalMode&&pending.length)pending.forEach(item=>reasons.push(`MISSING ${item}`));
-
-  if(reasons.length)return{status:'NO',reasons,pending:[]};
-  if(pending.length)return{status:'PENDING',reasons:[],pending};
-  return{status:'YES',reasons:[],pending:[]};
+function selectedLevel(){
+  const type=single('levelType');
+  return type?{name:type,type}:null;
 }
-function managementProtocolInfo(){
+function updateStrategyCriteria(){const strategy=single('strategy');document.getElementById('breakRetestCriteria')?.classList.toggle('hidden',strategy!=='BREAK & RETEST');document.getElementById('rejectionCriteria')?.classList.toggle('hidden',strategy!=='REJECTION')}
+function eligibilityInfo(finalMode=false){
+  const reasons=[],pending=[];
+  const detected=state(),bias=single('bias'),direction=single('tradeDirection'),alignment=directionalAlignment();
+  if(detected==='NOT SET')pending.push('PRE-TRADE STATE'); else if(detected==='RED')reasons.push('PRE-TRADE STATE WAS RED');
+  if(!bias)pending.push('BIAS'); else if(bias==='UNDEFINED')reasons.push('BIAS WAS UNDEFINED');
+  if(!direction)pending.push('TRADE DIRECTION'); else if(alignment==='COUNTER TREND')reasons.push('TRADE DIRECTION WAS NOT ALIGNED WITH BIAS');
+  if(finalMode&&pending.length)pending.forEach(item=>reasons.push(`MISSING ${item}`));
+  if(reasons.length)return{status:'INVALID',valid:false,reasons,pending:[]};
+  if(pending.length)return{status:'PENDING',valid:false,reasons:[],pending};
+  return{status:'VALID',valid:true,reasons:[],pending:[]};
+}
+function setupQualityInfo(finalMode=false){
+  const strategy=single('strategy'),level=selectedLevel(),pending=[],met=[];
+  if(!level)pending.push('CHOSEN LEVEL');
+  if(!strategy)pending.push('CHOSEN STRATEGY');
+
+  if(strategy==='BREAK & RETEST'){
+    const values=[single('brFvg'),single('brExactEntry'),single('brFractalStop')];
+    if(!values[0])pending.push('FVG');
+    if(!values[1])pending.push('EXACT ENTRY');
+    if(!values[2])pending.push('FRACTAL STOP');
+    met.push(...values.map(v=>v==='YES'));
+  }else if(strategy==='REJECTION'){
+    const trigger=single('rejectionTrigger'),entry=single('rejEntryBreak'),stop=single('rejFractalStop');
+    if(!trigger)pending.push('TRIGGER');
+    if(!entry)pending.push('TRIGGER BREAK ENTRY');
+    if(!stop)pending.push('FRACTAL STOP');
+    met.push(Boolean(trigger&&trigger!=='NONE'),entry==='YES',stop==='YES');
+  }
+
+  if(pending.length)return{status:'PENDING',grade:null,count:null,pending,detail:`COMPLETE: ${pending.join(', ')}.`};
+
+  const count=met.filter(Boolean).length;
+  const grade={0:'D',1:'C',2:'B',3:'A'}[count]||'D';
+  return{status:'READY',grade,count,pending:[],detail:`${count} / 3 STRATEGY VARIABLES PRESENT.`};
+}
+function sabotageInfo(){
+  const eligibility=eligibilityInfo();
+  if(!eligibility.valid)return{status:'N/A',detected:null,reasons:[],detail:'AVAILABLE ONLY FOR ELIGIBLE TRADES.'};
+
   const reasons=[];
-  const pending=[];
-  const direction=single('tradeDirection');
-  const alignment=directionalAlignment();
-
-  if(!direction)pending.push('TRADE DIRECTION');
-  if(alignment==='COUNTER TREND')reasons.push('TRADE WAS COUNTER TREND');
-
   if(rrMode()==='SET'){
     if(single('slAway')==='YES')reasons.push('STOP LOSS WAS MOVED FARTHER AWAY');
     if(single('slCloser')==='YES')reasons.push('STOP LOSS WAS MOVED CLOSER');
@@ -1862,63 +1981,69 @@ function managementProtocolInfo(){
     if(single('tpAway')==='YES')reasons.push('TAKE PROFIT WAS MOVED FARTHER AWAY');
   }
 
-  if(reasons.length)return{status:'NO',reasons,pending:[]};
-  if(pending.length)return{status:'PENDING',reasons:[],pending};
-  return{status:'YES',reasons:[],pending:[]};
+  return reasons.length
+    ?{status:'YES',detected:true,reasons,detail:reasons.join(' · ')}
+    :{status:'NO',detected:false,reasons:[],detail:'NO SELF-SABOTAGING ACTION DETECTED.'};
 }
 function setProtocolStatus(panelId,statusId,reasonId,info){
-  const panel=document.getElementById(panelId);
-  const status=document.getElementById(statusId);
-  const reason=document.getElementById(reasonId);
-  if(!panel||!status||!reason)return;
+  const panel=document.getElementById(panelId),status=document.getElementById(statusId),reason=document.getElementById(reasonId);if(!panel||!status||!reason)return;
   panel.classList.remove('valid','invalid','pending');
-  if(info.status==='YES')panel.classList.add('valid');
-  else if(info.status==='NO')panel.classList.add('invalid');
-  else panel.classList.add('pending');
+  if(info.status==='YES'||info.status==='VALID')panel.classList.add('valid');else if(info.status==='NO'||info.status==='INVALID')panel.classList.add('invalid');else panel.classList.add('pending');
   status.textContent=info.status;
-  if(info.status==='NO')reason.textContent=info.reasons.join(' · ');
-  else if(info.status==='PENDING')reason.textContent=`COMPLETE: ${info.pending.join(', ')}.`;
-  else reason.textContent='PROTOCOL RESPECTED.';
+  if(info.status==='NO'||info.status==='INVALID')reason.textContent=(info.reasons||[]).join(' · ');else if(info.status==='PENDING')reason.textContent=`COMPLETE: ${(info.pending||[]).join(', ')}.`;else reason.textContent='PROTOCOL RESPECTED.';
+}
+function updateSetupPanels(){
+  const eligibility=eligibilityInfo();
+  setProtocolStatus('setupEligibilityPanel','setupEligibilityStatus','setupEligibilityReason',eligibility);
+
+  const quality=setupQualityInfo();
+  const panel=document.getElementById('setupQualityPanel');
+  const status=document.getElementById('setupQualityStatus');
+  const reason=document.getElementById('setupQualityReason');
+
+  if(panel&&status&&reason){
+    panel.classList.remove('valid','invalid','pending');
+    if(!eligibility.valid){
+      panel.classList.add('pending');
+      status.textContent=eligibility.status==='PENDING'?'PENDING':'N/A';
+      reason.textContent=eligibility.status==='PENDING'?'WAITING FOR ELIGIBILITY.':'SETUP GRADE APPLIES ONLY TO ELIGIBLE TRADES.';
+    }else if(quality.status==='PENDING'){
+      panel.classList.add('pending');
+      status.textContent='PENDING';
+      reason.textContent=quality.detail;
+    }else{
+      panel.classList.add('valid');
+      status.textContent=`${quality.grade} · ${quality.count}/3`;
+      reason.textContent=quality.detail;
+    }
+  }
+}
+function updateSabotagePanel(){
+  const info=sabotageInfo();
+  const panel=document.getElementById('sabotagePanel');
+  const status=document.getElementById('sabotageStatus');
+  const reason=document.getElementById('sabotageReason');
+  if(!panel||!status||!reason)return;
+
+  panel.classList.remove('valid','invalid','pending');
+  status.textContent=info.status;
+  reason.textContent=info.detail;
+  if(info.status==='YES')panel.classList.add('invalid');
+  else if(info.status==='NO')panel.classList.add('valid');
+  else panel.classList.add('pending');
 }
 function updateProtocolStatuses(){
   updateDirectionalAlignment();
-  setProtocolStatus('entryProtocolPanel','entryProtocolStatus','entryProtocolReason',entryProtocolInfo());
-  setProtocolStatus('managementProtocolPanel','managementProtocolStatus','managementProtocolReason',managementProtocolInfo());
+  updateStrategyCriteria();
+  updateSetupPanels();
+  updateSabotagePanel();
 }
-function selectProcess(b){
-  const was=b.classList.contains('selected');
-  [...b.parentElement.children].forEach(x=>x.classList.remove('selected'));
-  if(!was)b.classList.add('selected');
-  updateProtocolStatuses();
-  calcScores();
-}
-function selectOne(b){
-  [...b.parentElement.children].forEach(x=>x.classList.remove('selected'));
-  b.classList.add('selected');
-  updateProtocolStatuses();
-  calcScores();
-}
-function selectMany(b){
-  b.classList.toggle('selected');
-  if(b.closest('[data-group="emotions"]'))updateState();
-  updateProtocolStatuses();
-  calcScores();
-}
-function toggleOther(b,id){
-  b.classList.toggle('selected');
-  document.getElementById(id).classList.toggle('hidden',!b.classList.contains('selected'));
-  updateProtocolStatuses();
-  calcScores();
-}
-function toggleResponseOther(b){
-  b.classList.toggle('selected');
-  document.getElementById('responseOtherWrap').classList.toggle('hidden',!b.classList.contains('selected'));
-}
-function selected(g){
-  const c=document.querySelector(`[data-group="${g}"]`);
-  return c?[...c.querySelectorAll('.selected')].map(x=>x.textContent.trim()):[];
-}
-function single(g){return selected(g)[0]||null}
+function selectProcess(button){const was=button.classList.contains('selected');[...button.parentElement.children].forEach(x=>x.classList.remove('selected'));if(!was)button.classList.add('selected');updateProtocolStatuses();calcScores()}
+function selectOne(button){[...button.parentElement.children].forEach(x=>x.classList.remove('selected'));button.classList.add('selected');updateProtocolStatuses();calcScores()}
+function selectMany(button){button.classList.toggle('selected');if(button.closest('[data-group="emotions"]'))updateState();updateProtocolStatuses();calcScores()}
+function toggleOther(button,id){button.classList.toggle('selected');document.getElementById(id).classList.toggle('hidden',!button.classList.contains('selected'));updateProtocolStatuses();calcScores()}
+function selected(group){const c=document.querySelector(`[data-group="${group}"]`);return c?[...c.querySelectorAll('.selected')].map(x=>x.textContent.trim()):[]}
+function single(group){return selected(group)[0]||null}
 function updateState(){
   const selectedStates=[...document.querySelectorAll('#emotionOptions .selected')];
   const result=document.getElementById('stateResult');
@@ -1939,186 +2064,69 @@ function updateState(){
   breakdown.textContent='AUTOMATIC STATE RATING';
   updateProtocolStatuses();
 }
-function setupScore(){let s=0,b=single('bias'),c=single('conviction'),l=selected('location'),t=selected('trigger'),v=single('volume');if(b&&b!=='UNDEFINED')s+=8;if(c==='Outside VWAP 1st dev.')s+=8;else if(c==='Inside VWAP 1st dev.')s+=4;if(l.length&&l.every(x=>x!=='OTHER'))s+=8;if(t.length&&t.every(x=>!['UNDEFINED','OTHER'].includes(x)))s+=8;if(v==='YES')s+=8;return s}
-function processScore(){
-  let score=60;
-
-  if(directionalAlignment()==='COUNTER TREND')score-=15;
-
-  if(rrMode()==='SET'){
-    if(single('slAway')==='YES')score-=15;
-    if(single('slCloser')==='YES')score-=10;
-    if(single('breakeven')==='YES')score-=10;
-    if(single('tpEarly')==='YES')score-=10;
-    if(single('tpAway')==='YES')score-=10;
-  }
-
-  if(managementProtocolInfo().status==='NO')score-=20;
-  return Math.max(0,score);
-}
-function setEligibilityPanel(panelId,statusId,reasonId,info){
-  const panel=document.getElementById(panelId);
-  const status=document.getElementById(statusId);
-  const reason=document.getElementById(reasonId);
-  if(!panel||!status||!reason)return;
-
-  panel.classList.remove('valid','invalid','pending');
-  panel.classList.add(info.status.toLowerCase());
-  status.textContent=info.status;
-
-  if(info.status==='INVALID')reason.textContent=info.reasons.join(' · ');
-  else if(info.status==='PENDING')reason.textContent=`COMPLETE: ${info.pending.join(', ')}.`;
-  else reason.textContent='TRADE BELONGS TO THE ELIGIBLE EDGE SAMPLE.';
-}
 function calcScores(finalMode=false){
+  updateSetupPanels();
+  updateSabotagePanel();
+
   const eligibility=eligibilityInfo(finalMode);
-  const valid=eligibility.valid;
-  const a=valid?setupScore():null;
-  const p=valid?processScore():null;
-  const e=valid?a+p:null;
+  const quality=setupQualityInfo(finalMode);
+  const sabotage=eligibility.valid?sabotageInfo():{status:'N/A',detected:null,reasons:[],detail:'AVAILABLE ONLY FOR ELIGIBLE TRADES.'};
 
-  setEligibilityPanel('finalEligibilityPanel','finalEligibilityStatus','finalEligibilityReason',eligibility);
+  const setupText=eligibility.valid&&quality.status==='READY'?`${quality.grade} · ${quality.count}/3`:(eligibility.status==='INVALID'?'N/A':'PENDING');
+  const setupDetail=eligibility.valid&&quality.status==='READY'?quality.detail:(eligibility.status==='INVALID'?'SETUP GRADE APPLIES ONLY TO ELIGIBLE TRADES.':'WAITING FOR ELIGIBILITY / SETUP COMPLETION.');
+  const sabotageText=eligibility.valid?sabotage.status:'N/A';
+  const sabotageDetail=eligibility.valid?sabotage.detail:'AVAILABLE ONLY FOR ELIGIBLE TRADES.';
 
-  document.getElementById('setupScore').textContent=valid?`${a} / 40`:'—';
-  document.getElementById('processScore').textContent=valid?`${p} / 60`:'—';
-  document.getElementById('executionScore').textContent=valid?e:'NOT SCORED';
-  document.getElementById('setupBar').style.width=valid?`${a/40*100}%`:'0%';
-  document.getElementById('processBar').style.width=valid?`${p/60*100}%`:'0%';
-  document.getElementById('executionBar').style.width=valid?`${e}%`:'0%';
+  const values={setupScore:setupText,setupScoreDetail:setupDetail,sabotageScore:sabotageText,sabotageScoreDetail:sabotageDetail,setupSummary:setupText,setupSummaryDetail:setupDetail,sabotageSummary:sabotageText,sabotageSummaryDetail:sabotageDetail};
+  Object.entries(values).forEach(([id,value])=>{const el=document.getElementById(id);if(el)el.textContent=value;});
 
-  document.getElementById('setupSummary').textContent=valid?`${a} / 40`:'NOT SCORED';
-  document.getElementById('processSummary').textContent=valid?`${p} / 60`:'NOT SCORED';
-  document.getElementById('executionSummary').textContent=valid?`${e} / 100`:'INVALID';
-
-  return{eligibility,setup:a,process:p,execution:e};
+  return{eligibility,quality,sabotage};
 }
 function state(){const s=[...document.querySelectorAll('#emotionOptions .selected')];if(!s.length)return'NOT SET';const a=s.map(x=>x.dataset.state);return a.includes('RED')?'RED':a.includes('YELLOW')?'YELLOW':'GREEN'}
 function collect(){
-  const sc=calcScores(true);
-  const entryInfo=entryProtocolInfo(true);
-  const managementInfo=managementProtocolInfo();
-  return{
-    id:Date.now(),date:currentDate,tradeNumber,reentry,
-    eligibility:sc.eligibility.status,
-    eligibilityReasons:sc.eligibility.reasons,
-    bias:single('bias'),
-    conviction:single('conviction'),
-    location:selected('location'),
-    locationOther:document.getElementById('locationOther').value.trim(),
-    trigger:selected('trigger'),
-    triggerOther:document.getElementById('triggerOther').value.trim(),
-    volume:single('volume'),
-    rrMode:rrMode(),
-    rrRisk:document.getElementById('rrRisk').value,
-    rrReward:document.getElementById('rrReward').value,
-    emotions:selected('emotions'),
-    detectedState:state(),
-    tradeDirection:single('tradeDirection'),
-    directionalAlignment:directionalAlignment(),
-    slAway:single('slAway'),
-    slCloser:single('slCloser'),
-    breakeven:single('breakeven'),
-    tradeAborted:single('tradeAborted'),
-    tpEarly:single('tpEarly'),
-    tpAway:single('tpAway'),
-    entryProtocol:entryInfo.status,
-    entryProtocolReasons:entryInfo.reasons,
-    managementProtocol:managementInfo.status,
-    managementProtocolReasons:managementInfo.reasons,
-    response:selected('response'),
-    responseOther:document.getElementById('responseOther').value.trim(),
-    tradeOutcome:single('tradeOutcome'),
-    insights:document.getElementById('insights').value.trim(),
-    freeNote:document.getElementById('freeNote').value.trim(),
-    setupScore:sc.setup,
-    processScore:sc.process,
-    executionScore:sc.execution
-  };
+  const analysis=calcScores(true),level=selectedLevel(),prep=getDailyPrep(currentDate)||{},eligible=analysis.eligibility.valid;
+  return{id:Date.now(),date:currentDate,tradeNumber,reentry,
+    eligibility:analysis.eligibility.status,eligibilityReasons:analysis.eligibility.reasons,
+    dailyNotes:prep.notes||'',longNarrative:prep.longNarrative||'',shortNarrative:prep.shortNarrative||'',
+    bias:single('bias'),conviction:single('conviction'),emotions:selected('emotions'),detectedState:state(),
+    tradeDirection:single('tradeDirection'),directionalAlignment:directionalAlignment(),
+    chosenLevel:level?.name||null,chosenLevelType:level?.type||null,strategy:single('strategy'),
+    brFvg:single('brFvg'),brExactEntry:single('brExactEntry'),brFractalStop:single('brFractalStop'),
+    rejectionTrigger:single('rejectionTrigger'),rejEntryBreak:single('rejEntryBreak'),rejFractalStop:single('rejFractalStop'),
+    rrMode:rrMode(),rrRisk:document.getElementById('rrRisk').value,rrReward:document.getElementById('rrReward').value,
+    slAway:single('slAway'),slCloser:single('slCloser'),breakeven:single('breakeven'),tradeAborted:single('tradeAborted'),tpEarly:single('tpEarly'),tpAway:single('tpAway'),
+    setupGrade:eligible&&analysis.quality.status==='READY'?analysis.quality.grade:null,
+    setupVariables:eligible&&analysis.quality.status==='READY'?analysis.quality.count:null,
+    sabotageDetected:eligible?analysis.sabotage.detected:null,
+    sabotageReasons:eligible?analysis.sabotage.reasons:[],
+    postState:single('postState'),postExtras:selected('postExtras'),responseOther:document.getElementById('responseOther').value.trim(),
+    tradeOutcome:single('tradeOutcome'),insights:document.getElementById('insights').value.trim(),freeNote:document.getElementById('freeNote').value.trim()};
 }
 function behavior(v,yes,tempted){return v==='YES'?yes:v==='TEMPTED TO'?tempted:null}
 function report(r){
   const x=[];
-  x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — TRADE ${r.tradeNumber}`,'','TRADE ELIGIBILITY',`Trade eligibility: ${r.eligibility}.`);
-
-  if(r.eligibility==='INVALID'){
-    x.push(`Reason(s): ${(r.eligibilityReasons||[]).join('; ')}.`);
-    x.push('This trade does not belong to the eligible sample of the edge.');
-  }else{
-    x.push('This trade belongs to the eligible sample of the edge.');
-  }
-
-  x.push('','ENTRY PROTOCOL',`Entry protocol respected: ${r.entryProtocol}.`);
-  if((r.entryProtocolReasons||[]).length)x.push(`Entry protocol reason(s): ${r.entryProtocolReasons.join('; ')}.`);
-
-  x.push('','TECHNICAL JOURNALING',`The directional bias was ${r.bias||'not selected'}.`);
-  if(r.conviction)x.push(`Conviction was classified as ${r.conviction}.`);
-  const locations=(r.location||[]).filter(i=>i!=='OTHER');
-  if(locations.length)x.push(`The trade location was ${locations.join(', ')}.`);
-  if((r.location||[]).includes('OTHER')&&r.locationOther)x.push(`Additional location context: ${r.locationOther}.`);
-  const triggers=(r.trigger||[]).filter(i=>i!=='OTHER');
-  if(triggers.length)x.push(`The entry trigger was ${triggers.join(', ')}.`);
-  if((r.trigger||[]).includes('OTHER')&&r.triggerOther)x.push(`Additional trigger context: ${r.triggerOther}.`);
-  if(r.volume==='YES')x.push('Volume was above its 20-period moving average.');
-  if(r.volume==='NO')x.push('Volume was not above its 20-period moving average.');
-
-  if(r.rrMode==='DYNAMIC'){
-    x.push(`Risk management was DYNAMIC. The recorded realized risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);
-  }else{
-    x.push(`Risk management was SET. The planned risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);
-  }
-
-  x.push('','PRE-TRADE STATE',
-    r.emotions.length?`Selected states: ${r.emotions.join(', ')}.`:'No pre-trade state was selected.',
-    `Overall detected state: ${r.detectedState}.`,
-    '',
-    'PROCESS JOURNALING'
-  );
-
-  x.push(r.reentry==='YES'?'This trade was a re-entry within 20 minutes.':'This trade was not a re-entry within 20 minutes.');
-  if(r.tradeDirection)x.push(`Trade direction was ${r.tradeDirection}.`);
-  x.push(`Directional alignment: ${r.directionalAlignment}.`);
-
-  [
-    behavior(r.slAway,'The stop loss was moved farther away from its original level.','I felt tempted to move the stop loss farther away, but did not execute it.'),
-    behavior(r.slCloser,'The stop loss was moved closer to price.','I felt tempted to tighten the stop loss, but did not execute it.'),
-    behavior(r.breakeven,'The stop loss was moved to breakeven.','I felt tempted to move the stop loss to breakeven, but did not execute it.'),
-    behavior(r.tradeAborted,'The trade was aborted immediately after recognizing an entry error.','I felt tempted to abort the trade after recognizing an entry error, but did not execute it.'),
-    behavior(r.tpEarly,'The take profit was taken early.','I felt tempted to take profit early, but did not execute it.'),
-    behavior(r.tpAway,'The take profit was moved farther away.','I felt tempted to move the take profit farther away, but did not execute it.')
-  ].filter(Boolean).forEach(line=>x.push(line));
-
-  if(r.rrMode==='DYNAMIC'){
-    x.push('Under DYNAMIC risk management, stop-loss, breakeven and take-profit adjustments were not scored as process violations.');
-  }
-
-  x.push(`In-trade management respected: ${r.managementProtocol}.`);
-  if((r.managementProtocolReasons||[]).length)x.push(`Management reason(s): ${r.managementProtocolReasons.join('; ')}.`);
-
-  x.push('','POST-TRADE RESPONSE');
-  const responses=(r.response||[]).filter(i=>i!=='OTHER');
-  if(responses.length)responses.forEach(i=>x.push(`- ${i}`));
-  if((r.response||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
-  if(!responses.length&&!r.responseOther)x.push('No post-trade response was selected.');
-
-  x.push('','TRADE OUTCOME',`The financial outcome category was ${r.tradeOutcome||'not selected'}.`,'','EXECUTION ANALYSIS');
-
-  if(r.eligibility==='VALID'){
-    x.push(`Setup Quality: ${r.setupScore} / 40.`,`Process Quality: ${r.processScore} / 60.`,`Execution Score: ${r.executionScore} / 100.`);
-  }else{
-    x.push('No Setup, Process or Execution Score was assigned because the trade was INVALID.');
-  }
-
-  x.push('','INSIGHTS OF THE DAY',r.insights||'—','','FREE NOTES',r.freeNote||'—');
-  return x.join('\n');
+  x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — TRADE ${r.tradeNumber}`);
+  x.push('','DAILY PREPARATION',`Daily notes: ${r.dailyNotes||'—'}`,`Long narrative: ${r.longNarrative||'—'}`,`Short narrative: ${r.shortNarrative||'—'}`);
+  x.push('','01 / CONTEXT',`Bias: ${r.bias||'not selected'}.`);if(r.conviction)x.push(`Conviction: ${r.conviction}.`);
+  x.push('','02 / STAGE IDENTIFICATION',r.emotions.length?`Selected states: ${r.emotions.join(', ')}.`:'No pre-trade state was selected.',`Overall detected state: ${r.detectedState}.`);
+  x.push('','03 / SETUP');if(r.tradeDirection)x.push(`Trade direction: ${r.tradeDirection}.`);x.push(`Directional alignment: ${r.directionalAlignment}.`);if(r.chosenLevel)x.push(`Chosen level type: ${r.chosenLevel}.`);if(r.strategy)x.push(`Chosen strategy: ${r.strategy}.`);
+  if(r.strategy==='BREAK & RETEST'){x.push(`FVG present: ${r.brFvg||'not selected'}.`,`Entry on exact level: ${r.brExactEntry||'not selected'}.`,`Stop beyond last fractal-swing: ${r.brFractalStop||'not selected'}.`)}
+  if(r.strategy==='REJECTION'){x.push(`Trigger: ${r.rejectionTrigger||'not selected'}.`,`Entry on break of trigger H/L: ${r.rejEntryBreak||'not selected'}.`,`Stop beyond last fractal-swing: ${r.rejFractalStop||'not selected'}.`)}
+  x.push('','TRADE ELIGIBILITY',`Trade eligibility: ${r.eligibility}.`);if(r.eligibility==='INVALID')x.push(`Reason(s): ${(r.eligibilityReasons||[]).join('; ')}.`);else x.push('This trade belongs to the eligible sample of the edge.');
+  x.push('','04 / TRADE MANAGEMENT');if(r.rrMode==='DYNAMIC')x.push(`Risk management was DYNAMIC. The recorded realized risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);else x.push(`Risk management was SET. The planned risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);
+  [behavior(r.slAway,'The stop loss was moved farther away from its original level.','I felt tempted to move the stop loss farther away, but did not execute it.'),behavior(r.slCloser,'The stop loss was moved closer to price.','I felt tempted to tighten the stop loss, but did not execute it.'),behavior(r.breakeven,'The stop loss was moved to breakeven.','I felt tempted to move the stop loss to breakeven, but did not execute it.'),behavior(r.tradeAborted,'The trade was aborted immediately after recognizing an entry error.','I felt tempted to abort the trade after recognizing an entry error, but did not execute it.'),behavior(r.tpEarly,'The take profit was taken early.','I felt tempted to take profit early, but did not execute it.'),behavior(r.tpAway,'The take profit was moved farther away.','I felt tempted to move the take profit farther away, but did not execute it.')].filter(Boolean).forEach(line=>x.push(line));
+  if(r.rrMode==='DYNAMIC')x.push('Under DYNAMIC risk management, stop-loss, breakeven and take-profit adjustments were not scored as process violations.');
+  x.push('','05 / POST-TRADE RESPONSE');if(r.postState)x.push(`Post-trade state: ${r.postState}.`);(r.postExtras||[]).filter(i=>i!=='OTHER').forEach(i=>x.push(`- ${i}`));if((r.postExtras||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
+  x.push('','06 / TRADE OUTCOME',`The financial outcome category was ${r.tradeOutcome||'not selected'}.`,'','07 / EXECUTION ANALYSIS');if(r.eligibility==='VALID'){x.push(`Setup Grade: ${r.setupGrade||'PENDING'}${r.setupVariables!==null?` (${r.setupVariables}/3)`:''}.`);x.push(`Self-sabotage detected: ${r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'N/A'}.`);if((r.sabotageReasons||[]).length)x.push(`Self-sabotage reason(s): ${r.sabotageReasons.join('; ')}.`)}else x.push('Setup Grade and Self-Sabotage analysis were not assigned because the trade was INVALID.');
+  x.push('','INSIGHTS OF THE DAY',r.insights||'—','','FREE NOTES',r.freeNote||'—');return x.join('\n');
 }
 function completeProtocol(){
   const r=collect();
   r.report=report(r);
   records.unshift(r);
   persist();
-  document.getElementById('modalSetup').textContent=r.eligibility==='VALID'?`${r.setupScore} / 40`:'NOT SCORED';
-  document.getElementById('modalProcess').textContent=r.eligibility==='VALID'?`${r.processScore} / 60`:'NOT SCORED';
-  document.getElementById('modalExecution').textContent=r.eligibility==='VALID'?`${r.executionScore} / 100`:'INVALID';
+  document.getElementById('modalSetup').textContent=r.eligibility==='VALID'&&r.setupGrade?`${r.setupGrade} · ${r.setupVariables}/3`:'N/A';
+  document.getElementById('modalSabotage').textContent=r.eligibility==='VALID'?(r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'N/A'):'N/A';
 
   document.getElementById('reportText').value=r.report;
   document.getElementById('reportModal').classList.remove('hidden');
@@ -2127,19 +2135,19 @@ function completeProtocol(){
 function copyText(t){if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(t);const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();return Promise.resolve()}
 function copyReport(){copyText(document.getElementById('reportText').value).then(()=>toast('Protocol copied for AI'))}function emailReport(){const r=records[0],s=encodeURIComponent(`Execution Protocol — ${r?.date||''} — Trade ${r?.tradeNumber||''}`),b=encodeURIComponent(document.getElementById('reportText').value);location.href=`mailto:?subject=${s}&body=${b}`}function closeReport(){document.getElementById('reportModal').classList.add('hidden');showPage('records',document.querySelector('[data-nav=records]'))}
 function renderRecords(){
+  renderDailyPrepArchive();
   const c=document.getElementById('recordsList');
-  if(!records.length){
-    c.innerHTML='<div class="card empty">NO PROTOCOL HAS BEEN COMPLETED YET.</div>';
-    return;
-  }
+  if(!records.length){c.innerHTML='<div class="card empty">NO PROTOCOL HAS BEEN COMPLETED YET.</div>';return;}
   c.innerHTML=records.map(r=>{
     const eligibility=r.eligibility||'VALID';
-    const score=eligibility==='VALID'?(r.executionScore??'—'):'INVALID';
-    return `<button class="record" onclick="openRecord(${r.id})"><div style="text-align:left"><h3>${r.date} · Trade ${r.tradeNumber}</h3><p>${eligibility} · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'}${eligibility==='VALID'?` · Setup ${r.setupScore}/40 · Process ${r.processScore}/60`:''}</p></div><div class="record-score">${score}</div></button>`;
+    if(eligibility!=='VALID')return `<button class="record" onclick="openRecord(${r.id})"><div style="text-align:left"><h3>${r.date} · TRADE ${r.tradeNumber}</h3><p>INVALID · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'}</p></div><div class="record-score">INVALID</div></button>`;
+    const grade=r.setupGrade||(typeof r.setupScore==='number'?(r.setupScore>=40?'A':r.setupScore>=27?'B':r.setupScore>=13?'C':'D'):'—');
+    const sabotage=r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'—';
+    return `<button class="record" onclick="openRecord(${r.id})"><div style="text-align:left"><h3>${r.date} · TRADE ${r.tradeNumber}</h3><p>VALID · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'} · SETUP ${grade} · SABOTAGE ${sabotage}</p></div><div class="record-score">${grade}</div></button>`;
   }).join('');
 }
 function openRecord(id){const r=records.find(x=>x.id===id);if(!r)return;document.getElementById('savedReportText').value=r.report;document.getElementById('recordModal').classList.remove('hidden')}function copySavedReport(){copyText(document.getElementById('savedReportText').value).then(()=>toast('Saved protocol copied'))}function closeRecord(){document.getElementById('recordModal').classList.add('hidden')}function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
-updateTradeHint();updateOutcomeAvailability();updateProtocolStatuses();calcScores();renderRecords();ensureLockoutTicker();
+updateTradeHint();updateOutcomeAvailability();updateProtocolStatuses();calcScores();renderRecords();ensureLockoutTicker();renderDailyPrepArchive();
 </script>
 </body>
 </html>
