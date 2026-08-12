@@ -1309,6 +1309,249 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
 .simple-modal-summary{grid-template-columns:1fr 1fr!important}
 @media(max-width:720px){.simple-analysis-grid{grid-template-columns:1fr}}
 
+
+/* =========================================================
+   V2.9 — MOBILE FIXES + EMOTIONAL STATE LAYER
+   ========================================================= */
+
+/* iPhone date input: prevent native control from overflowing */
+.start-date-wrap{
+  width:100%!important;
+  max-width:420px!important;
+  box-sizing:border-box!important;
+}
+.start-date-wrap .field{
+  width:100%;
+  min-width:0;
+}
+.start-date-wrap input[type="date"]{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  min-width:0!important;
+  box-sizing:border-box!important;
+  font-size:16px!important;
+  -webkit-appearance:none;
+  appearance:none;
+}
+
+/* Emotional checkpoints: same visual language, distinct from technical cards */
+.emotional-state-card{
+  position:relative;
+  overflow:hidden;
+  border-color:rgba(172,143,255,.34)!important;
+  background:
+    radial-gradient(circle at 100% 0,rgba(132,91,218,.10),transparent 34%),
+    linear-gradient(180deg,rgba(24,21,34,.97),rgba(14,16,24,.98))!important;
+  box-shadow:
+    0 18px 52px rgba(0,0,0,.20),
+    inset 3px 0 0 rgba(151,117,237,.55)!important;
+}
+.emotional-state-card::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:88px;
+  height:88px;
+  pointer-events:none;
+  background:linear-gradient(135deg,transparent 48%,rgba(166,132,255,.055) 49%);
+}
+.emotional-state-card .block-title{
+  color:#c3adff!important;
+  margin-bottom:17px;
+}
+.emotional-layer-badge{
+  display:inline-flex;
+  align-items:center;
+  margin-bottom:10px;
+  padding:5px 8px;
+  border:1px solid rgba(173,145,255,.25);
+  border-radius:6px;
+  background:rgba(135,96,222,.08);
+  color:#a992e5;
+  font-size:8px;
+  font-weight:950;
+  letter-spacing:1.25px;
+}
+.state-choice-row .emotion,
+.post-state-options .option{
+  font-weight:850;
+}
+
+/* PRE-TRADE colors are visible even before selection */
+.state-choice-row .emotion[data-state="GREEN"]{
+  border-color:rgba(121,217,157,.32)!important;
+  background:rgba(20,55,39,.30)!important;
+  color:#a7e7be!important;
+}
+.state-choice-row .emotion[data-state="YELLOW"]{
+  border-color:rgba(242,201,109,.32)!important;
+  background:rgba(55,46,22,.32)!important;
+  color:#edd58c!important;
+}
+.state-choice-row .emotion[data-state="RED"]{
+  border-color:rgba(255,143,152,.32)!important;
+  background:rgba(62,27,32,.32)!important;
+  color:#f2a8ae!important;
+}
+.state-choice-row .emotion[data-state="GREEN"].selected{
+  border-color:rgba(121,217,157,.84)!important;
+  background:rgba(20,72,45,.80)!important;
+  color:#d9f8e4!important;
+  box-shadow:0 0 18px rgba(121,217,157,.10);
+}
+.state-choice-row .emotion[data-state="YELLOW"].selected{
+  border-color:rgba(242,201,109,.84)!important;
+  background:rgba(77,61,18,.82)!important;
+  color:#fff0b0!important;
+  box-shadow:0 0 18px rgba(242,201,109,.10);
+}
+.state-choice-row .emotion[data-state="RED"].selected{
+  border-color:rgba(255,143,152,.84)!important;
+  background:rgba(87,30,38,.84)!important;
+  color:#ffd8dc!important;
+  box-shadow:0 0 18px rgba(255,143,152,.10);
+}
+.state-choice-row .emotion:disabled{
+  opacity:.28!important;
+  cursor:not-allowed!important;
+}
+
+/* Full checklist visibility on iPhone:
+   completed items become a normal-flow list instead of a clipped overlay. */
+@media(max-width:720px){
+  #checklistStage{
+    width:100%;
+    overflow:visible;
+  }
+  #checklistStage .sec{
+    margin-bottom:12px;
+  }
+  .check-stage{
+    min-height:0!important;
+    height:auto!important;
+    overflow:visible!important;
+    display:block!important;
+    padding:12px!important;
+  }
+  .check-stage .stack{
+    position:relative!important;
+    inset:auto!important;
+    display:flex!important;
+    flex-direction:column!important;
+    justify-content:flex-start!important;
+    gap:6px!important;
+    margin:0 0 10px!important;
+    opacity:.78!important;
+  }
+  .check-stage .stack:empty{
+    display:none!important;
+  }
+  .check-stage .stack-item{
+    padding:7px 9px!important;
+    font-size:10px!important;
+    line-height:1.25!important;
+  }
+  .check-stage .checklist-complete-note{
+    margin:0 0 7px!important;
+    padding:7px 9px!important;
+    font-size:10px!important;
+  }
+  .check-stage .current-check{
+    width:100%!important;
+    max-width:none!important;
+    min-height:138px!important;
+    box-sizing:border-box!important;
+    padding:20px 14px!important;
+    gap:14px!important;
+  }
+  .check-stage .current-check h2{
+    font-size:clamp(22px,7vw,32px)!important;
+  }
+  .check-stage .space-hint{
+    justify-content:center;
+    font-size:10px!important;
+  }
+  .session{
+    padding-top:20px!important;
+  }
+  .start-date-wrap{
+    width:calc(100% - 8px)!important;
+    max-width:420px!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+}
+
+
+/* V2.10 — Records/iPhone first-paint fix */
+#records:not(.hidden){
+  display:block!important;
+  min-height:100vh;
+}
+#records .top{
+  margin-top:0!important;
+}
+#records .records-subtitle:first-of-type{
+  margin-top:16px!important;
+}
+#dailyPrepArchive,
+#recordsList{
+  width:100%;
+  min-height:1px;
+}
+
+/* Editable Daily Preparation from Records */
+.daily-prep-record-input{
+  width:100%!important;
+  min-height:105px!important;
+  box-sizing:border-box!important;
+  resize:vertical;
+  text-transform:none!important;
+}
+.daily-prep-record-input[readonly]{
+  background:#0a0f16!important;
+  border-color:rgba(158,197,255,.12)!important;
+  color:#e6edf7!important;
+  cursor:default;
+}
+.daily-prep-record-input:not([readonly]){
+  border-color:rgba(158,197,255,.45)!important;
+  background:#0e1621!important;
+  box-shadow:0 0 0 2px rgba(158,197,255,.04);
+}
+.daily-prep-edit-status{
+  margin-top:12px;
+  text-align:right;
+}
+
+@media(max-width:720px){
+  #records{
+    padding-top:0!important;
+  }
+  #records .top{
+    padding-top:0!important;
+    margin-bottom:12px!important;
+  }
+  #records .records-subtitle{
+    margin-top:14px!important;
+  }
+  .daily-prep-record{
+    align-items:flex-start!important;
+    gap:10px!important;
+    padding:12px!important;
+  }
+  .daily-prep-record > div:last-child{
+    flex:0 0 auto;
+    font-size:9px;
+  }
+  .daily-prep-record-input{
+    min-height:120px!important;
+    font-size:16px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1408,11 +1651,12 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   <div class="field-block"><div class="label">CONVICTION</div><div class="options" data-group="conviction"><button class="option" onclick="selectOne(this)">INSIDE VWAP 1ST DEV.</button><button class="option" onclick="selectOne(this)">OUTSIDE VWAP 1ST DEV.</button></div></div>
 </div>
 
-<div class="card">
-  <div class="block-title">02 / STAGE IDENTIFICATION</div>
-  <div class="label">PRE-TRADE STATE <span class="helper">SELECT EVERY STATE THAT IS PRESENT</span></div>
-  <div id="emotionOptions" class="emotions" data-group="emotions"></div>
-  <div id="stateResult" class="state-result"><div><span>DETECTED STATE</span><small id="stateBreakdown" class="helper" style="display:block;margin-top:4px">NO STATE SELECTED</small></div><strong>NOT SET</strong></div>
+<div class="card emotional-state-card pre-trade-emotion">
+  <div class="emotional-layer-badge">EMOTIONAL LAYER</div>
+  <div class="block-title">02 / EMOTIONAL STATE — PRE-TRADE</div>
+  <div class="label">PRE-TRADE STATE <span class="helper">SINGLE SELECTION</span></div>
+  <div id="emotionOptions" class="emotions state-choice-row" data-group="emotions"></div>
+  <div id="stateResult" class="state-result"><div><span>PRE-TRADE STATE</span><small id="stateBreakdown" class="helper" style="display:block;margin-top:4px">NO STATE SELECTED</small></div><strong>NOT SET</strong></div>
 </div>
 
 <div class="card setup-card">
@@ -1469,9 +1713,10 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
   <div class="process"><h3>TAKE PROFIT</h3><div class="prow"><div class="plabel">TAKEN EARLY <span class="helper">(HASTE AND FEAR)</span></div><div class="pactions" data-group="tpEarly"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div><div class="prow"><div class="plabel">MOVED FARTHER AWAY <span class="helper">(LET IT RUN / OVERCONFIDENCE / HOPE)</span></div><div class="pactions" data-group="tpAway"><button class="option yes" onclick="selectProcess(this)">YES</button><button class="option tempted" onclick="selectProcess(this)">TEMPTED TO</button></div></div></div>
 </div>
 <div class="eligibility-panel protocol-status-panel sabotage-panel" id="sabotagePanel"><div><span>SELF-SABOTAGE DETECTED?</span><small id="sabotageReason">AVAILABLE ONLY FOR ELIGIBLE TRADES.</small></div><strong id="sabotageStatus">N/A</strong></div>
-<div class="card">
-  <div class="block-title">05 / POST-TRADE RESPONSE</div>
-  <div class="field-block"><div class="label">POST-TRADE STATE <span class="helper">SINGLE SELECTION</span></div><div class="options post-state-options" data-group="postState"><button class="option post-green" onclick="selectOne(this)">CALM MIND</button><button class="option post-yellow" onclick="selectOne(this)">TENSION</button><button class="option post-red" onclick="selectOne(this)">URGENCY / FOMO</button></div></div>
+<div class="card emotional-state-card post-trade-emotion">
+  <div class="emotional-layer-badge">EMOTIONAL LAYER</div>
+  <div class="block-title">05 / EMOTIONAL STATE — POST-TRADE</div>
+  <div class="field-block"><div class="label">POST-TRADE STATE <span class="helper">SINGLE SELECTION</span></div><div class="options post-state-options" data-group="postState"><button class="option post-green" onclick="selectOne(this)">CALM MIND</button><button class="option post-yellow" onclick="selectOne(this)">TENSION</button><button class="option post-red" onclick="selectOne(this)">ANGRY / FRUSTRATION</button></div></div>
   <div class="field-block"><div class="label">OPTIONAL RESPONSE <span class="helper">MULTIPLE SELECTION</span></div><div class="options" data-group="postExtras"><button class="option" onclick="selectMany(this)">DOUBT ABOUT MY STRATEGY</button><button class="option" onclick="selectMany(this)">REGRET: I SHOULD HAVE...</button><button class="option" onclick="toggleOther(this,'responseOtherWrap')">OTHER</button></div><div id="responseOtherWrap" class="hidden" style="margin-top:10px"><input id="responseOther" class="input" placeholder="DESCRIBE THE OTHER RESPONSE"></div></div>
 </div>
 <div class="card"><div class="block-title">06 / TRADE OUTCOME</div><div class="field-block"><div class="label">OUTCOME $</div><div class="outcomes" data-group="tradeOutcome">
@@ -1578,7 +1823,40 @@ body{text-transform:uppercase}.input,.textarea,.report{text-transform:none}
     </div>
   </div>
 </div>
-<div id="dailyPrepViewModal" class="modal hidden"><div class="modal-card daily-prep-view-card"><div class="tool-modal-top"><div><div class="block-title">DAILY PREPARATION</div><div id="dailyPrepViewDate" class="sub"></div></div><button class="tool-close" type="button" onclick="closeDailyPrepView()" aria-label="Close daily prep">×</button></div><div class="daily-prep-view-section"><span>DAILY NOTES</span><p id="dailyPrepViewNotes"></p></div><div class="daily-prep-view-section"><span>LONG NARRATIVE</span><p id="dailyPrepViewLong"></p></div><div class="daily-prep-view-section"><span>SHORT NARRATIVE</span><p id="dailyPrepViewShort"></p></div><div class="modal-actions" style="margin-top:16px"><button class="btn" onclick="closeDailyPrepView()">CLOSE</button></div></div></div>
+<div id="dailyPrepViewModal" class="modal hidden">
+  <div class="modal-card daily-prep-view-card">
+    <div class="tool-modal-top">
+      <div>
+        <div class="block-title">DAILY PREPARATION</div>
+        <div id="dailyPrepViewDate" class="sub"></div>
+      </div>
+      <button class="tool-close" type="button" onclick="closeDailyPrepView()" aria-label="Close daily prep">×</button>
+    </div>
+
+    <div class="daily-prep-view-section">
+      <span>DAILY NOTES</span>
+      <textarea id="dailyPrepViewNotes" class="input textarea daily-prep-record-input" readonly></textarea>
+    </div>
+
+    <div class="daily-prep-view-section">
+      <span>LONG NARRATIVE</span>
+      <textarea id="dailyPrepViewLong" class="input textarea daily-prep-record-input" readonly></textarea>
+    </div>
+
+    <div class="daily-prep-view-section">
+      <span>SHORT NARRATIVE</span>
+      <textarea id="dailyPrepViewShort" class="input textarea daily-prep-record-input" readonly></textarea>
+    </div>
+
+    <div id="dailyPrepRecordEditStatus" class="helper daily-prep-edit-status">SAVED DAILY PREPARATION.</div>
+
+    <div class="modal-actions" style="margin-top:16px">
+      <button id="dailyPrepRecordEditButton" class="btn primary" type="button" onclick="editDailyPrepFromRecords()">EDIT</button>
+      <button id="dailyPrepRecordSaveButton" class="btn success hidden" type="button" onclick="saveDailyPrepFromRecords()">SAVE CHANGES</button>
+      <button class="btn" type="button" onclick="closeDailyPrepView()">CLOSE</button>
+    </div>
+  </div>
+</div>
 <div id="reportModal" class="modal hidden"><div class="modal-card"><div class="block-title">COMPLETED PROTOCOL</div>
 <div class="summary simple-modal-summary"><div class="tile"><span>SETUP GRADE</span><strong id="modalSetup"></strong></div><div class="tile total"><span>SELF-SABOTAGE</span><strong id="modalSabotage"></strong></div></div><textarea id="reportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copyReport()">COPY FOR AI</button><button class="btn success" onclick="emailReport()">OPEN EMAIL DRAFT</button><button class="btn" onclick="closeReport()">CLOSE</button></div></div></div>
 <div id="recordModal" class="modal hidden"><div class="modal-card"><div class="block-title">SAVED PROTOCOL</div><textarea id="savedReportText" class="input report" readonly></textarea><div class="modal-actions" style="margin-top:16px"><button class="btn primary" onclick="copySavedReport()">COPY FOR AI</button><button class="btn" onclick="closeRecord()">CLOSE</button></div></div></div><div id="toast" class="toast"></div>
@@ -1774,12 +2052,103 @@ function editDailyPrep(){setDailyPrepReadonly(false);document.getElementById('da
 function saveDailyPrepAndContinue(){const date=currentPrepDate(),existing=getDailyPrep(date),readonly=document.getElementById('dailyNotes').readOnly;if(!existing||!readonly){setDailyPrep(date,{notes:document.getElementById('dailyNotes').value.trim(),longNarrative:document.getElementById('longNarrative').value.trim(),shortNarrative:document.getElementById('shortNarrative').value.trim()})}showChecklistForDate()}
 function showChecklistForDate(){const date=currentPrepDate();document.getElementById('dailyPrepStage').classList.add('hidden');document.getElementById('checklistStage').classList.remove('hidden');if(checklistAlreadyCompleted(date))showChecklistCompleted(date);else resetChecklist()}
 function markChecklistCompleted(date){const prep=getDailyPrep(date)||{notes:'',longNarrative:'',shortNarrative:''};setDailyPrep(date,{...prep,checklistCompleted:true})}
-function renderDailyPrepArchive(){const c=document.getElementById('dailyPrepArchive');if(!c)return;const store=loadDailyPrepStore(),dates=Object.keys(store).sort().reverse();if(!dates.length){c.innerHTML='<div class="card empty">NO DAILY PREPARATION HAS BEEN SAVED YET.</div>';return}c.innerHTML=dates.map(date=>{const p=store[date],summary=(p.longNarrative||p.shortNarrative||p.notes||'SAVED DAILY PREPARATION').slice(0,100);return `<button class="daily-prep-record" onclick="openDailyPrepView('${date}')"><div><strong>${date}</strong><span>${summary}</span></div><div>VIEW →</div></button>`}).join('')}
-function openDailyPrepView(date){const p=getDailyPrep(date);if(!p)return;document.getElementById('dailyPrepViewDate').textContent=date;document.getElementById('dailyPrepViewNotes').textContent=p.notes||'—';document.getElementById('dailyPrepViewLong').textContent=p.longNarrative||'—';document.getElementById('dailyPrepViewShort').textContent=p.shortNarrative||'—';document.getElementById('dailyPrepViewModal').classList.remove('hidden')}
-function closeDailyPrepView(){document.getElementById('dailyPrepViewModal').classList.add('hidden')}
+let dailyPrepEditingDate=null;
+
+function renderDailyPrepArchive(){
+  const c=document.getElementById('dailyPrepArchive');
+  if(!c)return;
+
+  const store=loadDailyPrepStore();
+  const dates=Object.keys(store).sort().reverse();
+
+  if(!dates.length){
+    c.innerHTML='<div class="card empty">NO DAILY PREPARATION HAS BEEN SAVED YET.</div>';
+    return;
+  }
+
+  c.innerHTML=dates.map(date=>{
+    const p=store[date];
+    const summary=(p.longNarrative||p.shortNarrative||p.notes||'SAVED DAILY PREPARATION').slice(0,100);
+    return `<button class="daily-prep-record" onclick="openDailyPrepView('${date}')">
+      <div><strong>${date}</strong><span>${summary}</span></div>
+      <div>VIEW / EDIT →</div>
+    </button>`;
+  }).join('');
+}
+
+function setDailyPrepRecordEditMode(editing){
+  ['dailyPrepViewNotes','dailyPrepViewLong','dailyPrepViewShort'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.readOnly=!editing;
+  });
+
+  document.getElementById('dailyPrepRecordEditButton')?.classList.toggle('hidden',editing);
+  document.getElementById('dailyPrepRecordSaveButton')?.classList.toggle('hidden',!editing);
+
+  const status=document.getElementById('dailyPrepRecordEditStatus');
+  if(status)status.textContent=editing?'EDITING DAILY PREPARATION — SAVE CHANGES WHEN COMPLETE.':'SAVED DAILY PREPARATION.';
+}
+
+function openDailyPrepView(date){
+  const p=getDailyPrep(date);
+  if(!p)return;
+
+  dailyPrepEditingDate=date;
+  document.getElementById('dailyPrepViewDate').textContent=date;
+  document.getElementById('dailyPrepViewNotes').value=p.notes||'';
+  document.getElementById('dailyPrepViewLong').value=p.longNarrative||'';
+  document.getElementById('dailyPrepViewShort').value=p.shortNarrative||'';
+
+  setDailyPrepRecordEditMode(false);
+  document.getElementById('dailyPrepViewModal').classList.remove('hidden');
+}
+
+function editDailyPrepFromRecords(){
+  if(!dailyPrepEditingDate)return;
+  setDailyPrepRecordEditMode(true);
+  document.getElementById('dailyPrepViewNotes')?.focus();
+}
+
+function saveDailyPrepFromRecords(){
+  if(!dailyPrepEditingDate)return;
+
+  const existing=getDailyPrep(dailyPrepEditingDate)||{};
+  const updated={
+    ...existing,
+    notes:document.getElementById('dailyPrepViewNotes').value.trim(),
+    longNarrative:document.getElementById('dailyPrepViewLong').value.trim(),
+    shortNarrative:document.getElementById('dailyPrepViewShort').value.trim()
+  };
+
+  setDailyPrep(dailyPrepEditingDate,updated);
+
+  // Keep all saved trade records from the same day consistent with the
+  // edited daily preparation and regenerate their text report.
+  records.forEach(r=>{
+    if(r.date!==dailyPrepEditingDate)return;
+    r.dailyNotes=updated.notes||'';
+    r.longNarrative=updated.longNarrative||'';
+    r.shortNarrative=updated.shortNarrative||'';
+    r.report=report(r);
+  });
+  persist();
+
+  setDailyPrepRecordEditMode(false);
+  renderRecords();
+  updateTradeHint();
+
+  const status=document.getElementById('dailyPrepRecordEditStatus');
+  if(status)status.textContent='CHANGES SAVED.';
+  toast('DAILY PREPARATION UPDATED');
+}
+
+function closeDailyPrepView(){
+  document.getElementById('dailyPrepViewModal').classList.add('hidden');
+  dailyPrepEditingDate=null;
+}
 
 const KEY='executionProtocolRecordsV1';
-const checklistItems=['PHYSICAL ACTIVITIES','JIGSAW MARKET PROFILE','HIGHER TIMEFRAME','LEVELS','FOREXFACTORY','YESTERDAY JOURNAL AND NOTE','WATCHLIST & IV RANK','VIX AWARENESS','MONITOR HEART RATE AND PRACTICE DIAPHRAGMATIC BREATHING'];
+const checklistItems=['PHYSICAL ACTIVITY','LVN LEVELS IN AREA PROFILE IDENTIFIED (ON MARKET PROFILE JIGSAW)','DESIANO PRE MARKET ES NARRATIVE NOTED (ON MARKET PROFILE JIGSAW)','DESIANO PRE MARKET SPY NARRATIVE NOTED (ON TASTY)','YESTERDAY JOURNAL AND NOTE','FOREXFACTORY CHECKED','FINANCIAL JUICE OPENED','TASTY 5MIN SPX SET','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPS & VOL PROFILE SET','TOPSTEPX SET TO 1 MIN WITH FVG','WATCH JIGSAW MARKET PROFILE','HEART RATE MONITORING ACTIVATED'];
 const emotions=[{label:'CLEAR MIND',state:'GREEN'},{label:'TENSION',state:'YELLOW'},{label:'URGENCY / FOMO',state:'RED'}];
 const responses=['CALM','URGE TO RE-ENTER','DOUBT ABOUT MY STRATEGY','REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED','TEMPTATION TO INCREASE EXPOSURE IMMEDIATELY','OTHER'];
 let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,checklistDate=null;
@@ -1787,7 +2156,31 @@ const today=new Date().toISOString().slice(0,10);document.getElementById('journa
 
 function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function load(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}function persist(){localStorage.setItem(KEY,JSON.stringify(records))}
-function showPage(id,b){closeMobileMenu();document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));if(b)b.classList.add('active');if(id==='records')renderRecords();if(id==='start')setTimeout(()=>document.getElementById('casualeButton')?.focus(),0);scrollTo({top:0,behavior:'smooth'})}
+function showPage(id,b){
+  closeMobileMenu();
+
+  // Reset scroll before revealing the new page. This is intentionally
+  // non-smooth because iOS Safari can retain the previous page offset.
+  window.scrollTo(0,0);
+  document.documentElement.scrollTop=0;
+  document.body.scrollTop=0;
+
+  document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));
+  const page=document.getElementById(id);
+  page.classList.remove('hidden');
+
+  document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));
+  if(b)b.classList.add('active');
+
+  if(id==='records')renderRecords();
+  if(id==='start')setTimeout(()=>document.getElementById('casualeButton')?.focus(),0);
+
+  requestAnimationFrame(()=>{
+    window.scrollTo(0,0);
+    document.documentElement.scrollTop=0;
+    document.body.scrollTop=0;
+  });
+}
 function toggleMobileMenu(){
   const sidebar=document.getElementById('mainSidebar');
   const overlay=document.getElementById('mobileMenuOverlay');
@@ -1868,12 +2261,27 @@ function clearProtocol(){
   document.getElementById('rrModeHint').textContent='SET: PLANNED RISK-TO-REWARD RATIO.';updateOutcomeAvailability();
 }
 function renderEmotions(){
-  document.getElementById('emotionOptions').innerHTML=emotions.map(x=>`<button class="option emotion" data-state="${x.state}" onclick="selectMany(this)">${x.label}</button>`).join('');
+  const container=document.getElementById('emotionOptions');
+  container.innerHTML=emotions.map(x=>`<button class="option emotion" data-state="${x.state}" onclick="selectPreTradeState(this)">${x.label}</button>`).join('');
+
   if(reentry==='YES'){
-    const urgent=[...document.querySelectorAll('#emotionOptions .emotion')].find(x=>x.textContent.trim()==='URGENCY / FOMO');
-    if(urgent)urgent.classList.add('selected');
+    const buttons=[...container.querySelectorAll('.emotion')];
+    const urgent=buttons.find(x=>x.textContent.trim()==='URGENCY / FOMO');
+    buttons.forEach(button=>{
+      button.classList.toggle('selected',button===urgent);
+      button.disabled=button!==urgent;
+    });
   }
+
   updateState();
+}
+function selectPreTradeState(button){
+  if(reentry==='YES'&&button.dataset.state!=='RED')return;
+  [...button.parentElement.children].forEach(x=>x.classList.remove('selected'));
+  button.classList.add('selected');
+  updateState();
+  updateProtocolStatuses();
+  calcScores();
 }
 function renderResponses(){}
 function rrMode(){return single('rrMode')||'SET'}
@@ -2045,23 +2453,28 @@ function toggleOther(button,id){button.classList.toggle('selected');document.get
 function selected(group){const c=document.querySelector(`[data-group="${group}"]`);return c?[...c.querySelectorAll('.selected')].map(x=>x.textContent.trim()):[]}
 function single(group){return selected(group)[0]||null}
 function updateState(){
-  const selectedStates=[...document.querySelectorAll('#emotionOptions .selected')];
+  const selectedState=document.querySelector('#emotionOptions .selected');
   const result=document.getElementById('stateResult');
   const breakdown=document.getElementById('stateBreakdown');
   result.className='state-result';
 
-  if(!selectedStates.length){
+  if(!selectedState){
     result.querySelector('strong').textContent='NOT SET';
     breakdown.textContent='NO STATE SELECTED';
     updateProtocolStatuses();
     return;
   }
 
-  const states=selectedStates.map(x=>x.dataset.state);
-  const detected=states.includes('RED')?'RED':states.includes('YELLOW')?'YELLOW':'GREEN';
+  const detected=selectedState.dataset.state;
   result.classList.add(detected.toLowerCase());
   result.querySelector('strong').textContent=detected;
-  breakdown.textContent='AUTOMATIC STATE RATING';
+
+  if(reentry==='YES'&&detected==='RED'){
+    breakdown.textContent='AUTO-SET: RE-ENTRY WITHIN 20 MINUTES';
+  }else{
+    breakdown.textContent=selectedState.textContent.trim();
+  }
+
   updateProtocolStatuses();
 }
 function calcScores(finalMode=false){
@@ -2082,7 +2495,7 @@ function calcScores(finalMode=false){
 
   return{eligibility,quality,sabotage};
 }
-function state(){const s=[...document.querySelectorAll('#emotionOptions .selected')];if(!s.length)return'NOT SET';const a=s.map(x=>x.dataset.state);return a.includes('RED')?'RED':a.includes('YELLOW')?'YELLOW':'GREEN'}
+function state(){const s=document.querySelector('#emotionOptions .selected');return s?s.dataset.state:'NOT SET'}
 function collect(){
   const analysis=calcScores(true),level=selectedLevel(),prep=getDailyPrep(currentDate)||{},eligible=analysis.eligibility.valid;
   return{id:Date.now(),date:currentDate,tradeNumber,reentry,
@@ -2108,7 +2521,7 @@ function report(r){
   x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — TRADE ${r.tradeNumber}`);
   x.push('','DAILY PREPARATION',`Daily notes: ${r.dailyNotes||'—'}`,`Long narrative: ${r.longNarrative||'—'}`,`Short narrative: ${r.shortNarrative||'—'}`);
   x.push('','01 / CONTEXT',`Bias: ${r.bias||'not selected'}.`);if(r.conviction)x.push(`Conviction: ${r.conviction}.`);
-  x.push('','02 / STAGE IDENTIFICATION',r.emotions.length?`Selected states: ${r.emotions.join(', ')}.`:'No pre-trade state was selected.',`Overall detected state: ${r.detectedState}.`);
+  x.push('','02 / EMOTIONAL STATE — PRE-TRADE',r.emotions.length?`Selected states: ${r.emotions.join(', ')}.`:'No pre-trade state was selected.',`Overall detected state: ${r.detectedState}.`);
   x.push('','03 / SETUP');if(r.tradeDirection)x.push(`Trade direction: ${r.tradeDirection}.`);x.push(`Directional alignment: ${r.directionalAlignment}.`);if(r.chosenLevel)x.push(`Chosen level type: ${r.chosenLevel}.`);if(r.strategy)x.push(`Chosen strategy: ${r.strategy}.`);
   if(r.strategy==='BREAK & RETEST'){x.push(`FVG present: ${r.brFvg||'not selected'}.`,`Entry on exact level: ${r.brExactEntry||'not selected'}.`,`Stop beyond last fractal-swing: ${r.brFractalStop||'not selected'}.`)}
   if(r.strategy==='REJECTION'){x.push(`Trigger: ${r.rejectionTrigger||'not selected'}.`,`Entry on break of trigger H/L: ${r.rejEntryBreak||'not selected'}.`,`Stop beyond last fractal-swing: ${r.rejFractalStop||'not selected'}.`)}
@@ -2116,7 +2529,7 @@ function report(r){
   x.push('','04 / TRADE MANAGEMENT');if(r.rrMode==='DYNAMIC')x.push(`Risk management was DYNAMIC. The recorded realized risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);else x.push(`Risk management was SET. The planned risk-to-reward ratio was ${r.rrRisk||'—'}:${r.rrReward||'—'}.`);
   [behavior(r.slAway,'The stop loss was moved farther away from its original level.','I felt tempted to move the stop loss farther away, but did not execute it.'),behavior(r.slCloser,'The stop loss was moved closer to price.','I felt tempted to tighten the stop loss, but did not execute it.'),behavior(r.breakeven,'The stop loss was moved to breakeven.','I felt tempted to move the stop loss to breakeven, but did not execute it.'),behavior(r.tradeAborted,'The trade was aborted immediately after recognizing an entry error.','I felt tempted to abort the trade after recognizing an entry error, but did not execute it.'),behavior(r.tpEarly,'The take profit was taken early.','I felt tempted to take profit early, but did not execute it.'),behavior(r.tpAway,'The take profit was moved farther away.','I felt tempted to move the take profit farther away, but did not execute it.')].filter(Boolean).forEach(line=>x.push(line));
   if(r.rrMode==='DYNAMIC')x.push('Under DYNAMIC risk management, stop-loss, breakeven and take-profit adjustments were not scored as process violations.');
-  x.push('','05 / POST-TRADE RESPONSE');if(r.postState)x.push(`Post-trade state: ${r.postState}.`);(r.postExtras||[]).filter(i=>i!=='OTHER').forEach(i=>x.push(`- ${i}`));if((r.postExtras||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
+  x.push('','05 / EMOTIONAL STATE — POST-TRADE');if(r.postState)x.push(`Post-trade state: ${r.postState}.`);(r.postExtras||[]).filter(i=>i!=='OTHER').forEach(i=>x.push(`- ${i}`));if((r.postExtras||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
   x.push('','06 / TRADE OUTCOME',`The financial outcome category was ${r.tradeOutcome||'not selected'}.`,'','07 / EXECUTION ANALYSIS');if(r.eligibility==='VALID'){x.push(`Setup Grade: ${r.setupGrade||'PENDING'}${r.setupVariables!==null?` (${r.setupVariables}/3)`:''}.`);x.push(`Self-sabotage detected: ${r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'N/A'}.`);if((r.sabotageReasons||[]).length)x.push(`Self-sabotage reason(s): ${r.sabotageReasons.join('; ')}.`)}else x.push('Setup Grade and Self-Sabotage analysis were not assigned because the trade was INVALID.');
   x.push('','INSIGHTS OF THE DAY',r.insights||'—','','FREE NOTES',r.freeNote||'—');return x.join('\n');
 }
