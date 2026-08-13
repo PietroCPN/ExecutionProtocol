@@ -2226,7 +2226,7 @@ function closeDailyPrepView(){
 }
 
 const KEY='executionProtocolRecordsV1';
-const checklistItems=['PHYSICAL ACTIVITY DONE','LVN LEVELS MARKED ON JIGSAW MARKET PROFILE','DESIANO /ES LEVELS MARKED ON JIGSAW MARKET PROFILE','DESIANO SPY LEVELS MARKED ON TASTY','YESTERDAY JOURNAL AND PRE MARKET NOTE READ','FOREXFACTORY NEWS CHECKED','FINANCIAL JUICE OPENED','TASTY 5MIN SPX SET','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPs & SESSION VOL PROFILE SET ON TOPSTEPX','TOPSTEPX SET TO 1 MIN WITH FVG','WATCH JIGSAW MARKET PROFILE','HEART RATE MONITORING ACTIVATED'];
+const checklistItems=['PHYSICAL ACTIVITY DONE','DESIANO /ES LEVELS MARKED ON TOPSTEPX','DESIANO SPY LEVELS MARKED ON TASTY','SWING SHADOWS AND FVG LEVELS MARKED ON 5MIN SPX TASTY','YESTERDAY JOURNAL AND PRE MARKET NOTE READ','FOREXFACTORY NEWS CHECKED','FINANCIAL JUICE OPENED','TASTY 5MIN SPX SET','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPs & SESSION VOL PROFILE SET ON TOPSTEPX','TOPSTEPX SET TO 1 MIN WITH FVG','HEART RATE MONITORING ACTIVATED','WATCH JIGSAW MARKET PROFILE'];
 const emotions=[{label:'CLEAR MIND',state:'GREEN'},{label:'TENSION',state:'YELLOW'},{label:'URGENCY / FOMO',state:'RED'}];
 const responses=['CALM','URGE TO RE-ENTER','DOUBT ABOUT MY STRATEGY','REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED','TEMPTATION TO INCREASE EXPOSURE IMMEDIATELY','OTHER'];
 let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,checklistDate=null;
@@ -2653,9 +2653,16 @@ function report(r){
     x.push('Entry aborted: YES (legacy record).');
   }
   if(r.rrMode==='DYNAMIC')x.push('Under DYNAMIC risk management, stop-loss, breakeven and take-profit adjustments were not scored as process violations.');
-  x.push('','05 / EMOTIONAL STATE — POST-TRADE');if(r.postState)x.push(`Post-trade state: ${r.postState}.`);(r.postExtras||[]).filter(i=>i!=='OTHER').forEach(i=>x.push(`- ${i}`));if((r.postExtras||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
+  x.push('','05 / EMOTIONAL STATE — POST-TRADE');if(r.postState)x.push(`Post-trade state: ${r.postState}.`);(r.postExtras||[]).filter(i=>i!=='OTHER').forEach(i=>{
+    const reportLabel=i==='REGRET: I SHOULD HAVE...'
+      ?'REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED'
+      :i;
+    x.push(`- ${reportLabel}`);
+  });if((r.postExtras||[]).includes('OTHER')&&r.responseOther)x.push(`- ${r.responseOther}`);
   x.push('','06 / TRADE OUTCOME',`The financial outcome category was ${r.tradeOutcome||'not selected'}.`,'','07 / EXECUTION ANALYSIS');if(r.eligibility==='VALID'){x.push(`Setup Grade: ${r.setupGrade||'PENDING'}${r.setupVariables!==null?` (${r.setupVariables}/3)`:''}.`);x.push(`Self-sabotage detected: ${r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'N/A'}.`);if((r.sabotageReasons||[]).length)x.push(`Self-sabotage reason(s): ${r.sabotageReasons.join('; ')}.`)}else x.push('Setup Grade and Self-Sabotage analysis were not assigned because the trade was INVALID.');
-  x.push('','INSIGHTS OF THE DAY',r.insights||'—','','FREE NOTES',r.freeNote||'—');return x.join('\n');
+  if(r.insights)x.push('','INSIGHTS OF THE DAY',r.insights);
+  if(r.freeNote)x.push('','FREE NOTES',r.freeNote);
+  return x.join('\n');
 }
 function completeProtocol(){
   const r=collect();
