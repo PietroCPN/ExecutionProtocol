@@ -1722,6 +1722,207 @@ body.records-open{
   }
 }
 
+
+/* V2.17 — NO TRADE DAY */
+.no-trade-wrap{
+  margin:0 0 18px;
+}
+.no-trade-button{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  min-height:48px;
+  padding:12px 16px;
+  border:1px solid rgba(150,160,174,.28);
+  border-radius:10px;
+  background:linear-gradient(180deg,rgba(18,22,29,.94),rgba(10,13,18,.98));
+  color:#cbd3df;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:1.25px;
+  text-align:left;
+}
+.no-trade-button strong{
+  flex:0 0 auto;
+  padding:5px 8px;
+  border:1px solid rgba(150,160,174,.22);
+  border-radius:6px;
+  color:#8f9aaa;
+  font-size:9px;
+  letter-spacing:1px;
+}
+.no-trade-button.active{
+  border-color:rgba(158,197,255,.55);
+  background:linear-gradient(180deg,rgba(25,38,54,.96),rgba(10,18,28,.99));
+  color:#eaf3ff;
+  box-shadow:inset 3px 0 0 rgba(158,197,255,.72);
+}
+.no-trade-button.active strong{
+  border-color:rgba(158,197,255,.45);
+  color:#bcd9ff;
+  background:rgba(158,197,255,.08);
+}
+.no-trade-panel{
+  margin-top:9px;
+  padding:15px;
+  border:1px solid rgba(158,197,255,.18);
+  border-radius:11px;
+  background:#0c1118;
+}
+.no-trade-panel .textarea{
+  width:100%;
+  min-height:100px;
+  box-sizing:border-box;
+}
+.no-trade-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.record.no-trade-record{
+  border-color:rgba(158,197,255,.28);
+  background:linear-gradient(180deg,rgba(17,25,35,.97),rgba(11,16,23,.98));
+}
+.record.no-trade-record .record-score{
+  font-size:13px;
+  color:#bcd9ff;
+  align-self:center;
+}
+@media(max-width:720px){
+  .no-trade-button{min-height:46px;padding:11px 12px}
+  .no-trade-actions{justify-content:stretch}
+  .no-trade-actions .btn{flex:1 1 auto}
+}
+
+
+/* =========================================================
+   V2.18 — NO TRADE TODAY AS A DELIBERATE DECISION
+   ========================================================= */
+.no-trade-wrap{
+  position:relative;
+  margin:2px 0 20px!important;
+}
+
+.no-trade-button{
+  position:relative;
+  overflow:hidden;
+  min-height:58px!important;
+  padding:12px 16px 12px 19px!important;
+  border:1px solid rgba(204,172,92,.52)!important;
+  border-radius:0!important;
+  clip-path:polygon(
+    10px 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    10px 100%,
+    0 calc(100% - 10px),
+    0 10px
+  );
+  background:
+    linear-gradient(90deg,rgba(111,81,23,.20),transparent 31%),
+    linear-gradient(180deg,rgba(31,29,22,.98),rgba(13,14,14,.995))!important;
+  color:#e7d49a!important;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.22),
+    inset 4px 0 0 rgba(211,174,78,.68),
+    inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+
+.no-trade-button::before{
+  content:"";
+  width:9px;
+  height:9px;
+  flex:0 0 auto;
+  margin-right:2px;
+  border:1px solid rgba(231,204,130,.88);
+  border-radius:50%;
+  background:rgba(211,174,78,.20);
+  box-shadow:0 0 0 4px rgba(211,174,78,.05);
+}
+
+.no-trade-button span{
+  flex:1 1 auto;
+  font-size:12px!important;
+  font-weight:950!important;
+  letter-spacing:1.45px!important;
+}
+
+.no-trade-button strong{
+  min-width:42px;
+  padding:6px 9px!important;
+  border:1px solid rgba(219,188,103,.38)!important;
+  border-radius:5px!important;
+  background:rgba(211,174,78,.07)!important;
+  color:#c9ad63!important;
+  font-size:9px!important;
+  text-align:center;
+}
+
+.no-trade-button:hover{
+  border-color:rgba(226,191,99,.72)!important;
+  background:
+    linear-gradient(90deg,rgba(126,91,24,.27),transparent 34%),
+    linear-gradient(180deg,rgba(36,32,22,.99),rgba(14,14,13,.995))!important;
+}
+
+.no-trade-button.active{
+  border-color:rgba(236,195,83,.88)!important;
+  background:
+    radial-gradient(circle at 13% 50%,rgba(226,181,59,.16),transparent 25%),
+    linear-gradient(180deg,rgba(65,49,18,.98),rgba(25,21,12,.995))!important;
+  color:#fff0b4!important;
+  box-shadow:
+    0 13px 32px rgba(0,0,0,.26),
+    0 0 22px rgba(211,174,78,.08),
+    inset 4px 0 0 rgba(244,199,76,.95),
+    inset 0 1px 0 rgba(255,244,198,.055)!important;
+}
+
+.no-trade-button.active::before{
+  background:#e4ba4d!important;
+  border-color:#f4d57f!important;
+  box-shadow:
+    0 0 0 4px rgba(228,186,77,.09),
+    0 0 15px rgba(228,186,77,.22)!important;
+}
+
+.no-trade-button.active strong{
+  color:#ffe9a1!important;
+  border-color:rgba(244,205,100,.62)!important;
+  background:rgba(228,186,77,.13)!important;
+}
+
+.no-trade-panel{
+  margin-top:8px!important;
+  border-color:rgba(211,174,78,.28)!important;
+  background:
+    linear-gradient(180deg,rgba(29,25,16,.96),rgba(13,14,15,.99))!important;
+  box-shadow:
+    inset 3px 0 0 rgba(211,174,78,.34),
+    0 12px 26px rgba(0,0,0,.16)!important;
+}
+
+.no-trade-panel .label{
+  color:#d8bd72!important;
+}
+
+@media(max-width:720px){
+  .no-trade-button{
+    min-height:54px!important;
+    padding:10px 12px 10px 15px!important;
+  }
+  .no-trade-button span{
+    font-size:10.5px!important;
+    letter-spacing:1px!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1811,8 +2012,26 @@ body.records-open{
 <div class="journal-tools" aria-label="Journal tools">
   <button class="journal-tool" type="button" onclick="openLockout()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 9v4l2.6 1.8"></path><path d="M9 3h6"></path><path d="M12 3v2.5"></path></svg></span><span><strong id="journalLockoutLabel">20:00</strong><small>20 MIN STOP</small></span></button>
   <button class="journal-tool" type="button" onclick="openBreathing()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12c0-3.9 2.3-7 5.2-7 1.4 0 1.8 1.2 1.8 2.5V12"></path><path d="M19 12c0-3.9-2.3-7-5.2-7-1.4 0-1.8 1.2-1.8 2.5V12"></path><path d="M12 12c-1.7 0-3 1.4-3 3.1V19"></path><path d="M12 12c1.7 0 3 1.4 3 3.1V19"></path><path d="M9 19h6"></path></svg></span><span><strong>64S</strong><small>BOX BREATHING</small></span></button>
-  <button class="journal-tool" type="button" onclick="openIdealSetup()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M7 15l3-4 3 2 4-6"></path><path d="M17 7h3v3"></path></svg></span><span><strong>2X</strong><small>PICTURE REFRAME</small></span></button>
+  <button class="journal-tool" type="button" onclick="openIdealSetup()"><span class="journal-tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M7 15l3-4 3 2 4-6"></path><path d="M17 7h3v3"></path></svg></span><span><strong>EDGE</strong><small>PICTURE REFRAME</small></span></button>
 </div>
+
+<div class="no-trade-wrap">
+  <button id="noTradeButton" class="no-trade-button" type="button" onclick="toggleNoTradeDay()">
+    <span>NO TRADE TODAY</span>
+    <strong id="noTradeState">OFF</strong>
+  </button>
+
+  <div id="noTradePanel" class="no-trade-panel hidden">
+    <div class="label">NO TRADE COMMENTS</div>
+    <textarea id="noTradeComments" class="input textarea"
+      placeholder="WHY WAS NO TRADE TAKEN TODAY? WHAT DID THE MARKET OR THE PROCESS REQUIRE?"></textarea>
+    <div class="no-trade-actions">
+      <button class="btn primary" type="button" onclick="saveNoTradeDay()">SAVE NO TRADE DAY</button>
+      <button class="btn" type="button" onclick="toggleNoTradeDay(false)">CANCEL</button>
+    </div>
+  </div>
+</div>
+
 <div class="protocol-grid"><div class="sections">
 
 <div class="card">
@@ -2005,11 +2224,11 @@ body.records-open{
 
     <div class="ideal-setup-gallery">
       <figure class="ideal-setup-figure">
-        <img src="/mnt/data/ghostwriter_images/context/87c94e33-8b5e-58b7-b75e-34ed308a5b8e.png" alt="Ideal setup reference 1">
+        <img src="/mnt/data/ghostwriter_images/context/7fa40e14-4565-5cf1-a6f4-024b39bd8619.png" alt="Ideal setup reference 1">
         <figcaption>REFERENCE 01</figcaption>
       </figure>
       <figure class="ideal-setup-figure">
-        <img src="/mnt/data/ghostwriter_images/context/e9e6daf2-8b71-5e0a-bdce-f26e3c71d633.png" alt="Ideal setup reference 2">
+        <img src="/mnt/data/ghostwriter_images/context/489e14d6-bb96-5ff4-97b6-6e995f163293.png" alt="Ideal setup reference 2">
         <figcaption>REFERENCE 02</figcaption>
       </figure>
     </div>
@@ -2322,7 +2541,7 @@ function saveDailyPrepFromRecords(){
     r.dailyNotes=updated.notes||'';
     r.longNarrative=updated.longNarrative||'';
     r.shortNarrative=updated.shortNarrative||'';
-    r.report=report(r);
+    r.report=r.noTrade?noTradeReport(r):report(r);
   });
   persist();
 
@@ -2341,7 +2560,7 @@ function closeDailyPrepView(){
 }
 
 const KEY='executionProtocolRecordsV1';
-const checklistItems=['PHYSICAL ACTIVITY DONE','DESIANO /ES LEVELS MARKED ON TOPSTEPX','DESIANO SPY LEVELS MARKED ON TASTY','SWING SHADOWS AND FVG LEVELS MARKED ON 5MIN SPX TASTY','YESTERDAY JOURNAL AND PRE MARKET NOTE READ','FOREXFACTORY NEWS CHECKED','FINANCIAL JUICE OPENED','TASTY 5MIN SPX SET','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPs & SESSION VOL PROFILE SET ON TOPSTEPX','TOPSTEPX SET TO 1 MIN WITH FVG','HEART RATE MONITORING ACTIVATED','WATCH JIGSAW MARKET PROFILE'];
+const checklistItems=['PHYSICAL ACTIVITY DONE','SPX DAILY ANALYSIS 8/21 EMA DONE','DESIANO /ES LEVELS MARKED ON TOPSTEPX','DESIANO SPY LEVELS MARKED ON TASTY','YESTERDAY JOURNAL AND PRE MARKET NOTE READ','FOREXFACTORY NEWS CHECKED','FINANCIAL JUICE OPENED','TASTY WATCHLIST & IV RANK SET','VIX AWARENESS COMPLETED','VWAPs & SESSION VOL PROFILE SET ON TOPSTEPX','TOPSTEP SET TO 5MIN WITH FVG INDICATOR ON (ETH)','HEART RATE MONITORING ACTIVATED','WATCH JIGSAW MARKET PROFILE'];
 const emotions=[{label:'CLEAR MIND',state:'GREEN'},{label:'TENSION',state:'YELLOW'},{label:'URGENCY / FOMO',state:'RED'}];
 const responses=['CALM','URGE TO RE-ENTER','DOUBT ABOUT MY STRATEGY','REGRET: I SHOULD HAVE EXITED EARLIER / I SHOULD HAVE WAITED','TEMPTATION TO INCREASE EXPOSURE IMMEDIATELY','OTHER'];
 let records=load(),checkIndex=0,completed=[],reentry=null,currentDate='',tradeNumber=1,checklistDate=null;
@@ -2429,14 +2648,92 @@ function renderCheck(){
   document.getElementById('checkProgress').style.width=`${checkIndex/checklistItems.length*100}%`;
 }
 let knocking=false;function knockItem(){if(checkIndex>=checklistItems.length||knocking)return;knocking=true;const cur=document.getElementById('currentCheck');cur.classList.add('knock');setTimeout(()=>{const item=checklistItems[checkIndex];completed.push(item);const div=document.createElement('div');div.className='stack-item';div.textContent=`✓ ${item}`;document.getElementById('completedStack').appendChild(div);checkIndex++;knocking=false;renderCheck()},390)}
-function updateTradeHint(){const d=document.getElementById('journalDate').value||today;tradeNumber=records.filter(x=>x.date===d).length+1;const prep=getDailyPrep(d);document.getElementById('tradeHint').textContent=`THIS WILL BE TRADE ${tradeNumber} FOR ${d}.${prep?' · DAILY PREP SAVED.':''}`}
+function updateTradeHint(){const d=document.getElementById('journalDate').value||today;tradeNumber=records.filter(x=>x.date===d&&!x.noTrade).length+1;const prep=getDailyPrep(d);document.getElementById('tradeHint').textContent=`THIS WILL BE TRADE ${tradeNumber} FOR ${d}.${prep?' · DAILY PREP SAVED.':''}`}
 function handleJournalDateChange(){updateTradeHint()}
 function askReentry(){currentDate=document.getElementById('journalDate').value||today;updateTradeHint();document.getElementById('reentryModal').classList.remove('hidden')}
 function setReentry(v){reentry=v;document.getElementById('reentryModal').classList.add('hidden');initProtocol();showPage('journal',document.querySelector('[data-nav=journal]'))}
+function resetNoTradeUI(){
+  const button=document.getElementById('noTradeButton');
+  const panel=document.getElementById('noTradePanel');
+  const state=document.getElementById('noTradeState');
+  const comments=document.getElementById('noTradeComments');
+  if(button)button.classList.remove('active');
+  if(panel)panel.classList.add('hidden');
+  if(state)state.textContent='OFF';
+  if(comments)comments.value='';
+}
+
+function toggleNoTradeDay(force){
+  const button=document.getElementById('noTradeButton');
+  const panel=document.getElementById('noTradePanel');
+  const state=document.getElementById('noTradeState');
+  const comments=document.getElementById('noTradeComments');
+  if(!button||!panel||!state)return;
+
+  const next=typeof force==='boolean'?force:!button.classList.contains('active');
+  button.classList.toggle('active',next);
+  panel.classList.toggle('hidden',!next);
+  state.textContent=next?'ON':'OFF';
+
+  if(next&&comments){
+    const existing=records.find(r=>r.noTrade&&r.date===currentDate);
+    if(existing&&!comments.value)comments.value=existing.noTradeComments||'';
+    setTimeout(()=>comments.focus(),0);
+  }
+}
+
+function noTradeReport(r){
+  const x=[];
+  x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — NO TRADE DAY`);
+  x.push('','DAILY PREPARATION',
+    `Daily notes: ${r.dailyNotes||'—'}`,
+    `Long narrative: ${r.longNarrative||'—'}`,
+    `Short narrative: ${r.shortNarrative||'—'}`
+  );
+  x.push('','NO TRADE TODAY');
+  if(r.noTradeComments)x.push(r.noTradeComments);
+  return x.join('\n');
+}
+
+function saveNoTradeDay(){
+  const date=currentDate||document.getElementById('journalDate').value||today;
+  const prep=getDailyPrep(date)||{};
+  const comments=(document.getElementById('noTradeComments')?.value||'').trim();
+
+  let r=records.find(item=>item.noTrade&&item.date===date);
+
+  if(r){
+    r.noTradeComments=comments;
+    r.dailyNotes=prep.notes||'';
+    r.longNarrative=prep.longNarrative||'';
+    r.shortNarrative=prep.shortNarrative||'';
+    r.updatedAt=Date.now();
+    r.report=noTradeReport(r);
+  }else{
+    r={
+      id:Date.now(),
+      date,
+      noTrade:true,
+      noTradeComments:comments,
+      dailyNotes:prep.notes||'',
+      longNarrative:prep.longNarrative||'',
+      shortNarrative:prep.shortNarrative||''
+    };
+    r.report=noTradeReport(r);
+    records.unshift(r);
+  }
+
+  persist();
+  renderRecords();
+  toast('NO TRADE DAY SAVED');
+  showPage('records',document.querySelector('[data-nav=records]'));
+}
+
 function initProtocol(){
   clearProtocol();
+  resetNoTradeUI();
   renderEmotions();
-  tradeNumber=records.filter(x=>x.date===currentDate).length+1;
+  tradeNumber=records.filter(x=>x.date===currentDate&&!x.noTrade).length+1;
   document.getElementById('journalMeta').textContent=`${currentDate} · TRADE ${tradeNumber} · RE-ENTRY <20': ${reentry}`;
   updateStrategyCriteria();
   updateProtocolStatuses();
@@ -2781,7 +3078,7 @@ function report(r){
 }
 function completeProtocol(){
   const r=collect();
-  r.report=report(r);
+  r.report=r.noTrade?noTradeReport(r):report(r);
   records.unshift(r);
   persist();
   document.getElementById('modalSetup').textContent=r.eligibility==='VALID'&&r.setupGrade?`${r.setupGrade} · ${r.setupVariables}/3`:'N/A';
@@ -2796,13 +3093,47 @@ function copyReport(){copyText(document.getElementById('reportText').value).then
 function renderRecords(){
   renderDailyPrepArchive();
   const c=document.getElementById('recordsList');
-  if(!records.length){c.innerHTML='<div class="card empty">NO PROTOCOL HAS BEEN COMPLETED YET.</div>';return;}
+
+  if(!records.length){
+    c.innerHTML='<div class="card empty">NO PROTOCOL HAS BEEN COMPLETED YET.</div>';
+    return;
+  }
+
   c.innerHTML=records.map(r=>{
+    if(r.noTrade){
+      const summary=(r.noTradeComments||'NO TRADE DAY').slice(0,120);
+      return `<button class="record no-trade-record" onclick="openRecord(${r.id})">
+        <div style="text-align:left">
+          <h3>${r.date} · NO TRADE DAY</h3>
+          <p>${summary}</p>
+        </div>
+        <div class="record-score">NO TRADE</div>
+      </button>`;
+    }
+
     const eligibility=r.eligibility||'VALID';
-    if(eligibility!=='VALID')return `<button class="record" onclick="openRecord(${r.id})"><div style="text-align:left"><h3>${r.date} · TRADE ${r.tradeNumber}</h3><p>INVALID · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'}</p></div><div class="record-score">INVALID</div></button>`;
-    const grade=r.setupGrade||(typeof r.setupScore==='number'?(r.setupScore>=40?'A':r.setupScore>=27?'B':r.setupScore>=13?'C':'D'):'—');
+    if(eligibility!=='VALID'){
+      return `<button class="record" onclick="openRecord(${r.id})">
+        <div style="text-align:left">
+          <h3>${r.date} · TRADE ${r.tradeNumber}</h3>
+          <p>INVALID · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'}</p>
+        </div>
+        <div class="record-score">INVALID</div>
+      </button>`;
+    }
+
+    const grade=r.setupGrade||(typeof r.setupScore==='number'
+      ?(r.setupScore>=40?'A':r.setupScore>=27?'B':r.setupScore>=13?'C':'D')
+      :'—');
     const sabotage=r.sabotageDetected===true?'YES':r.sabotageDetected===false?'NO':'—';
-    return `<button class="record" onclick="openRecord(${r.id})"><div style="text-align:left"><h3>${r.date} · TRADE ${r.tradeNumber}</h3><p>VALID · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'} · SETUP ${grade} · SABOTAGE ${sabotage}</p></div><div class="record-score">${grade}</div></button>`;
+
+    return `<button class="record" onclick="openRecord(${r.id})">
+      <div style="text-align:left">
+        <h3>${r.date} · TRADE ${r.tradeNumber}</h3>
+        <p>VALID · ${r.bias||'NO BIAS'} · ${r.tradeOutcome||'NO OUTCOME'} · SETUP ${grade} · SABOTAGE ${sabotage}</p>
+      </div>
+      <div class="record-score">${grade}</div>
+    </button>`;
   }).join('');
 }
 function openRecord(id){const r=records.find(x=>x.id===id);if(!r)return;document.getElementById('savedReportText').value=r.report;document.getElementById('recordModal').classList.remove('hidden')}function copySavedReport(){copyText(document.getElementById('savedReportText').value).then(()=>toast('Saved protocol copied'))}function closeRecord(){document.getElementById('recordModal').classList.add('hidden')}function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
