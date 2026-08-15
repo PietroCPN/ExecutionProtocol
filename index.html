@@ -1923,6 +1923,90 @@ body.records-open{
   }
 }
 
+
+/* =========================================================
+   V2.19 — NO TRADE TODAY / COPPER-TERRACOTTA IDENTITY
+   ========================================================= */
+.no-trade-button{
+  border-color:rgba(188,105,74,.58)!important;
+  background:
+    linear-gradient(90deg,rgba(112,48,31,.22),transparent 32%),
+    linear-gradient(180deg,rgba(31,23,21,.98),rgba(14,13,14,.995))!important;
+  color:#e4b2a0!important;
+  box-shadow:
+    0 12px 28px rgba(0,0,0,.22),
+    inset 4px 0 0 rgba(193,93,61,.72),
+    inset 0 1px 0 rgba(255,255,255,.035)!important;
+}
+
+.no-trade-button::before{
+  border-color:rgba(224,143,112,.88)!important;
+  background:rgba(193,93,61,.20)!important;
+  box-shadow:0 0 0 4px rgba(193,93,61,.05)!important;
+}
+
+.no-trade-button strong{
+  border-color:rgba(205,119,88,.42)!important;
+  background:rgba(193,93,61,.07)!important;
+  color:#c98d77!important;
+}
+
+.no-trade-button:hover{
+  border-color:rgba(211,122,88,.76)!important;
+  background:
+    linear-gradient(90deg,rgba(129,55,35,.29),transparent 34%),
+    linear-gradient(180deg,rgba(38,26,22,.99),rgba(15,14,14,.995))!important;
+}
+
+.no-trade-button.active{
+  border-color:rgba(221,119,80,.92)!important;
+  background:
+    radial-gradient(circle at 13% 50%,rgba(207,91,52,.17),transparent 25%),
+    linear-gradient(180deg,rgba(67,34,25,.98),rgba(27,18,16,.995))!important;
+  color:#ffd2c0!important;
+  box-shadow:
+    0 13px 32px rgba(0,0,0,.26),
+    0 0 22px rgba(193,93,61,.09),
+    inset 4px 0 0 rgba(224,104,66,.96),
+    inset 0 1px 0 rgba(255,225,211,.055)!important;
+}
+
+.no-trade-button.active::before{
+  background:#d66f4d!important;
+  border-color:#f0a287!important;
+  box-shadow:
+    0 0 0 4px rgba(214,111,77,.10),
+    0 0 15px rgba(214,111,77,.23)!important;
+}
+
+.no-trade-button.active strong{
+  color:#ffd0bd!important;
+  border-color:rgba(230,139,105,.66)!important;
+  background:rgba(207,91,52,.14)!important;
+}
+
+.no-trade-panel{
+  border-color:rgba(193,93,61,.30)!important;
+  background:
+    linear-gradient(180deg,rgba(31,22,19,.97),rgba(14,13,14,.99))!important;
+  box-shadow:
+    inset 3px 0 0 rgba(193,93,61,.38),
+    0 12px 26px rgba(0,0,0,.16)!important;
+}
+
+.no-trade-panel .label{
+  color:#cf927c!important;
+}
+
+.record.no-trade-record{
+  border-color:rgba(193,93,61,.30)!important;
+  background:
+    linear-gradient(180deg,rgba(31,21,19,.97),rgba(13,14,15,.98))!important;
+}
+.record.no-trade-record .record-score{
+  color:#d59a84!important;
+}
+
 </style>
 </head>
 <body>
