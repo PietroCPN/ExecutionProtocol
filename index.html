@@ -2007,13 +2007,134 @@ body.records-open{
   color:#d59a84!important;
 }
 
+
+/* =========================================================
+   V2.20 — DAILY PREP / RECORDS SPLIT / INSIGHTS / EXPORT
+   ========================================================= */
+
+.compact-daily-textarea{min-height:76px!important}
+.narrative-group{margin-bottom:0}
+.narrative-group-label{
+  padding-bottom:9px;
+  border-bottom:1px solid rgba(158,197,255,.12);
+}
+.narrative-side{min-width:0}
+.micro-label{
+  margin:2px 0 7px;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:1.1px;
+}
+
+/* RECORDS segmented navigation */
+.records-tabs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin:0 0 18px;
+  padding:5px;
+  border:1px solid rgba(158,197,255,.14);
+  border-radius:12px;
+  background:#0b1017;
+}
+.records-tab{
+  min-height:42px;
+  border:1px solid transparent;
+  border-radius:8px;
+  background:transparent;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1px;
+}
+.records-tab.active{
+  border-color:rgba(158,197,255,.35);
+  background:rgba(158,197,255,.09);
+  color:#d9eaff;
+  box-shadow:inset 0 0 18px rgba(158,197,255,.035);
+}
+.records-panel{width:100%}
+.records-panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:12px;
+  padding:0 2px;
+}
+.records-panel-title{
+  color:var(--a);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:1.35px;
+}
+.export-btn{
+  border-color:rgba(121,217,157,.34)!important;
+  background:rgba(20,55,39,.45)!important;
+  color:#bce9cd!important;
+}
+.export-btn:hover{
+  border-color:rgba(121,217,157,.58)!important;
+  background:rgba(20,65,43,.62)!important;
+}
+
+/* Living insights note */
+.insights-card{
+  max-width:980px;
+  margin:0 auto;
+}
+.insights-notebook{
+  width:100%!important;
+  min-height:55vh!important;
+  box-sizing:border-box!important;
+  resize:vertical;
+  font-size:14px!important;
+  line-height:1.55!important;
+}
+.insights-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-top:12px;
+}
+
+@media(max-width:720px){
+  .records-tabs{
+    grid-template-columns:1fr;
+    gap:5px;
+  }
+  .records-panel-head{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .export-btn{
+    width:100%;
+  }
+  .insights-notebook{
+    min-height:62vh!important;
+    font-size:16px!important;
+  }
+  .insights-actions{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .insights-actions .btn{width:100%}
+}
+
 </style>
 </head>
 <body>
 <button id="mobileMenuButton" class="mobile-menu-button" type="button" aria-label="OPEN NAVIGATION" onclick="toggleMobileMenu()">☰</button>
 <div id="mobileMenuOverlay" class="mobile-menu-overlay hidden" onclick="closeMobileMenu()"></div>
 <div class="shell">
-<aside id="mainSidebar" class="side"><div class="brand">EXECUTION PROTOCOL<span>PROCESS BEFORE OUTCOME</span></div><nav class="nav"><button class="active" data-nav="start" onclick="newSession(this)">◉ START PROTOCOL</button><button data-nav="journal" onclick="showPage('journal',this)">＋ CURRENT PROTOCOL</button><button data-nav="records" onclick="showPage('records',this)">◷ Records</button></nav></aside>
+<aside id="mainSidebar" class="side"><div class="brand">EXECUTION PROTOCOL<span>PROCESS BEFORE OUTCOME</span></div><nav class="nav">
+  <button class="active" data-nav="start" onclick="newSession(this)">◉ START PROTOCOL</button>
+  <button data-nav="journal" onclick="showPage('journal',this)">＋ CURRENT PROTOCOL</button>
+  <button data-nav="records" onclick="showPage('records',this)">◷ RECORDS</button>
+  <button data-nav="insights" onclick="showPage('insightsPage',this)">✦ INSIGHTS</button>
+</nav></aside>
 <main class="main">
 <section id="start" class="page">
 <div id="gate" class="gate"><div class="gate-inner"><div class="kicker">EXECUTION PROTOCOL</div><div class="gate-line">THE OUTCOME OF THIS SPECIFIC TRADE IS</div><div class="magic-wrap"><button id="casualeButton" class="magic" type="button" onclick="unlockSession()" aria-label="CLICK RANDOM TO START" autofocus>RANDOM</button><div class="magic-hint">OR PRESS <span class="keycap">ENTER</span></div>
@@ -2055,15 +2176,45 @@ body.records-open{
     <div class="sec">DAILY PREPARATION</div>
     <div class="card daily-prep-card">
       <div class="daily-prep-head">
-        <div><div class="block-title">DAILY NOTES & NARRATIVES</div><div id="dailyPrepStatus" class="helper">ONE ENTRY PER TRADING DAY.</div></div>
+        <div>
+          <div class="block-title">PRE-MARKET PREPARATION</div>
+          <div id="dailyPrepStatus" class="helper">ONE ENTRY PER TRADING DAY.</div>
+        </div>
         <button id="dailyPrepEditButton" class="btn hidden" type="button" onclick="editDailyPrep()">EDIT</button>
       </div>
-      <div class="field-block"><div class="label">DAILY NOTES</div><textarea id="dailyNotes" class="input textarea" placeholder="KEY INFORMATION, CONDITIONS, RISKS, OBSERVATIONS..."></textarea></div>
-      <div class="daily-narratives">
-        <div class="field-block"><div class="label">LONG NARRATIVE</div><textarea id="longNarrative" class="input textarea" placeholder="WHAT WOULD SUPPORT A LONG SCENARIO TODAY?"></textarea></div>
-        <div class="field-block"><div class="label">SHORT NARRATIVE</div><textarea id="shortNarrative" class="input textarea" placeholder="WHAT WOULD SUPPORT A SHORT SCENARIO TODAY?"></textarea></div>
+
+      <div class="field-block">
+        <div class="label">PREVIOUS JOURNAL FEEDBACK</div>
+        <textarea id="previousJournalFeedback" class="input textarea" placeholder="KEY FEEDBACK FROM THE PREVIOUS JOURNAL / REVIEW..."></textarea>
       </div>
-      <div class="daily-prep-actions"><button id="dailyPrepContinueButton" class="btn primary" type="button" onclick="saveDailyPrepAndContinue()">SAVE & CONTINUE</button></div>
+
+      <div class="field-block">
+        <div class="label">DAILY NOTES</div>
+        <textarea id="dailyNotes" class="input textarea" placeholder="KEY INFORMATION, CONDITIONS, RISKS, OBSERVATIONS..."></textarea>
+      </div>
+
+      <div class="field-block">
+        <div class="label">NTZ (NO TRADE ZONE)</div>
+        <textarea id="ntz" class="input textarea compact-daily-textarea" placeholder="DEFINE THE AREA WHERE NO TRADE SHOULD BE TAKEN..."></textarea>
+      </div>
+
+      <div class="field-block narrative-group">
+        <div class="label narrative-group-label">LONG / SHORT NARRATIVE</div>
+        <div class="daily-narratives">
+          <div class="narrative-side">
+            <div class="micro-label">LONG</div>
+            <textarea id="longNarrative" class="input textarea" placeholder="WHAT WOULD SUPPORT A LONG SCENARIO TODAY?"></textarea>
+          </div>
+          <div class="narrative-side">
+            <div class="micro-label">SHORT</div>
+            <textarea id="shortNarrative" class="input textarea" placeholder="WHAT WOULD SUPPORT A SHORT SCENARIO TODAY?"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="daily-prep-actions">
+        <button id="dailyPrepContinueButton" class="btn primary" type="button" onclick="saveDailyPrepAndContinue()">SAVE & CONTINUE</button>
+      </div>
     </div>
   </div>
   <div id="checklistStage" class="hidden">
@@ -2242,7 +2393,61 @@ body.records-open{
   <div class="simple-score-row"><div class="score-name">SELF-SABOTAGE</div><div id="sabotageScore" class="score-value simple-grade">N/A</div><small id="sabotageScoreDetail">ELIGIBLE TRADES ONLY</small></div>
 </div></aside></div>
 </section>
-<section id="records" class="page hidden"><div class="top"><div><h1>PROTOCOL RECORDS</h1><div class="sub">SAVED LOCALLY IN THIS BROWSER.</div></div><button class="btn primary" onclick="newSession(document.querySelector('[data-nav=start]'))">NEW PROTOCOL</button></div><div class="records-subtitle">DAILY PREPARATION ARCHIVE</div><div id="dailyPrepArchive" class="daily-prep-archive"></div><div class="records-subtitle">TRADE RECORDS</div><div id="recordsList" class="records"></div></section>
+<section id="records" class="page hidden">
+  <div class="top">
+    <div>
+      <h1>RECORDS</h1>
+      <div class="sub">SAVED LOCALLY IN THIS BROWSER.</div>
+    </div>
+    <button class="btn primary" onclick="newSession(document.querySelector('[data-nav=start]'))">NEW PROTOCOL</button>
+  </div>
+
+  <div class="records-tabs" role="tablist" aria-label="Records sections">
+    <button id="recordsTradesTab" class="records-tab active" type="button" onclick="showRecordsTab('trades')">TRADE RECORDS</button>
+    <button id="recordsDailyTab" class="records-tab" type="button" onclick="showRecordsTab('daily')">DAILY PREPARATION ARCHIVE</button>
+  </div>
+
+  <div id="tradeRecordsPanel" class="records-panel">
+    <div class="records-panel-head">
+      <div>
+        <div class="records-panel-title">TRADE RECORDS</div>
+        <div id="tradeRecordsCount" class="helper"></div>
+      </div>
+      <button class="btn export-btn" type="button" onclick="exportAllTradeRecords()">EXPORT ALL SESSION RECORDS</button>
+    </div>
+    <div id="recordsList" class="records"></div>
+  </div>
+
+  <div id="dailyPrepArchivePanel" class="records-panel hidden">
+    <div class="records-panel-head">
+      <div>
+        <div class="records-panel-title">DAILY PREPARATION ARCHIVE</div>
+        <div class="helper">OPEN ANY DAY TO VIEW OR EDIT ITS PREPARATION.</div>
+      </div>
+    </div>
+    <div id="dailyPrepArchive" class="daily-prep-archive"></div>
+  </div>
+</section>
+<section id="insightsPage" class="page hidden">
+  <div class="top">
+    <div>
+      <h1>INSIGHTS</h1>
+      <div class="sub">ONE LIVING NOTE. UPDATE IT AS YOUR THINKING EVOLVES.</div>
+    </div>
+  </div>
+
+  <div class="card insights-card">
+    <div class="block-title">TRADING INSIGHTS</div>
+    <textarea id="insightsNotebook" class="input textarea insights-notebook"
+      placeholder="ADD PRINCIPLES, PATTERNS, REALIZATIONS, QUESTIONS, OR RULES WORTH REMEMBERING..."
+      oninput="saveInsightsNote(false)"></textarea>
+    <div class="insights-actions">
+      <div id="insightsSaveStatus" class="helper">SAVED LOCALLY.</div>
+      <button class="btn primary" type="button" onclick="saveInsightsNote(true)">SAVE NOTE</button>
+    </div>
+  </div>
+</section>
+
 </main></div>
 <div id="reentryModal" class="modal hidden"><div class="modal-card"><div class="modal-title">IS THIS A RE-ENTRY WITHIN 20 MINUTES?</div><div class="modal-actions"><button class="btn primary" onclick="setReentry('YES')">YES</button><button class="btn" onclick="setReentry('NO')">NO</button></div></div></div>
 <div id="breathingModal" class="modal hidden">
@@ -2330,8 +2535,18 @@ body.records-open{
     </div>
 
     <div class="daily-prep-view-section">
+      <span>PREVIOUS JOURNAL FEEDBACK</span>
+      <textarea id="dailyPrepViewPreviousFeedback" class="input textarea daily-prep-record-input" readonly></textarea>
+    </div>
+
+    <div class="daily-prep-view-section">
       <span>DAILY NOTES</span>
       <textarea id="dailyPrepViewNotes" class="input textarea daily-prep-record-input" readonly></textarea>
+    </div>
+
+    <div class="daily-prep-view-section">
+      <span>NTZ (NO TRADE ZONE)</span>
+      <textarea id="dailyPrepViewNtz" class="input textarea daily-prep-record-input compact-daily-textarea" readonly></textarea>
     </div>
 
     <div class="daily-prep-view-section">
@@ -2536,18 +2751,97 @@ function closeIdealSetup(){
 }
 
 const DAILY_PREP_KEY='executionProtocolDailyPrepV1';
-function loadDailyPrepStore(){try{return JSON.parse(localStorage.getItem(DAILY_PREP_KEY)||'{}')}catch{return{}}}
-function saveDailyPrepStore(store){localStorage.setItem(DAILY_PREP_KEY,JSON.stringify(store))}
-function getDailyPrep(date){return loadDailyPrepStore()[date]||null}
-function setDailyPrep(date,data){const store=loadDailyPrepStore();store[date]={...(store[date]||{}),...data,updatedAt:Date.now()};saveDailyPrepStore(store)}
-function currentPrepDate(){return document.getElementById('journalDate').value||today}
-function setDailyPrepReadonly(readonly){['dailyNotes','longNarrative','shortNarrative'].forEach(id=>{const el=document.getElementById(id);if(el)el.readOnly=readonly});document.querySelector('.daily-prep-card')?.classList.toggle('readonly',readonly)}
-function loadDailyPrepForm(){const date=currentPrepDate(),prep=getDailyPrep(date);document.getElementById('dailyNotes').value=prep?.notes||'';document.getElementById('longNarrative').value=prep?.longNarrative||'';document.getElementById('shortNarrative').value=prep?.shortNarrative||'';if(prep){setDailyPrepReadonly(true);document.getElementById('dailyPrepStatus').textContent='DAILY PREPARATION ALREADY SAVED FOR THIS DATE.';document.getElementById('dailyPrepContinueButton').textContent='CONTINUE TO CHECKLIST';document.getElementById('dailyPrepEditButton').classList.remove('hidden')}else{setDailyPrepReadonly(false);document.getElementById('dailyPrepStatus').textContent='ONE ENTRY PER TRADING DAY.';document.getElementById('dailyPrepContinueButton').textContent='SAVE & CONTINUE';document.getElementById('dailyPrepEditButton').classList.add('hidden')}}
-function openDailyPrepStage(){document.getElementById('dailyPrepStage').classList.remove('hidden');document.getElementById('checklistStage').classList.add('hidden');loadDailyPrepForm()}
-function editDailyPrep(){setDailyPrepReadonly(false);document.getElementById('dailyPrepStatus').textContent='EDITING SAVED DAILY PREPARATION.';document.getElementById('dailyPrepContinueButton').textContent='SAVE CHANGES & CONTINUE';document.getElementById('dailyPrepEditButton').classList.add('hidden')}
-function saveDailyPrepAndContinue(){const date=currentPrepDate(),existing=getDailyPrep(date),readonly=document.getElementById('dailyNotes').readOnly;if(!existing||!readonly){setDailyPrep(date,{notes:document.getElementById('dailyNotes').value.trim(),longNarrative:document.getElementById('longNarrative').value.trim(),shortNarrative:document.getElementById('shortNarrative').value.trim()})}showChecklistForDate()}
-function showChecklistForDate(){const date=currentPrepDate();document.getElementById('dailyPrepStage').classList.add('hidden');document.getElementById('checklistStage').classList.remove('hidden');if(checklistAlreadyCompleted(date))showChecklistCompleted(date);else resetChecklist()}
-function markChecklistCompleted(date){const prep=getDailyPrep(date)||{notes:'',longNarrative:'',shortNarrative:''};setDailyPrep(date,{...prep,checklistCompleted:true})}
+
+function loadDailyPrepStore(){
+  try{return JSON.parse(localStorage.getItem(DAILY_PREP_KEY)||'{}')}catch{return{}}
+}
+function saveDailyPrepStore(store){
+  localStorage.setItem(DAILY_PREP_KEY,JSON.stringify(store));
+}
+function getDailyPrep(date){
+  return loadDailyPrepStore()[date]||null;
+}
+function setDailyPrep(date,data){
+  const store=loadDailyPrepStore();
+  store[date]={...(store[date]||{}),...data,updatedAt:Date.now()};
+  saveDailyPrepStore(store);
+}
+function currentPrepDate(){
+  return document.getElementById('journalDate').value||today;
+}
+function setDailyPrepReadonly(readonly){
+  ['previousJournalFeedback','dailyNotes','ntz','longNarrative','shortNarrative'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.readOnly=readonly;
+  });
+  document.querySelector('.daily-prep-card')?.classList.toggle('readonly',readonly);
+}
+function loadDailyPrepForm(){
+  const date=currentPrepDate();
+  const prep=getDailyPrep(date);
+
+  document.getElementById('previousJournalFeedback').value=prep?.previousJournalFeedback||'';
+  document.getElementById('dailyNotes').value=prep?.notes||'';
+  document.getElementById('ntz').value=prep?.ntz||'';
+  document.getElementById('longNarrative').value=prep?.longNarrative||'';
+  document.getElementById('shortNarrative').value=prep?.shortNarrative||'';
+
+  if(prep){
+    setDailyPrepReadonly(true);
+    document.getElementById('dailyPrepStatus').textContent='DAILY PREPARATION ALREADY SAVED FOR THIS DATE.';
+    document.getElementById('dailyPrepContinueButton').textContent='CONTINUE TO CHECKLIST';
+    document.getElementById('dailyPrepEditButton').classList.remove('hidden');
+  }else{
+    setDailyPrepReadonly(false);
+    document.getElementById('dailyPrepStatus').textContent='ONE ENTRY PER TRADING DAY.';
+    document.getElementById('dailyPrepContinueButton').textContent='SAVE & CONTINUE';
+    document.getElementById('dailyPrepEditButton').classList.add('hidden');
+  }
+}
+function openDailyPrepStage(){
+  document.getElementById('dailyPrepStage').classList.remove('hidden');
+  document.getElementById('checklistStage').classList.add('hidden');
+  loadDailyPrepForm();
+}
+function editDailyPrep(){
+  setDailyPrepReadonly(false);
+  document.getElementById('dailyPrepStatus').textContent='EDITING SAVED DAILY PREPARATION.';
+  document.getElementById('dailyPrepContinueButton').textContent='SAVE CHANGES & CONTINUE';
+  document.getElementById('dailyPrepEditButton').classList.add('hidden');
+}
+function saveDailyPrepAndContinue(){
+  const date=currentPrepDate();
+  const existing=getDailyPrep(date);
+  const readonly=document.getElementById('dailyNotes').readOnly;
+
+  if(!existing||!readonly){
+    setDailyPrep(date,{
+      previousJournalFeedback:document.getElementById('previousJournalFeedback').value.trim(),
+      notes:document.getElementById('dailyNotes').value.trim(),
+      ntz:document.getElementById('ntz').value.trim(),
+      longNarrative:document.getElementById('longNarrative').value.trim(),
+      shortNarrative:document.getElementById('shortNarrative').value.trim()
+    });
+  }
+  showChecklistForDate();
+}
+function showChecklistForDate(){
+  const date=currentPrepDate();
+  document.getElementById('dailyPrepStage').classList.add('hidden');
+  document.getElementById('checklistStage').classList.remove('hidden');
+  if(checklistAlreadyCompleted(date))showChecklistCompleted(date);
+  else resetChecklist();
+}
+function markChecklistCompleted(date){
+  const prep=getDailyPrep(date)||{
+    previousJournalFeedback:'',
+    notes:'',
+    ntz:'',
+    longNarrative:'',
+    shortNarrative:''
+  };
+  setDailyPrep(date,{...prep,checklistCompleted:true});
+}
 let dailyPrepEditingDate=null;
 
 function renderDailyPrepArchive(){
@@ -2564,7 +2858,15 @@ function renderDailyPrepArchive(){
 
   c.innerHTML=dates.map(date=>{
     const p=store[date];
-    const summary=(p.longNarrative||p.shortNarrative||p.notes||'SAVED DAILY PREPARATION').slice(0,100);
+    const summary=(
+      p.previousJournalFeedback||
+      p.ntz||
+      p.longNarrative||
+      p.shortNarrative||
+      p.notes||
+      'SAVED DAILY PREPARATION'
+    ).slice(0,100);
+
     return `<button class="daily-prep-record" onclick="openDailyPrepView('${date}')">
       <div><strong>${date}</strong><span>${summary}</span></div>
       <div>VIEW / EDIT →</div>
@@ -2573,7 +2875,13 @@ function renderDailyPrepArchive(){
 }
 
 function setDailyPrepRecordEditMode(editing){
-  ['dailyPrepViewNotes','dailyPrepViewLong','dailyPrepViewShort'].forEach(id=>{
+  [
+    'dailyPrepViewPreviousFeedback',
+    'dailyPrepViewNotes',
+    'dailyPrepViewNtz',
+    'dailyPrepViewLong',
+    'dailyPrepViewShort'
+  ].forEach(id=>{
     const el=document.getElementById(id);
     if(el)el.readOnly=!editing;
   });
@@ -2582,7 +2890,9 @@ function setDailyPrepRecordEditMode(editing){
   document.getElementById('dailyPrepRecordSaveButton')?.classList.toggle('hidden',!editing);
 
   const status=document.getElementById('dailyPrepRecordEditStatus');
-  if(status)status.textContent=editing?'EDITING DAILY PREPARATION — SAVE CHANGES WHEN COMPLETE.':'SAVED DAILY PREPARATION.';
+  if(status)status.textContent=editing
+    ?'EDITING DAILY PREPARATION — SAVE CHANGES WHEN COMPLETE.'
+    :'SAVED DAILY PREPARATION.';
 }
 
 function openDailyPrepView(date){
@@ -2591,7 +2901,9 @@ function openDailyPrepView(date){
 
   dailyPrepEditingDate=date;
   document.getElementById('dailyPrepViewDate').textContent=date;
+  document.getElementById('dailyPrepViewPreviousFeedback').value=p.previousJournalFeedback||'';
   document.getElementById('dailyPrepViewNotes').value=p.notes||'';
+  document.getElementById('dailyPrepViewNtz').value=p.ntz||'';
   document.getElementById('dailyPrepViewLong').value=p.longNarrative||'';
   document.getElementById('dailyPrepViewShort').value=p.shortNarrative||'';
 
@@ -2602,7 +2914,7 @@ function openDailyPrepView(date){
 function editDailyPrepFromRecords(){
   if(!dailyPrepEditingDate)return;
   setDailyPrepRecordEditMode(true);
-  document.getElementById('dailyPrepViewNotes')?.focus();
+  document.getElementById('dailyPrepViewPreviousFeedback')?.focus();
 }
 
 function saveDailyPrepFromRecords(){
@@ -2611,18 +2923,20 @@ function saveDailyPrepFromRecords(){
   const existing=getDailyPrep(dailyPrepEditingDate)||{};
   const updated={
     ...existing,
+    previousJournalFeedback:document.getElementById('dailyPrepViewPreviousFeedback').value.trim(),
     notes:document.getElementById('dailyPrepViewNotes').value.trim(),
+    ntz:document.getElementById('dailyPrepViewNtz').value.trim(),
     longNarrative:document.getElementById('dailyPrepViewLong').value.trim(),
     shortNarrative:document.getElementById('dailyPrepViewShort').value.trim()
   };
 
   setDailyPrep(dailyPrepEditingDate,updated);
 
-  // Keep all saved trade records from the same day consistent with the
-  // edited daily preparation and regenerate their text report.
   records.forEach(r=>{
     if(r.date!==dailyPrepEditingDate)return;
+    r.previousJournalFeedback=updated.previousJournalFeedback||'';
     r.dailyNotes=updated.notes||'';
+    r.ntz=updated.ntz||'';
     r.longNarrative=updated.longNarrative||'';
     r.shortNarrative=updated.shortNarrative||'';
     r.report=r.noTrade?noTradeReport(r):report(r);
@@ -2631,6 +2945,7 @@ function saveDailyPrepFromRecords(){
 
   setDailyPrepRecordEditMode(false);
   renderRecords();
+  renderDailyPrepArchive();
   updateTradeHint();
 
   const status=document.getElementById('dailyPrepRecordEditStatus');
@@ -2665,7 +2980,7 @@ function showPage(id,b){
   if(b)b.classList.add('active');
 
   if(id==='records'){
-    renderRecords();
+    showRecordsTab('trades');
     page.scrollTop=0;
     requestAnimationFrame(()=>{page.scrollTop=0;});
   }else{
@@ -2675,7 +2990,88 @@ function showPage(id,b){
   }
 
   if(id==='start')setTimeout(()=>document.getElementById('casualeButton')?.focus(),0);
+  if(id==='insightsPage')loadInsightsNote();
 }
+const INSIGHTS_KEY='executionProtocolInsightsV1';
+
+function loadInsightsNote(){
+  const el=document.getElementById('insightsNotebook');
+  if(!el)return;
+  el.value=localStorage.getItem(INSIGHTS_KEY)||'';
+  const status=document.getElementById('insightsSaveStatus');
+  if(status)status.textContent='SAVED LOCALLY.';
+}
+
+function saveInsightsNote(showToast=false){
+  const el=document.getElementById('insightsNotebook');
+  if(!el)return;
+  localStorage.setItem(INSIGHTS_KEY,el.value);
+
+  const status=document.getElementById('insightsSaveStatus');
+  if(status)status.textContent=`SAVED · ${new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}`;
+
+  if(showToast)toast('INSIGHTS NOTE SAVED');
+}
+
+function showRecordsTab(tab){
+  const trades=tab==='trades';
+  document.getElementById('tradeRecordsPanel')?.classList.toggle('hidden',!trades);
+  document.getElementById('dailyPrepArchivePanel')?.classList.toggle('hidden',trades);
+  document.getElementById('recordsTradesTab')?.classList.toggle('active',trades);
+  document.getElementById('recordsDailyTab')?.classList.toggle('active',!trades);
+
+  const recordsPage=document.getElementById('records');
+  if(recordsPage)recordsPage.scrollTop=0;
+
+  if(trades)renderRecords();
+  else renderDailyPrepArchive();
+}
+
+function exportAllTradeRecords(){
+  const sessionRecords=records
+    .slice()
+    .sort((a,b)=>{
+      const dateCompare=String(a.date||'').localeCompare(String(b.date||''));
+      if(dateCompare!==0)return dateCompare;
+
+      // A NO TRADE DAY is a complete trading session and belongs in the
+      // historical sample. If a date somehow contains both a no-trade
+      // record and executed trades, keep the session-level NO TRADE entry first.
+      if(Boolean(a.noTrade)!==Boolean(b.noTrade))return a.noTrade?-1:1;
+
+      return Number(a.tradeNumber||0)-Number(b.tradeNumber||0);
+    });
+
+  if(!sessionRecords.length){
+    toast('NO SESSION RECORDS TO EXPORT');
+    return;
+  }
+
+  const executedTrades=sessionRecords.filter(r=>!r.noTrade).length;
+  const noTradeDays=sessionRecords.filter(r=>r.noTrade).length;
+
+  const payload={
+    exportType:'EXECUTION PROTOCOL — ALL TRADING SESSION RECORDS',
+    exportedAt:new Date().toISOString(),
+    sessionCount:sessionRecords.length,
+    executedTradeCount:executedTrades,
+    noTradeDayCount:noTradeDays,
+    records:sessionRecords
+  };
+
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  const date=new Date().toISOString().slice(0,10);
+  a.href=url;
+  a.download=`execution_protocol_session_records_${date}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  toast(`${sessionRecords.length} SESSION RECORDS EXPORTED`);
+}
+
 function toggleMobileMenu(){
   const sidebar=document.getElementById('mainSidebar');
   const overlay=document.getElementById('mobileMenuOverlay');
@@ -2769,11 +3165,12 @@ function toggleNoTradeDay(force){
 function noTradeReport(r){
   const x=[];
   x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — NO TRADE DAY`);
-  x.push('','DAILY PREPARATION',
-    `Daily notes: ${r.dailyNotes||'—'}`,
-    `Long narrative: ${r.longNarrative||'—'}`,
-    `Short narrative: ${r.shortNarrative||'—'}`
-  );
+  x.push('','DAILY PREPARATION');
+  if(r.previousJournalFeedback)x.push(`Previous journal feedback: ${r.previousJournalFeedback}`);
+  if(r.dailyNotes)x.push(`Daily notes: ${r.dailyNotes}`);
+  if(r.ntz)x.push(`NTZ (No Trade Zone): ${r.ntz}`);
+  if(r.longNarrative)x.push(`Long narrative: ${r.longNarrative}`);
+  if(r.shortNarrative)x.push(`Short narrative: ${r.shortNarrative}`);
   x.push('','NO TRADE TODAY');
   if(r.noTradeComments)x.push(r.noTradeComments);
   return x.join('\n');
@@ -2788,7 +3185,9 @@ function saveNoTradeDay(){
 
   if(r){
     r.noTradeComments=comments;
+    r.previousJournalFeedback=prep.previousJournalFeedback||'';
     r.dailyNotes=prep.notes||'';
+    r.ntz=prep.ntz||'';
     r.longNarrative=prep.longNarrative||'';
     r.shortNarrative=prep.shortNarrative||'';
     r.updatedAt=Date.now();
@@ -2799,7 +3198,9 @@ function saveNoTradeDay(){
       date,
       noTrade:true,
       noTradeComments:comments,
+      previousJournalFeedback:prep.previousJournalFeedback||'',
       dailyNotes:prep.notes||'',
+      ntz:prep.ntz||'',
       longNarrative:prep.longNarrative||'',
       shortNarrative:prep.shortNarrative||''
     };
@@ -3111,7 +3512,7 @@ function collect(){
   const analysis=calcScores(true),level=selectedLevel(),prep=getDailyPrep(currentDate)||{},eligible=analysis.eligibility.valid;
   return{id:Date.now(),date:currentDate,tradeNumber,reentry,
     eligibility:analysis.eligibility.status,eligibilityReasons:analysis.eligibility.reasons,
-    dailyNotes:prep.notes||'',longNarrative:prep.longNarrative||'',shortNarrative:prep.shortNarrative||'',
+    previousJournalFeedback:prep.previousJournalFeedback||'',dailyNotes:prep.notes||'',ntz:prep.ntz||'',longNarrative:prep.longNarrative||'',shortNarrative:prep.shortNarrative||'',
     bias:single('bias'),conviction:single('conviction'),emotions:selected('emotions'),detectedState:state(),
     tradeDirection:single('tradeDirection'),directionalAlignment:directionalAlignment(),
     chosenLevel:level?.name||null,chosenLevelType:level?.type||null,strategy:single('strategy'),
@@ -3130,7 +3531,12 @@ function behavior(v,yes,tempted){return v==='YES'?yes:v==='TEMPTED TO'?tempted:n
 function report(r){
   const x=[];
   x.push('EXECUTION PROTOCOL',`DATE: ${r.date} — TRADE ${r.tradeNumber}`);
-  x.push('','DAILY PREPARATION',`Daily notes: ${r.dailyNotes||'—'}`,`Long narrative: ${r.longNarrative||'—'}`,`Short narrative: ${r.shortNarrative||'—'}`);
+  x.push('','DAILY PREPARATION');
+  if(r.previousJournalFeedback)x.push(`Previous journal feedback: ${r.previousJournalFeedback}`);
+  if(r.dailyNotes)x.push(`Daily notes: ${r.dailyNotes}`);
+  if(r.ntz)x.push(`NTZ (No Trade Zone): ${r.ntz}`);
+  if(r.longNarrative)x.push(`Long narrative: ${r.longNarrative}`);
+  if(r.shortNarrative)x.push(`Short narrative: ${r.shortNarrative}`);
   x.push('','01 / CONTEXT',`Bias: ${r.bias||'not selected'}.`);if(r.conviction)x.push(`Conviction: ${r.conviction}.`);
   x.push('','02 / EMOTIONAL STATE — PRE-TRADE',r.emotions.length?`Selected states: ${r.emotions.join(', ')}.`:'No pre-trade state was selected.',`Overall detected state: ${r.detectedState}.`);
   x.push('','03 / SETUP');if(r.tradeDirection)x.push(`Trade direction: ${r.tradeDirection}.`);x.push(`Directional alignment: ${r.directionalAlignment}.`);if(r.chosenLevel)x.push(`Chosen level type: ${r.chosenLevel}.`);if(r.strategy)x.push(`Chosen strategy: ${r.strategy}.`);
@@ -3175,8 +3581,10 @@ function completeProtocol(){
 function copyText(t){if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(t);const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();return Promise.resolve()}
 function copyReport(){copyText(document.getElementById('reportText').value).then(()=>toast('Protocol copied for AI'))}function emailReport(){const r=records[0],s=encodeURIComponent(`Execution Protocol — ${r?.date||''} — Trade ${r?.tradeNumber||''}`),b=encodeURIComponent(document.getElementById('reportText').value);location.href=`mailto:?subject=${s}&body=${b}`}function closeReport(){document.getElementById('reportModal').classList.add('hidden');showPage('records',document.querySelector('[data-nav=records]'))}
 function renderRecords(){
-  renderDailyPrepArchive();
   const c=document.getElementById('recordsList');
+  const tradeCount=records.filter(r=>!r.noTrade).length;
+  const countEl=document.getElementById('tradeRecordsCount');
+  if(countEl)countEl.textContent=`${tradeCount} TRADE RECORD${tradeCount===1?'':'S'} SAVED.`;
 
   if(!records.length){
     c.innerHTML='<div class="card empty">NO PROTOCOL HAS BEEN COMPLETED YET.</div>';
@@ -3221,7 +3629,7 @@ function renderRecords(){
   }).join('');
 }
 function openRecord(id){const r=records.find(x=>x.id===id);if(!r)return;document.getElementById('savedReportText').value=r.report;document.getElementById('recordModal').classList.remove('hidden')}function copySavedReport(){copyText(document.getElementById('savedReportText').value).then(()=>toast('Saved protocol copied'))}function closeRecord(){document.getElementById('recordModal').classList.add('hidden')}function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
-updateTradeHint();updateOutcomeAvailability();updateProtocolStatuses();calcScores();renderRecords();ensureLockoutTicker();renderDailyPrepArchive();
+updateTradeHint();updateOutcomeAvailability();updateProtocolStatuses();calcScores();renderRecords();ensureLockoutTicker();renderDailyPrepArchive();loadInsightsNote();
 </script>
 </body>
 </html>
